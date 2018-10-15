@@ -1,0 +1,35 @@
+{
+  "name": "page-objects-json-pattern-framework",
+  "version": "1.0.0",
+  "description": "Test framework based on page-objects as a json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarneyenkaDzmitry/Bellagio_resourse_json.git"
+  },
+  "keywords": [
+    "protractor",
+    "cucumber"
+  ],
+  "author": "Dzmitry_Karneyenka, Belarus, Minsk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KarneyenkaDzmitry/Bellagio_resourse_json/issues"
+  },
+  "homepage": "https://github.com/KarneyenkaDzmitry/Bellagio_resourse_json#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "cucumber": "^5.0.2",
+    "cucumber-json-reporter-to-html": "git+https://github.com/KarneyenkaDzmitry/cucumber-json-reporter-to-html.git",
+    "protractor": "^5.4.0",
+    "protractor-cucumber-framework": "^6.1.1",
+    "winston": "^3.0.0",
+    "yargs": "^12.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.7.0"
+  }
+}
