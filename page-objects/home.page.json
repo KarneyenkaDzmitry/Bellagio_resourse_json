@@ -1,0 +1,10 @@
+{
+    "name": "homePage",
+    "path": "en.html",
+    "selector": "html",
+    "children": {
+        "header": {
+            "ref": "header.json"
+        }
+    }
+}

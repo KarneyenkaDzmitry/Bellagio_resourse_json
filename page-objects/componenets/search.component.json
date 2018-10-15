@@ -1,0 +1,21 @@
+{
+    "name": "searchComponenet",
+    "selector": ".nav-search",
+    "children": {
+        "search component": {
+            "selector": "ul>li.nav-search.search-expanded"
+        },
+        "search component form": {
+            "selector": "form#global-nav-search-form"
+        },
+        "search component button": {
+            "selector": "*[aria-label*=\"Search\"]"
+        },
+        "search component field": {
+            "selector": "globalSearchKeyword"
+        },
+        "search component cancel": {
+            "selector": "span.clear-search.close-search-overlay"
+        }
+    }
+}

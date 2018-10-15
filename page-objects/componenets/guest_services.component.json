@@ -1,0 +1,13 @@
+{
+    "name": "guestServicesComponenet",
+    "selector": ".nav-guest-services",
+    "children": {
+        "guest services menu": {
+            "isCollection": true,
+            "selector": "#unsignedIn-guest-menu > li"
+        },
+        "guest services": {
+            "selector": ".nav-services-btn"
+        }
+    }
+}
