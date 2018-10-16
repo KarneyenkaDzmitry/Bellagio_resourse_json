@@ -1,0 +1,12 @@
+{
+    "name": "header componenet",
+    "selector": "html",
+    "children": {
+        "top header compnent": {
+            "ref": "top_header.componenet.js"
+        },
+        "low header compnent": {
+            "ref": "low_header.componenet.js"
+        }
+    }
+}

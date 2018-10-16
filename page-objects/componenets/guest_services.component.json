@@ -1,8 +1,8 @@
 {
-    "name": "guestServicesComponenet",
+    "name": "guest services componenet",
     "selector": ".nav-guest-services",
     "children": {
-        "guest services menu": {
+        "menu items": {
             "isCollection": true,
             "selector": "#unsignedIn-guest-menu > li"
         },

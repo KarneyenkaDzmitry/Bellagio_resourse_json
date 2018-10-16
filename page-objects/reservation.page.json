@@ -1,5 +1,5 @@
 {
-    "name": "reservationPage",
+    "name": "reservation page",
     "path": "en/itineraries/find-reservation.html",
     "selector": "html",
     "children": {

@@ -1,5 +1,5 @@
 {
-    "name": "searchComponenet",
+    "name": "search componenet",
     "selector": ".nav-search",
     "children": {
         "search component": {

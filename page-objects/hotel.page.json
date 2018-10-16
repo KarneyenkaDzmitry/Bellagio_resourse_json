@@ -1,5 +1,5 @@
 {
-    "name": "hotelPage",
+    "name": "hotel page",
     "path": "en/hotel.html",
     "selector": "html",
     "children": {
