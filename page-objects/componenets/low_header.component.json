@@ -2,9 +2,7 @@
     "name": "low header compnent",
     "selector": "ul.nav-main",
     "children": {
-        "book a room component": {
-            "ref": "booking.componenet.json"
-        },
+        
         "menu items": {
             "isCollection": true,
             "selector":"ul.nav-main>li:not(#booking)"

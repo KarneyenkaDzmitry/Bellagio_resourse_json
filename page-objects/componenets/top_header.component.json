@@ -2,20 +2,18 @@
     "name": "top header compnent",
     "selector": "ul.nav-main",
     "children": {
-        "sing in component": {
-            "ref": "sing_in.componenet.json"
-        },
+        
         "logo": {
             "selector": "#nav-logo>a"
         },
-        "guest services componenet": {
-            "ref": "guest_services.componenet.json"
+        "guest services component": {
+            "ref": "guest_services.component.json"
         },
         "itinerary": {
             "selector": "li.nav-itinerary>a"
         },
-        "search componenet": {
-            "ref": "search.componenet.json"
+        "search component": {
+            "ref": "search.component.json"
         }
     }
 }

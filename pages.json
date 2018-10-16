@@ -1,0 +1,462 @@
+{
+    "en/entertainment.html": {
+        "name": "entertainment page",
+        "path": "en/entertainment.html",
+        "selector": "html",
+        "children": {
+            "header": {
+                "name": "header componenet",
+                "children": {
+                    "top header compnent": {
+                        "name": "top header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "logo": {
+                                "selector": "#nav-logo>a"
+                            },
+                            "guest services component": {
+                                "name": "guest services componenet",
+                                "selector": ".nav-guest-services",
+                                "children": {
+                                    "menu items": {
+                                        "isCollection": true,
+                                        "selector": "#unsignedIn-guest-menu > li"
+                                    },
+                                    "guest services": {
+                                        "selector": ".nav-services-btn"
+                                    }
+                                }
+                            },
+                            "itinerary": {
+                                "selector": "li.nav-itinerary>a"
+                            },
+                            "search component": {
+                                "name": "search componenet",
+                                "selector": ".nav-search",
+                                "children": {
+                                    "search component": {
+                                        "selector": "ul>li.nav-search.search-expanded"
+                                    },
+                                    "search component form": {
+                                        "selector": "form#global-nav-search-form"
+                                    },
+                                    "search component button": {
+                                        "selector": "*[aria-label*=\"Search\"]"
+                                    },
+                                    "search component field": {
+                                        "selector": "globalSearchKeyword"
+                                    },
+                                    "search component cancel": {
+                                        "selector": "span.clear-search.close-search-overlay"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "low header compnent": {
+                        "name": "low header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "menu items": {
+                                "isCollection": true,
+                                "selector": "ul.nav-main>li:not(#booking)"
+                            }
+                        }
+                    }
+                }
+            },
+            "body header h1": {
+                "selector": "h1"
+            },
+            "body results": {
+                "selector": "#results-wrapper"
+            }
+        }
+    },
+    "en.html": {
+        "name": "home page",
+        "path": "en.html",
+        "selector": "html",
+        "children": {
+            "header": {
+                "name": "header componenet",
+                "children": {
+                    "top header compnent": {
+                        "name": "top header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "logo": {
+                                "selector": "#nav-logo>a"
+                            },
+                            "guest services component": {
+                                "name": "guest services componenet",
+                                "selector": ".nav-guest-services",
+                                "children": {
+                                    "menu items": {
+                                        "isCollection": true,
+                                        "selector": "#unsignedIn-guest-menu > li"
+                                    },
+                                    "guest services": {
+                                        "selector": ".nav-services-btn"
+                                    }
+                                }
+                            },
+                            "itinerary": {
+                                "selector": "li.nav-itinerary>a"
+                            },
+                            "search component": {
+                                "name": "search componenet",
+                                "selector": ".nav-search",
+                                "children": {
+                                    "search component": {
+                                        "selector": "ul>li.nav-search.search-expanded"
+                                    },
+                                    "search component form": {
+                                        "selector": "form#global-nav-search-form"
+                                    },
+                                    "search component button": {
+                                        "selector": "*[aria-label*=\"Search\"]"
+                                    },
+                                    "search component field": {
+                                        "selector": "globalSearchKeyword"
+                                    },
+                                    "search component cancel": {
+                                        "selector": "span.clear-search.close-search-overlay"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "low header compnent": {
+                        "name": "low header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "menu items": {
+                                "isCollection": true,
+                                "selector": "ul.nav-main>li:not(#booking)"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "en/hotel.html": {
+        "name": "hotel page",
+        "path": "en/hotel.html",
+        "selector": "html",
+        "children": {
+            "header": {
+                "name": "header componenet",
+                "children": {
+                    "top header compnent": {
+                        "name": "top header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "logo": {
+                                "selector": "#nav-logo>a"
+                            },
+                            "guest services component": {
+                                "name": "guest services componenet",
+                                "selector": ".nav-guest-services",
+                                "children": {
+                                    "menu items": {
+                                        "isCollection": true,
+                                        "selector": "#unsignedIn-guest-menu > li"
+                                    },
+                                    "guest services": {
+                                        "selector": ".nav-services-btn"
+                                    }
+                                }
+                            },
+                            "itinerary": {
+                                "selector": "li.nav-itinerary>a"
+                            },
+                            "search component": {
+                                "name": "search componenet",
+                                "selector": ".nav-search",
+                                "children": {
+                                    "search component": {
+                                        "selector": "ul>li.nav-search.search-expanded"
+                                    },
+                                    "search component form": {
+                                        "selector": "form#global-nav-search-form"
+                                    },
+                                    "search component button": {
+                                        "selector": "*[aria-label*=\"Search\"]"
+                                    },
+                                    "search component field": {
+                                        "selector": "globalSearchKeyword"
+                                    },
+                                    "search component cancel": {
+                                        "selector": "span.clear-search.close-search-overlay"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "low header compnent": {
+                        "name": "low header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "menu items": {
+                                "isCollection": true,
+                                "selector": "ul.nav-main>li:not(#booking)"
+                            }
+                        }
+                    }
+                }
+            },
+            "body header h1": {
+                "selector": "*[class*=title] h1"
+            },
+            "body results": {
+                "selector": "#results-wrapper"
+            }
+        }
+    },
+    "en/itineraries/find-reservation.html": {
+        "name": "reservation page",
+        "path": "en/itineraries/find-reservation.html",
+        "selector": "html",
+        "children": {
+            "header": {
+                "name": "header componenet",
+                "children": {
+                    "top header compnent": {
+                        "name": "top header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "logo": {
+                                "selector": "#nav-logo>a"
+                            },
+                            "guest services component": {
+                                "name": "guest services componenet",
+                                "selector": ".nav-guest-services",
+                                "children": {
+                                    "menu items": {
+                                        "isCollection": true,
+                                        "selector": "#unsignedIn-guest-menu > li"
+                                    },
+                                    "guest services": {
+                                        "selector": ".nav-services-btn"
+                                    }
+                                }
+                            },
+                            "itinerary": {
+                                "selector": "li.nav-itinerary>a"
+                            },
+                            "search component": {
+                                "name": "search componenet",
+                                "selector": ".nav-search",
+                                "children": {
+                                    "search component": {
+                                        "selector": "ul>li.nav-search.search-expanded"
+                                    },
+                                    "search component form": {
+                                        "selector": "form#global-nav-search-form"
+                                    },
+                                    "search component button": {
+                                        "selector": "*[aria-label*=\"Search\"]"
+                                    },
+                                    "search component field": {
+                                        "selector": "globalSearchKeyword"
+                                    },
+                                    "search component cancel": {
+                                        "selector": "span.clear-search.close-search-overlay"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "low header compnent": {
+                        "name": "low header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "menu items": {
+                                "isCollection": true,
+                                "selector": "ul.nav-main>li:not(#booking)"
+                            }
+                        }
+                    }
+                }
+            },
+            "body header h1": {
+                "selector": "h1.account-page-title"
+            },
+            "room option": {
+                "selector": "select option[value=\"room\"]"
+            }
+        }
+    },
+    "en/restaurants.html": {
+        "name": "restaurants page",
+        "path": "en/restaurants.html",
+        "selector": "body .wrapper",
+        "children": {
+            "header": {
+                "name": "header componenet",
+                "children": {
+                    "top header compnent": {
+                        "name": "top header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "logo": {
+                                "selector": "#nav-logo>a"
+                            },
+                            "guest services component": {
+                                "name": "guest services componenet",
+                                "selector": ".nav-guest-services",
+                                "children": {
+                                    "menu items": {
+                                        "isCollection": true,
+                                        "selector": "#unsignedIn-guest-menu > li"
+                                    },
+                                    "guest services": {
+                                        "selector": ".nav-services-btn"
+                                    }
+                                }
+                            },
+                            "itinerary": {
+                                "selector": "li.nav-itinerary>a"
+                            },
+                            "search component": {
+                                "name": "search componenet",
+                                "selector": ".nav-search",
+                                "children": {
+                                    "search component": {
+                                        "selector": "ul>li.nav-search.search-expanded"
+                                    },
+                                    "search component form": {
+                                        "selector": "form#global-nav-search-form"
+                                    },
+                                    "search component button": {
+                                        "selector": "*[aria-label*=\"Search\"]"
+                                    },
+                                    "search component field": {
+                                        "selector": "globalSearchKeyword"
+                                    },
+                                    "search component cancel": {
+                                        "selector": "span.clear-search.close-search-overlay"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "low header compnent": {
+                        "name": "low header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "menu items": {
+                                "isCollection": true,
+                                "selector": "ul.nav-main>li:not(#booking)"
+                            }
+                        }
+                    }
+                }
+            },
+            "body header h1": {
+                "selector": "h1"
+            },
+            "body results": {
+                "selector": "#results-wrapper"
+            },
+            "body results headers": {
+                "isCollection": true,
+                "selector": "div.result h3"
+            },
+            "body results array": {
+                "isCollection": true,
+                "selector": "div.result"
+            },
+            "body filter buttons": {
+                "isCollection": true,
+                "selector": "button[id*=tagsFilter]"
+            }
+        }
+    },
+    "en/search.html": {
+        "name": "search page",
+        "path": "en/search.html",
+        "selector": "html",
+        "children": {
+            "header": {
+                "name": "header componenet",
+                "children": {
+                    "top header compnent": {
+                        "name": "top header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "logo": {
+                                "selector": "#nav-logo>a"
+                            },
+                            "guest services component": {
+                                "name": "guest services componenet",
+                                "selector": ".nav-guest-services",
+                                "children": {
+                                    "menu items": {
+                                        "isCollection": true,
+                                        "selector": "#unsignedIn-guest-menu > li"
+                                    },
+                                    "guest services": {
+                                        "selector": ".nav-services-btn"
+                                    }
+                                }
+                            },
+                            "itinerary": {
+                                "selector": "li.nav-itinerary>a"
+                            },
+                            "search component": {
+                                "name": "search componenet",
+                                "selector": ".nav-search",
+                                "children": {
+                                    "search component": {
+                                        "selector": "ul>li.nav-search.search-expanded"
+                                    },
+                                    "search component form": {
+                                        "selector": "form#global-nav-search-form"
+                                    },
+                                    "search component button": {
+                                        "selector": "*[aria-label*=\"Search\"]"
+                                    },
+                                    "search component field": {
+                                        "selector": "globalSearchKeyword"
+                                    },
+                                    "search component cancel": {
+                                        "selector": "span.clear-search.close-search-overlay"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "low header compnent": {
+                        "name": "low header compnent",
+                        "selector": "ul.nav-main",
+                        "children": {
+                            "menu items": {
+                                "isCollection": true,
+                                "selector": "ul.nav-main>li:not(#booking)"
+                            }
+                        }
+                    }
+                }
+            },
+            "body header h1": {
+                "isCollection": false,
+                "selector": ".site-search-header"
+            },
+            "body results": {
+                "isCollection": false,
+                "selector": "#results-wrapper"
+            },
+            "body results headers": {
+                "isCollection": true,
+                "selector": "#results-wrapper h2"
+            },
+            "body no result message": {
+                "isCollection": false,
+                "selector": "div.no-result > p.ng-binding"
+            }
+        }
+    }
+}

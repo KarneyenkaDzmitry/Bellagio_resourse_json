@@ -4,7 +4,7 @@
     "selector": "html",
     "children": {
         "header": {
-            "ref": "header.json"
+            "ref": "../componenets/header.component.json"
         },
         "body header h1": {
             "isCollection": false,

@@ -7,6 +7,8 @@ Feature: Bellagio resource
     Scenario Outline: Filter should return results related with options
         Given I am on '<Page>' page
         When I use filter with options cousine = '<Cousine>', price = '<Price>', meal = '<Meal>'
+        # When I click "Cousine Dropdown"
+        #     And I click "Italian" text in "Cousine Dropdown > Options"
         Then I should see '<Result>' in 'body results headers'
         And 'body results array' should have '1' elmement
 

@@ -8,12 +8,12 @@ function getCurrentPage() {
             const [, appenderUrl] = /^(?:\w+\:\/\/\w+\.?\w+\.?\w+\/)(.*html)(#.*)?$/.exec(currentUrl);
             logger.debug(`was get current URL [${currentUrl}]. The appender is [${appenderUrl}]`);
             switch (appenderUrl) {
-            case 'en.html': return require('../page-objects/home.page');
-            case 'en/hotel.html': return require('../page-objects/hotel.page');
-            case 'en/entertainment.html': return require('../page-objects/entertainment.page');
-            case 'en/restaurants.html': return require('../page-objects/restaurants.page');
-            case 'en/itineraries/find-reservation.html': return require('../page-objects/reservation.page');
-            case 'en/search.html': return require('../page-objects/search.page');
+            case 'en.html': return require('../page-objects/home.page.json');
+            case 'en/hotel.html': return require('../page-objects/hotel.page.json');
+            case 'en/entertainment.html': return require('../page-objects/entertainment.page.json');
+            case 'en/restaurants.html': return require('../page-objects/restaurants.page.json');
+            case 'en/itineraries/find-reservation.html': return require('../page-objects/reservation.page.json');
+            case 'en/search.html': return require('../page-objects/search.page.json');
             default: logger.error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
                 throw new Error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
             }
