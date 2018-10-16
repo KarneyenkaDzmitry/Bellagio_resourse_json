@@ -2,7 +2,9 @@
     "name": "top header compnent",
     "selector": "ul.nav-main",
     "children": {
-        
+        "sing in component": {
+            "ref": "sign_in.component.json"
+        },
         "logo": {
             "selector": "#nav-logo>a"
         },

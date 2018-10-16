@@ -4,7 +4,7 @@
     "selector": "html",
     "children": {
         "header": {
-            "ref": "../componenets/header.component.json"
+            "ref": "../componenets/header/header.component.json"
         },
         "body header h1": {
             "selector": "*[class*=title] h1"

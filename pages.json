@@ -6,11 +6,17 @@
         "children": {
             "header": {
                 "name": "header componenet",
+                "selector": "html",
                 "children": {
                     "top header compnent": {
                         "name": "top header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "sing in component": {
+                                "name": "sign in compnent",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "logo": {
                                 "selector": "#nav-logo>a"
                             },
@@ -57,6 +63,11 @@
                         "name": "low header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "book a room component": {
+                                "name": "booking componenet",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "menu items": {
                                 "isCollection": true,
                                 "selector": "ul.nav-main>li:not(#booking)"
@@ -80,11 +91,17 @@
         "children": {
             "header": {
                 "name": "header componenet",
+                "selector": "html",
                 "children": {
                     "top header compnent": {
                         "name": "top header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "sing in component": {
+                                "name": "sign in compnent",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "logo": {
                                 "selector": "#nav-logo>a"
                             },
@@ -131,6 +148,11 @@
                         "name": "low header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "book a room component": {
+                                "name": "booking componenet",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "menu items": {
                                 "isCollection": true,
                                 "selector": "ul.nav-main>li:not(#booking)"
@@ -148,11 +170,17 @@
         "children": {
             "header": {
                 "name": "header componenet",
+                "selector": "html",
                 "children": {
                     "top header compnent": {
                         "name": "top header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "sing in component": {
+                                "name": "sign in compnent",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "logo": {
                                 "selector": "#nav-logo>a"
                             },
@@ -199,6 +227,11 @@
                         "name": "low header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "book a room component": {
+                                "name": "booking componenet",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "menu items": {
                                 "isCollection": true,
                                 "selector": "ul.nav-main>li:not(#booking)"
@@ -222,11 +255,17 @@
         "children": {
             "header": {
                 "name": "header componenet",
+                "selector": "html",
                 "children": {
                     "top header compnent": {
                         "name": "top header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "sing in component": {
+                                "name": "sign in compnent",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "logo": {
                                 "selector": "#nav-logo>a"
                             },
@@ -273,6 +312,11 @@
                         "name": "low header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "book a room component": {
+                                "name": "booking componenet",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "menu items": {
                                 "isCollection": true,
                                 "selector": "ul.nav-main>li:not(#booking)"
@@ -296,11 +340,17 @@
         "children": {
             "header": {
                 "name": "header componenet",
+                "selector": "html",
                 "children": {
                     "top header compnent": {
                         "name": "top header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "sing in component": {
+                                "name": "sign in compnent",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "logo": {
                                 "selector": "#nav-logo>a"
                             },
@@ -347,6 +397,11 @@
                         "name": "low header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "book a room component": {
+                                "name": "booking componenet",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "menu items": {
                                 "isCollection": true,
                                 "selector": "ul.nav-main>li:not(#booking)"
@@ -382,11 +437,17 @@
         "children": {
             "header": {
                 "name": "header componenet",
+                "selector": "html",
                 "children": {
                     "top header compnent": {
                         "name": "top header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "sing in component": {
+                                "name": "sign in compnent",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "logo": {
                                 "selector": "#nav-logo>a"
                             },
@@ -433,6 +494,11 @@
                         "name": "low header compnent",
                         "selector": "ul.nav-main",
                         "children": {
+                            "book a room component": {
+                                "name": "booking componenet",
+                                "selector": "ul.nav-main",
+                                "children": {}
+                            },
                             "menu items": {
                                 "isCollection": true,
                                 "selector": "ul.nav-main>li:not(#booking)"
