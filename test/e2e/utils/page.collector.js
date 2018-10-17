@@ -5,9 +5,13 @@ const fs = require('fs');
 
 function collector(sourceDir, destDir) {
     let pages = {};
-    getFiles(sourceDir).forEach(file => {
+    const files = getFiles(sourceDir);
+    if (files.length===0) throw new Error(`Passed directory [${sourceDir}] is empty.`); 
+    fs.existsSync(destDir)||fs.mkdirSync(destDir);
+    files.forEach(file => {
         const absPath = path.resolve(sourceDir, file);
-        if (fs.statSync(absPath).isFile()) {
+        const stat = fs.statSync(absPath)
+        if (stat.isFile()) {
             const page = JSON.parse(fs.readFileSync(absPath));
             page.path ? pages[page.path] = createPage(page, sourceDir) : '';
         }
@@ -32,7 +36,7 @@ function getFiles(dir) {
     const stats = fs.statSync(dir);
     if (stats.isDirectory()) {
         const files = fs.readdirSync(dir);
-        return files;
+        return files.filter(file=>file.endsWith('.json'));
     } else {
         throw new Error(`The passed source path [${dir}] is not a directory.`);
     }
