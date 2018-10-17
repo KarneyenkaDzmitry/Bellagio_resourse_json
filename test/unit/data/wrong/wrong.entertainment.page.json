@@ -1,0 +1,15 @@
+{
+    "name": "entertainment",
+    "selector": "html",
+    "children": {
+        "header": {
+            "ref": "../componenets/header/header.component.json"
+        },
+        "body header h1": {
+            "selector": "h1"
+        },
+        "body results": {
+            "selector": "#results-wrapper"
+        }
+    }
+}

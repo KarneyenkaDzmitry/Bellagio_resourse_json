@@ -10,9 +10,10 @@ const destDir = './test/unit/source'
 const nonExistingFolder = './nonExistentDir';
 const emptyDir = './test/unit/data/emptyDir';
 const testJsFile = `${pageTemplatesDir}/empty.js`;
+const wrongData = './test/unit/data/wrong';
 
 
-describe('Unit tests of collector functionality', () => {
+describe('Unit tests of collector functionality. Collector ', () => {
 
     it('Result json should equals expected json', async () => {
         collector(pageTemplatesDir, destDir)
@@ -21,19 +22,23 @@ describe('Unit tests of collector functionality', () => {
 
     it('should throw an error if a directory with pages does not exist', () => {
         expect(() => { collector(nonExistingFolder, destDir) }).to.throw(Error);
-    })
+    });
 
     it('should throw an error if a passed path is not a directory', () => {
         expect(() => { collector(pathToExistingFile, destDir) }).to.throw(Error, `The passed source path [${pathToExistingFile}] is not a directory.`);
-    })
+    });
 
     it('should throw an error if the directory is empty', () => {
         expect(() => { collector(emptyDir, destDir) }).to.throw(Error, `Passed directory [${emptyDir}] is empty.`);
-    })
+    });
 
     it('should not throw an error and should ignore no json files', () => {
         fs.writeFileSync(testJsFile, '', 'utf8');
         expect(() => { collector(pageTemplatesDir, destDir) }).to.not.throw(Error);
         fs.unlinkSync(testJsFile);
-    })
+    });
+
+    it('should throw an error if there is not property [path] in anyPage.json file', () => {
+        expect(() => { collector(wrongData, destDir) }).to.throw(Error, /There is not property \[path\] in file \[(.+)\]/);
+    });
 });
