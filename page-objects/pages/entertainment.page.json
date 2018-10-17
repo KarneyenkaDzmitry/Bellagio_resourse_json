@@ -1,5 +1,5 @@
 {
-    "name": "entertainment page",
+    "name": "entertainment",
     "path": "en/entertainment.html",
     "selector": "html",
     "children": {

@@ -5,8 +5,7 @@ const fs = require('fs');
 
 async function collector(sourceDir, destDir) {
     let pages = {};
-    const files = getFiles(sourceDir);
-    files.forEach(file => {
+    getFiles(sourceDir).forEach(file => {
         const absPath = path.resolve(sourceDir, file);
         if (fs.statSync(absPath).isFile()) {
             const page = JSON.parse(fs.readFileSync(absPath));
@@ -19,8 +18,9 @@ async function collector(sourceDir, destDir) {
 
 function createPage(page, sourceDir) {
     Object.keys(page.children).forEach(key => {
-        if (page.children[key].ref) {  
-            const absPath = path.resolve(sourceDir, page.children[key].ref)
+        const ref = page.children[key].ref;
+        if (ref) {  
+            const absPath = path.resolve(sourceDir, ref)
             page.children[key] = createPage(JSON.parse(fs.readFileSync(absPath)), path.dirname(absPath) ); 
             delete page.children[key].ref;
         } 
@@ -38,6 +38,4 @@ function getFiles(dir) {
     }
 }
 
-collector('./page-objects/pages', 'pages.json');
-
-module.exports = { collector }
+collector('./page-objects/pages', 'source/pages.json');

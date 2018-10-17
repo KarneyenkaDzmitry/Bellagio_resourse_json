@@ -1,5 +1,5 @@
 {
-    "name": "search page",
+    "name": "search",
     "path": "en/search.html",
     "selector": "html",
     "children": {

@@ -1,5 +1,5 @@
 {
-    "name": "home page",
+    "name": "home",
     "path": "en.html",
     "selector": "html",
     "children": {

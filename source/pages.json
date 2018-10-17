@@ -1,6 +1,6 @@
 {
     "en/entertainment.html": {
-        "name": "entertainment page",
+        "name": "entertainment",
         "path": "en/entertainment.html",
         "selector": "html",
         "children": {
@@ -85,7 +85,7 @@
         }
     },
     "en.html": {
-        "name": "home page",
+        "name": "home",
         "path": "en.html",
         "selector": "html",
         "children": {
@@ -164,7 +164,7 @@
         }
     },
     "en/hotel.html": {
-        "name": "hotel page",
+        "name": "hotel",
         "path": "en/hotel.html",
         "selector": "html",
         "children": {
@@ -249,7 +249,7 @@
         }
     },
     "en/itineraries/find-reservation.html": {
-        "name": "reservation page",
+        "name": "reservation",
         "path": "en/itineraries/find-reservation.html",
         "selector": "html",
         "children": {
@@ -334,7 +334,7 @@
         }
     },
     "en/restaurants.html": {
-        "name": "restaurants page",
+        "name": "restaurants",
         "path": "en/restaurants.html",
         "selector": "body .wrapper",
         "children": {
@@ -431,7 +431,7 @@
         }
     },
     "en/search.html": {
-        "name": "search page",
+        "name": "search",
         "path": "en/search.html",
         "selector": "html",
         "children": {

@@ -1,5 +1,5 @@
 {
-    "name": "restaurants page",
+    "name": "restaurants",
     "path": "en/restaurants.html",
     "selector": "body .wrapper",
     "children": {
