@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 
-async function collector(sourceDir, destDir) {
+function collector(sourceDir, destDir) {
     let pages = {};
     getFiles(sourceDir).forEach(file => {
         const absPath = path.resolve(sourceDir, file);
@@ -38,4 +38,6 @@ function getFiles(dir) {
     }
 }
 
-collector('./page-objects/pages', 'source/pages.json');
+collector('./test/e2e/page-objects/pages', './test/e2e/source/pages.json');
+
+module.exports = { collector }

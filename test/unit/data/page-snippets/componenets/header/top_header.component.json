@@ -1,0 +1,20 @@
+{
+    "selector": "ul.nav-main",
+    "children": {
+        "sing in component": {
+            "ref": "sign_in.component.json"
+        },
+        "logo": {
+            "selector": "#nav-logo>a"
+        },
+        "guest services component": {
+            "ref": "guest_services.component.json"
+        },
+        "itinerary": {
+            "selector": "li.nav-itinerary>a"
+        },
+        "search component": {
+            "ref": "search.component.json"
+        }
+    }
+}

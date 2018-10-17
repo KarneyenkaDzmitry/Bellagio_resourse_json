@@ -1,5 +1,4 @@
 {
-    "name": "book a room componenet",
     "selector": "ul.nav-main",
     "children": {}
 }

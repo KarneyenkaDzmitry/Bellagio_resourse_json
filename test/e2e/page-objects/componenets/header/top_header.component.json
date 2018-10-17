@@ -1,5 +1,4 @@
 {
-    "name": "top header compnent",
     "selector": "ul.nav-main",
     "children": {
         "sing in component": {

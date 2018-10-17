@@ -4,17 +4,18 @@
   "description": "Test framework based on page-objects as a json",
   "main": "index.js",
   "scripts": {
+    "unit": "./node_modules/.bin/protractor ./test/unit/configs/unit.config.js",
     "wd-up": "webdriver-manager update",
     "wd-st": "webdriver-manager start",
-    "pretest": "del /Q .\\reports .\\logs .\\reports\\screenshots && node ./utils/page.collector.js",
-    "test": "./node_modules/.bin/protractor ./configs/conf.js",
-    "posttest": "node ./configs/report.config.js",
-    "prereport": "node ./configs/report.config.js",
-    "report": ".\\reports\\Bellagio.html",
+    "pretest": "del /Q .\\test\\e2e\\reports .\\test\\e2e\\logs .\\test\\e2e\\reports\\screenshots && node ./test/e2e/utils/page.collector.js",
+    "test": "./node_modules/.bin/protractor ./test/e2e/configs/conf.js",
+    "posttest": "node ./test/e2e/configs/report.config.js",
+    "prereport": "node ./test/e2e/configs/report.config.js",
+    "report": ".\\test\\e2e\\reports\\Bellagio.html",
     "lint": "eslint ./ --fix",
-    "preinstall": "mkdir logs .\\reports\\screenshots source",
+    "preinstall": "mkdir logs .\\test\\e2e\\reports\\screenshots source",
     "postinstall": "webdriver-manager update",
-    "remove_dirs": "rmdir /s /q reports logs && mkdir reports\\screenshots logs"
+    "remove_dirs": "rmdir /s /q test\\e2e\\reports logs && mkdir test\\e2e\\reports\\screenshots test\\e2e\\logs"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,4 @@
 {
-    "name": "sign in compnent",
     "selector": "ul.nav-main",
     "children": {}
 }

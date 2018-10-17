@@ -1,0 +1,28 @@
+{
+    "name": "restaurants",
+    "path": "en/restaurants.html",
+    "selector": "body .wrapper",
+    "children": {
+        "header": {
+            "ref": "../componenets/header/header.component.json"
+        },
+        "body header h1": {
+            "selector": "h1"
+        },
+        "body results": {
+            "selector": "#results-wrapper"
+        },
+        "body results headers": {
+            "isCollection": true,
+            "selector": "div.result h3"
+        },
+        "body results array": {
+            "isCollection": true,
+            "selector": "div.result"
+        },
+        "body filter buttons": {
+            "isCollection": true,
+            "selector": "button[id*=tagsFilter]"
+        }
+    }
+}

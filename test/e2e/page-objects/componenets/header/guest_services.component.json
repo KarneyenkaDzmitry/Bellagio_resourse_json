@@ -1,5 +1,4 @@
 {
-    "name": "guest services componenet",
     "selector": ".nav-guest-services",
     "children": {
         "menu items": {

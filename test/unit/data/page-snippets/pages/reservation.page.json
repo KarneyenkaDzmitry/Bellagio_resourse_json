@@ -1,0 +1,16 @@
+{
+    "name": "reservation",
+    "path": "en/itineraries/find-reservation.html",
+    "selector": "html",
+    "children": {
+        "header": {
+            "ref": "../componenets/header/header.component.json"
+        },
+        "body header h1": {
+            "selector": "h1.account-page-title"
+        },
+        "room option": {
+            "selector": "select option[value=\"room\"]"
+        }
+    }
+}

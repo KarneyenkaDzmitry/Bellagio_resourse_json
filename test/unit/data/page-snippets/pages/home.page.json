@@ -1,0 +1,10 @@
+{
+    "name": "home",
+    "path": "en.html",
+    "selector": "html",
+    "children": {
+        "header": {
+            "ref": "../componenets/header/header.component.json"
+        }
+    }
+}

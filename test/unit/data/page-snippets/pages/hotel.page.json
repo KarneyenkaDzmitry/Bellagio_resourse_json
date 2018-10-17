@@ -1,0 +1,16 @@
+{
+    "name": "hotel",
+    "path": "en/hotel.html",
+    "selector": "html",
+    "children": {
+        "header": {
+            "ref": "../componenets/header/header.component.json"
+        },
+        "body header h1": {
+            "selector": "*[class*=title] h1"
+        },
+        "body results": {
+            "selector": "#results-wrapper"
+        }
+    }
+}
