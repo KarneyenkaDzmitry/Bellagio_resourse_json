@@ -12,7 +12,7 @@ function collector(sourceDir, destDir) {
             page.path ? pages[page.path] = createPage(page, sourceDir) : '';
         }
     });
-    fs.writeFileSync(destDir, JSON.stringify(pages), 'utf8');
+    fs.writeFileSync(`${destDir}/pages.json`, JSON.stringify(pages), 'utf8');
     return pages;
 }
 
@@ -38,6 +38,6 @@ function getFiles(dir) {
     }
 }
 
-collector('./test/e2e/page-objects/pages', './test/e2e/source/pages.json');
+collector('./test/e2e/page-objects/pages', './test/e2e/source');
 
 module.exports = { collector }
