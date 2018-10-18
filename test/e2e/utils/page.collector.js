@@ -17,9 +17,13 @@ function getPages(sourceDir, files) {
     files.forEach(file => {
         const absPath = path.resolve(sourceDir, file);
         if (fs.statSync(absPath).isFile()) {
-            const page = JSON.parse(fs.readFileSync(absPath));
+            let object = JSON.parse(fs.readFileSync(absPath));
+            const pageName = Object.keys(object).find(key => /page/i.test(key));
+            const page = object[pageName];
             if (page.path) {
-                pages[page.path] = createPage(page, sourceDir);
+                object = pages[page.path] = {};
+                delete page.path;
+                object[`${pageName}`] = createPage(page, sourceDir);
             } else {
                 throw new Error(`There is not property [path] in file [${absPath}]`);
             };
@@ -29,14 +33,16 @@ function getPages(sourceDir, files) {
 }
 
 function createPage(page, sourceDir) {
-    Object.keys(page.children).forEach(key => {
-        const ref = page.children[key].ref;
-        if (ref) {
-            const absPath = path.resolve(sourceDir, ref)
-            page.children[key] = createPage(JSON.parse(fs.readFileSync(absPath)), path.dirname(absPath));
-            delete page.children[key].ref;
-        }
-    });
+    if (page.children) {
+        Object.keys(page.children).forEach(key => {
+            const ref = page.children[key].ref;
+            if (ref) {
+                const absPath = path.resolve(sourceDir, ref)
+                page.children[key] = createPage(JSON.parse(fs.readFileSync(absPath)), path.dirname(absPath));
+                delete page.children[key].ref;
+            }
+        });
+    }
     return page;
 }
 
@@ -49,5 +55,5 @@ function getFiles(dir) {
         throw new Error(`The passed source path [${dir}] is not a directory.`);
     }
 }
-// collector('./test/e2e/page-objects/pages', './test/e2e/source');
+collector('./test/e2e/page-objects/pages', './test/e2e/source');
 module.exports = { collector }

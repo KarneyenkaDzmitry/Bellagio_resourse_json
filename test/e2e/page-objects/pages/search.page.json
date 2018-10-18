@@ -1,26 +1,27 @@
 {
-    "name": "search",
-    "path": "en/search.html",
-    "selector": "html",
-    "children": {
-        "header": {
-            "ref": "../componenets/header/header.component.json"
-        },
-        "body header h1": {
-            "isCollection": false,
-            "selector": ".site-search-header"
-        },
-        "body results": {
-            "isCollection": false,
-            "selector": "#results-wrapper"
-        },
-        "body results headers": {
-            "isCollection": true,
-            "selector": "#results-wrapper h2"
-        },
-        "body no result message": {
-            "isCollection": false,
-            "selector": "div.no-result > p.ng-binding"
+    "search page": {
+        "path": "en/search.html",
+        "selector": "html",
+        "children": {
+            "header": {
+                "ref": "../componenets/header/header.component.json"
+            },
+            "body header h1": {
+                "isCollection": false,
+                "selector": ".site-search-header"
+            },
+            "body results": {
+                "isCollection": false,
+                "selector": "#results-wrapper"
+            },
+            "body results headers": {
+                "isCollection": true,
+                "selector": "#results-wrapper h2"
+            },
+            "body no result message": {
+                "isCollection": false,
+                "selector": "div.no-result > p.ng-binding"
+            }
         }
     }
 }
