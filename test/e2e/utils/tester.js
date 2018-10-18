@@ -1,36 +1,62 @@
 'use strict';
-function getPageObject() {
 
+const pages = require('../page-objects/pages.json');
+
+function getPageObject() {
+    return browser.getCurrentUrl()
+        .then((currentUrl) => {
+            const [, appenderUrl] = /^(?:\w+\:\/\/\w+\.?\w+\.?\w+\/)(.*html)(#.*)?$/.exec(currentUrl);
+            if (pages[appenderUrl]) {
+                throw new Error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
+            } else {
+                return pages[appenderUrl];
+            }
+        });
 }
 
-function getElement(string) {
-
+async function getElement(string) {
+    const po = await getPageObject();
+    return /\s?\>\s?/.test(string) ? getElementFromString(string, po) : getElementFromChain(string, po);
 };
 
-function getSelector() {
+function getSelector(string, po) {
 
 }
 
-function getSelectorByString() {
+function getSelectorByString(string, po) {
+    return po.selector;
+}
+
+function getSelectorByRegex(string, po) {
 
 }
 
-function getSelectorByRegex() {
-
+function getRegex(string) {
+    let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
+    regexes = regexes.filter(regex => regex.test(string));
+    if (regexes.length > 1) {
+        throw new Error(`There is more than one option in [${string}].`);
+    } else {
+        return regexes[0];
+    }
 }
 
-function getRegex() {
-
+function getElementFromChain(string, po) {
+    let element;
+    const names = string.split(/\s?\>\s?/);
+    names.forEach(name=>{
+        element = getElementFromString(name, po);
+        po = po.children[name];
+    });
+    return element;
 }
 
-function getElementFromChain() {
-
+function getElementFromString(string, po) {
+    const regex = getRegex(string);
+    return element(by.css(regex ? getSelectorByRegex(string, po) : getSelectorByString(string, po)));
 }
 
-function getElementFromString() {
-
-}
-
+module.exports = { getElement };
 // function replacer(match, beforeNumber, first, second, last, afterNumber, offset, string) {
 //     console.log(`match:[${match}], beforeNumber:[${beforeNumber}], first:[${first}], second:[${second}], last:[${last}],
 //      afterNumber:[${afterNumber}], offset:[${offset}], string:[${string}]`);
