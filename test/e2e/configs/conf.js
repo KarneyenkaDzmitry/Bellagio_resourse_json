@@ -11,7 +11,7 @@ exports.config = {
         "require": ['../features/step_definitions/*steps.js', '../features/step_definitions/hooks.js'],
         "profile": false,
         'no-source': true,
-        "format": 'json:./reports/report.json',
+        "format": 'json:test/e2e/reports/report.json',
         "ignoreUncaughtExceptions": true,
         "tags": getTagsString(yargs)
     },
@@ -23,7 +23,7 @@ exports.config = {
         logger.info('Browser starts in maximize size for running tests');
         browser.driver.manage().window().maximize();
         browser.driver.manage().timeouts().implicitlyWait(20000);
-        browser.waitForAngularEnabled(true);
+        browser.waitForAngularEnabled(false);
         global.ec = protractor.ExpectedConditions;
     },
     capabilities: getCapabilities(yargs),

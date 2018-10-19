@@ -1,10 +1,10 @@
 {
-    "selector": "html",
+    "selector": "[role=navigation]",
     "children": {
-        "top header compnent": {
+        "top header": {
             "ref": "top_header.component.json"
         },
-        "low header compnent": {
+        "low header": {
             "ref": "low_header.component.json"
         }
     }

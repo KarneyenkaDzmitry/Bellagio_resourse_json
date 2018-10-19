@@ -1,5 +1,5 @@
 {
-    "selector": ".nav-guest-services",
+    "selector": ".nav-services-btn",
     "children": {
         "menu items": {
             "isCollection": true,

@@ -1,13 +1,13 @@
 {
-    "selector": "ul.nav-main",
+    "selector": "ul.nav-util",
     "children": {
-        "sing in component": {
+        "sing in": {
             "ref": "sign_in.component.json"
         },
         "logo": {
             "selector": "#nav-logo>a"
         },
-        "guest services component": {
+        "guest services": {
             "ref": "guest_services.component.json"
         },
         "itinerary": {

@@ -1,39 +1,32 @@
 'use strict';
 
-const pages = require('../page-objects/pages.json');
+const pages = require('../source/pages.json');
 
-function getPageObject() {
-    return browser.getCurrentUrl()
-        .then((currentUrl) => {
-            const [, appenderUrl] = /^(?:\w+\:\/\/\w+\.?\w+\.?\w+\/)(.*html)(#.*)?$/.exec(currentUrl);
-            if (pages[appenderUrl]) {
-                throw new Error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
-            } else {
-                return pages[appenderUrl];
-            }
-        });
+async function getPageObject() {
+    const currentUrl = await browser.getCurrentUrl();
+    const [, appenderUrl] = /^(?:\w+\:\/\/\w+\.?\w+\.?\w+\/)(.*html)(#.*)?$/.exec(currentUrl);
+    if (!pages[appenderUrl]) {
+        throw new Error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
+    } else {
+        const page = pages[appenderUrl][Object.keys(pages[appenderUrl]).find(key => /page/i.test(key))];
+        // console.log(page);
+        return page;
+    }
+    // return pages["en/entertainment.html"]["entertainment page"];
 }
 
 async function getElement(string) {
     const po = await getPageObject();
-    return /\s?\>\s?/.test(string) ? getElementFromString(string, po) : getElementFromChain(string, po);
+    await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
+    const baseElement = element(by.css(po.selector));
+    // console.log(await baseElement.isPresent()) //'baseElement' //
+    return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
 };
-
-function getSelector(string, po) {
-
-}
-
-function getSelectorByString(string, po) {
-    return po.selector;
-}
-
-function getSelectorByRegex(string, po) {
-
-}
 
 function getRegex(string) {
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
-    regexes = regexes.filter(regex => regex.test(string));
+    // console.log(regexes.splice(2,1));
+    regexes = regexes.filter(regex => regex.test(string.trim()));
     if (regexes.length > 1) {
         throw new Error(`There is more than one option in [${string}].`);
     } else {
@@ -41,36 +34,49 @@ function getRegex(string) {
     }
 }
 
-function getElementFromChain(string, po) {
-    let element;
-    const names = string.split(/\s?\>\s?/);
-    names.forEach(name=>{
-        element = getElementFromString(name, po);
-        po = po.children[name];
+function getElementFromChain(baseElement, po, chain) {
+    const names = chain.split(/\s?\>\s?/);
+    return names.forEach(name=> {
+        getElementFromString(baseElement, po, name)
+        .then((element)=>{baseElement = element; });
+        po = po.children[name.trim()];
     });
-    return element;
+    return baseElement;
 }
 
-function getElementFromString(string, po) {
+function getElementFromString(baseElement, po, string) {
     const regex = getRegex(string);
-    return element(by.css(regex ? getSelectorByRegex(string, po) : getSelectorByString(string, po)));
+    return regex ? getElementByRegex(baseElement, po, string, regex) : getElementByString(baseElement, po, string);
 }
 
-module.exports = { getElement };
-// function replacer(match, beforeNumber, first, second, last, afterNumber, offset, string) {
-//     console.log(`match:[${match}], beforeNumber:[${beforeNumber}], first:[${first}], second:[${second}], last:[${last}],
-//      afterNumber:[${afterNumber}], offset:[${offset}], string:[${string}]`);
-//     return
-// }
 
-// const string = 'search page > search panel > #1 menu items #2';//search page > search panel > 
-// let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
-// regexes = regexes.filter(regex => regex.exec(string));
-// //console.log(regexes)
-// //console.log((/\$/g).test(string));
-// //console.log(/\s?\>\s?/g.exec(string))
-// let array;
-// while (array = /\.+\s?\>?/.exec(string)) {
-//     console.log(array[0]);
-// }
-// console.log((/(^#\d+)|(#first)|(#second)|(#last)|(#\d+$)/gi).exec(string));
+async function getElementByString(baseElement, po, string) {
+    console.log('|' + string.trim() + '|');
+    po = po['children'][string.trim()];
+    console.log(po.selector);
+    if (!po) {
+        throw new Error(`There is no [children] property in object [${po}]`);
+    } else {
+        console.log('BAseElement: ['+await baseElement.isPresent()+']')
+        const elem = await  baseElement.element(by.css(po.selector));
+        console.log(await elem.isPresent());
+        return elem;
+    }
+}
+
+async function getElementByRegex(baseElement, po, string, regex) {
+    const index = getIndex(regex.exec(string)[0]);
+    regex = string.replace(regex, '').trim();
+    return (await baseElement.all(by.css(po.selector))).splice(index, 1);
+}
+
+function getIndex(string) {
+    let index = string.replace('#', '');
+    switch (index) {
+        case 'first': return 0;
+        case 'second': return 1;
+        case 'last': return -1;
+        default: return Number.parseInt(index) - 1;
+    }
+}
+module.exports = { getElement };
