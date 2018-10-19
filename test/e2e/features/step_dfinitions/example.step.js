@@ -1,19 +1,20 @@
 'use strict';
 
 const { Given, When } = require('cucumber');
-const {getElement} = require('../../utils/tester');
+const { getElement, getElementByName } = require('../../utils/tester');
 
 Given('I am on {string} url', function (string) {
-    return browser.get(string);
-    
+  return browser.get(string);
 });
 
 When('I click {string}', function (string) {
-    //console.log(string);
-    return getElement(string).then(element=>{if (!element.click()) {console.log(element)}});
-    
-  });
+  return getElement(string).then(element => element.click());
+});
 
-  When('I wait for {string} seconds', function (string) {
-    return browser.sleep(5000);
-  });
+When('I choose option by text {string} from {string}', function (string, string2) {
+  return getElementByName(string2, string).then((element) => element.click());
+});
+
+When('I wait for {string} seconds', function (string) {
+  return browser.sleep(5000);
+});

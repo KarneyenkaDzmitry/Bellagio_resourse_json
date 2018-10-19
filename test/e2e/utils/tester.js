@@ -15,9 +15,28 @@ async function getPageObject() {
 async function getElement(string) {
     const po = await getPageObject();
     await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
-    const baseElement = element(by.css(po.selector));
+    const baseElement = await element(by.css(po.selector));
     return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
 };
+
+async function getElementByName(string, name) {
+    const elements = await getElement(string);
+    if (Array.isArray(elements)) {
+        const elems = elements.map(element => element.getText());
+        return Promise.all(elems)
+            .then((results) => results.findIndex(elem => elem.toLowerCase() === (name.toLowerCase())))
+            .then((index) => {
+                if (!index) {
+                    return elements[index];
+                } else {
+                    throw new Error(`The ending menu from [${string}] has not included option with text [${name}]`);
+                }
+            });
+    } else {
+        throw new Error(`The ending element from [${string}] is not a [menu items]`);
+    }
+
+}
 
 function getRegex(string) {
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
@@ -32,9 +51,9 @@ function getRegex(string) {
 async function getElementFromChain(baseElement, po, chain) {
     const names = chain.split(/\s?\>\s?/);
     for (let i = 0; i < names.length; i++) {
-        baseElement = await  getElementFromString(baseElement, po, names[i]);
+        baseElement = await getElementFromString(baseElement, po, names[i]);
         po = po.children[names[i].trim()];
-      }
+    }
     return baseElement;
 }
 
@@ -49,7 +68,8 @@ function getElementByString(baseElement, po, string) {
     if (!po) {
         throw new Error(`There is no [children] property in object [${po}]`);
     } else {
-        return baseElement.element(by.css(po.selector));
+        return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
+
     }
 }
 
@@ -68,4 +88,4 @@ function getIndex(string) {
         default: return Number.parseInt(index) - 1;
     }
 }
-module.exports = { getElement };
+module.exports = { getElement, getElementByName };
