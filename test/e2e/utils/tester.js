@@ -55,8 +55,8 @@ function getElementByString(baseElement, po, string) {
 
 async function getElementByRegex(baseElement, po, string, regex) {
     const index = getIndex(regex.exec(string)[0]);
-    regex = string.replace(regex, '').trim();
-    return (await baseElement.all(by.css(po.selector))).splice(index, 1);
+    po = po['children'][string.replace(regex, '').trim()];
+    return (await baseElement.all(by.css(po.selector))).splice(index, 1)[0];
 }
 
 function getIndex(string) {

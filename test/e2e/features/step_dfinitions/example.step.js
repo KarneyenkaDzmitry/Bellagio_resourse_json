@@ -8,9 +8,9 @@ Given('I am on {string} url', function (string) {
     
 });
 
-When('I click on {string}', function (string) {
-    console.log(string);
-    return getElement(string).then(element=>element.click());
+When('I click {string}', function (string) {
+    //console.log(string);
+    return getElement(string).then(element=>{if (!element.click()) {console.log(element)}});
     
   });
 
