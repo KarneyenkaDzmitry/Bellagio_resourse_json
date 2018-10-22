@@ -38,9 +38,9 @@ async function getElementByName(string, name) {
     if (Array.isArray(elements)) {
         const elems = elements.map(element => element.getText());
         return Promise.all(elems)
-            .then((results) => results.findIndex(elem => elem.toLowerCase() === (name.toLowerCase())))
-            .then((index) => {
-                if (!index) {
+            .then(results => results.findIndex(elem => elem.toLowerCase() === (name.toLowerCase())))
+            .then(index => { 
+                if (index>-1) {
                     return elements[index];
                 } else {
                     throw new Error(`The ending menu from [${string}] has not included option with text [${name}]`);

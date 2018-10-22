@@ -1,20 +1,40 @@
 'use strict';
 
-const { Given, When } = require('cucumber');
-const { getElement, getElementByName } = require('../../utils/tester');
+const { Given, When, Then } = require('cucumber');
+const { getElement, getElementByName } = require('../../utils/element.helper');
+const {expect} = require('chai');
 
-Given('I am on {string} url', function (string) {
-  return browser.get(string);
+Given(/^I am on '([^']*)' url$/, (url) => {
+  return browser.get(url);
 });
 
-When('I click {string}', function (string) {
-  return getElement(string).then(element => element.click());
+When(/^I click '([^']*)'$/, (chain) => {
+  return getElement(chain)
+  .then(element => element.click());
 });
 
-When('I choose option by text {string} from {string}', function (string, string2) {
-  return getElementByName(string2, string).then((element) => element.click());
+When(/^I choose option by text '([^']*)' from '([^']*)'$/, (name, chain) => {
+  return getElementByName(chain, name)
+  .then((element) => element.click());
 });
 
-When('I wait for {string} seconds', function (string) {
-  return browser.sleep(5000);
+When(/^I wait for '([^']*)' seconds$/, (sec) => {
+  return browser.sleep(sec*1000);
+});
+
+When(/^I wait until '([^']*)' is '([^']*)'$/,async (chain, condition) => {
+  switch(condition) {
+    case 'present' : return expect(await (await getElement(chain)).isPresent()).to.be.true;
+    case 'visible' : return expect(await (await getElement(chain)).isVisible()).to.be.true;
+    default: throw new Error(`There are not a suitable condition. There are [present] or [visible], but was received: [${condition}]`)
+  }
+  
+});
+
+Then(/^Text of '([^']*)' should '([^']*)' the '([^']*)'$/, async (chain, condition, text) => {
+  switch(condition) {
+    case 'equal': return expect(await (await getElement(chain)).getText()).to.be.equal(text);
+    case 'contain': return expect(await (await getElement(chain)).getText()).to.be.equal(text);
+    default: throw new Error(`There are not a suitable condition. There are [contain] or [equal], but was received: [${condition}]`)
+  }
 });

@@ -4,7 +4,7 @@
         "path": "en.html",
         "children": {
             "header": {
-                "ref": "../componenets/header/header.component.json"
+                "ref": "../components/header/header.component.json"
             }
         }
     }

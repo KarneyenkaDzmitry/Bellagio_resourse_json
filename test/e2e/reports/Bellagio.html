@@ -41,7 +41,7 @@ body {background-color: rgb(243,240,233)}
 <div class="container">
 <div class="navbar-brand">Bellagio.com UI-Tests</div>
 <div class="navbar-header label-container"><p>
-<span class="label label-success" title="Tests">Passed: 6</span>
+<span class="label label-success" title="Tests">Passed: 18</span>
 <span class="label label-danger" title="Tests">Failed: 0</span>
 <span class="label label-warning" title="Tests">Skipped: 0</span>
 </p></div></div></nav></header><main><div class="body-results-wrapper">
@@ -61,7 +61,7 @@ body {background-color: rgb(243,240,233)}
 <a data-toggle="collapse" href="#featureAll0">
 <div class="row">
 <div class="col-sm-10"><strong>Feature: </strong>Example</div>
-<div class="col-sm-2 duration">24 s</div>
+<div class="col-sm-2 duration">34 s</div>
 </div></a></h4></div><div id="featureAll0" class="panel-collapse collapse">
 <div class="panel-body scenario label-success">
 <div class="panel-group">
@@ -70,29 +70,91 @@ body {background-color: rgb(243,240,233)}
 <h4 class="panel-title scenario label-success">
 <a data-toggle="collapse" href="#scenarioAllfeatureAll00">
 <div class="row">
-<div class="col-sm-10"><strong>Scenario: </strong>Scenario name</div>
-<div class="col-sm-2 duration">24 s</div>
+<div class="col-sm-10"><strong>Scenario: </strong>page should contain header [RESTAURANTS] on its body</div>
+<div class="col-sm-2 duration">14 s</div>
 </div></a></h4></div><div id="scenarioAllfeatureAll00" class="panel-collapse collapse">
 <ul class="list-group"><li class="list-group-item step label-success">
 <div class="row">
 <div class="col-sm-10"><strong>Given  </strong>I am on 'https://www.bellagio.com/en.html' url</div>
 <div class="col-sm-1 screenshot"><!----></div>
-<div class="col-sm-1 duration">17 s</div></div></li>
+<div class="col-sm-1 duration">10 s</div></div></li>
 <li class="list-group-item step label-success">
 <div class="row">
-<div class="col-sm-10"><strong>When  </strong>I click 'header > top header > guest services'</div>
+<div class="col-sm-10"><strong>When  </strong>I choose option by text 'RESTAURANTS' from 'header > low header > menu items'</div>
 <div class="col-sm-1 screenshot"><!----></div>
-<div class="col-sm-1 duration">0 s</div></div></li>
+<div class="col-sm-1 duration">3 s</div></div></li>
 <li class="list-group-item step label-success">
 <div class="row">
-<div class="col-sm-10"><strong>And  </strong>I choose option by text 'find reservation' from 'header > top header > guest services > menu items'</div>
+<div class="col-sm-10"><strong>And  </strong>I wait until 'main > h1' is 'present'</div>
 <div class="col-sm-1 screenshot"><!----></div>
 <div class="col-sm-1 duration">2 s</div></div></li>
 <li class="list-group-item step label-success">
 <div class="row">
-<div class="col-sm-10"><strong>And  </strong>I wait for '5' seconds</div>
+<div class="col-sm-10"><strong>Then  </strong>Text of 'main > h1' should 'equal' the 'RESTAURANTS'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
+</ul></div></div></div><!-- <div class="panel-footer">Panel Footer</div> --></div>
+<div class="panel-body scenario label-success">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title scenario label-success">
+<a data-toggle="collapse" href="#scenarioAllfeatureAll01">
+<div class="row">
+<div class="col-sm-10"><strong>Scenario: </strong>page should contain header [HOTEL ROOMS & SUITES] on its body</div>
+<div class="col-sm-2 duration">11 s</div>
+</div></a></h4></div><div id="scenarioAllfeatureAll01" class="panel-collapse collapse">
+<ul class="list-group"><li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Given  </strong>I am on 'https://www.bellagio.com/en.html' url</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">6 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>When  </strong>I choose option by text 'HOTEL' from 'header > low header > menu items'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">4 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>And  </strong>I wait until 'main > h1' is 'present'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Then  </strong>Text of 'main > h1' should 'equal' the 'HOTEL ROOMS & SUITES'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
+</ul></div></div></div><!-- <div class="panel-footer">Panel Footer</div> --></div>
+<div class="panel-body scenario label-success">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title scenario label-success">
+<a data-toggle="collapse" href="#scenarioAllfeatureAll02">
+<div class="row">
+<div class="col-sm-10"><strong>Scenario: </strong>page should contain header [ENTERTAINMENT] on its body</div>
+<div class="col-sm-2 duration">9 s</div>
+</div></a></h4></div><div id="scenarioAllfeatureAll02" class="panel-collapse collapse">
+<ul class="list-group"><li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Given  </strong>I am on 'https://www.bellagio.com/en.html' url</div>
 <div class="col-sm-1 screenshot"><!----></div>
 <div class="col-sm-1 duration">5 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>When  </strong>I choose option by text 'ENTERTAINMENT' from 'header > low header > menu items'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">2 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>And  </strong>I wait until 'main > h1' is 'present'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">1 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Then  </strong>Text of 'main > h1' should 'equal' the 'ENTERTAINMENT'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
 </ul></div></div></div><!-- <div class="panel-footer">Panel Footer</div> --></div>
 <!-- <div class="panel-footer">Panel Footer</div> --></div></div></div></div>
 <div id="passed" class="tab-pane fade"><div class="panel-group">
@@ -102,7 +164,7 @@ body {background-color: rgb(243,240,233)}
 <a data-toggle="collapse" href="#featurePassed0">
 <div class="row">
 <div class="col-sm-10"><strong>Feature: </strong>Example</div>
-<div class="col-sm-2 duration">24 s</div>
+<div class="col-sm-2 duration">34 s</div>
 </div></a></h4></div><div id="featurePassed0" class="panel-collapse collapse">
 <div class="panel-body scenario label-success">
 <div class="panel-group">
@@ -111,29 +173,91 @@ body {background-color: rgb(243,240,233)}
 <h4 class="panel-title scenario label-success">
 <a data-toggle="collapse" href="#scenarioPassedfeatureAll00">
 <div class="row">
-<div class="col-sm-10"><strong>Scenario: </strong>Scenario name</div>
-<div class="col-sm-2 duration">24 s</div>
+<div class="col-sm-10"><strong>Scenario: </strong>page should contain header [RESTAURANTS] on its body</div>
+<div class="col-sm-2 duration">14 s</div>
 </div></a></h4></div><div id="scenarioPassedfeatureAll00" class="panel-collapse collapse">
 <ul class="list-group"><li class="list-group-item step label-success">
 <div class="row">
 <div class="col-sm-10"><strong>Given  </strong>I am on 'https://www.bellagio.com/en.html' url</div>
 <div class="col-sm-1 screenshot"><!----></div>
-<div class="col-sm-1 duration">17 s</div></div></li>
+<div class="col-sm-1 duration">10 s</div></div></li>
 <li class="list-group-item step label-success">
 <div class="row">
-<div class="col-sm-10"><strong>When  </strong>I click 'header > top header > guest services'</div>
+<div class="col-sm-10"><strong>When  </strong>I choose option by text 'RESTAURANTS' from 'header > low header > menu items'</div>
 <div class="col-sm-1 screenshot"><!----></div>
-<div class="col-sm-1 duration">0 s</div></div></li>
+<div class="col-sm-1 duration">3 s</div></div></li>
 <li class="list-group-item step label-success">
 <div class="row">
-<div class="col-sm-10"><strong>And  </strong>I choose option by text 'find reservation' from 'header > top header > guest services > menu items'</div>
+<div class="col-sm-10"><strong>And  </strong>I wait until 'main > h1' is 'present'</div>
 <div class="col-sm-1 screenshot"><!----></div>
 <div class="col-sm-1 duration">2 s</div></div></li>
 <li class="list-group-item step label-success">
 <div class="row">
-<div class="col-sm-10"><strong>And  </strong>I wait for '5' seconds</div>
+<div class="col-sm-10"><strong>Then  </strong>Text of 'main > h1' should 'equal' the 'RESTAURANTS'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
+</ul></div></div></div><!-- <div class="panel-footer">Panel Footer</div> --></div>
+<div class="panel-body scenario label-success">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title scenario label-success">
+<a data-toggle="collapse" href="#scenarioPassedfeatureAll01">
+<div class="row">
+<div class="col-sm-10"><strong>Scenario: </strong>page should contain header [HOTEL ROOMS & SUITES] on its body</div>
+<div class="col-sm-2 duration">11 s</div>
+</div></a></h4></div><div id="scenarioPassedfeatureAll01" class="panel-collapse collapse">
+<ul class="list-group"><li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Given  </strong>I am on 'https://www.bellagio.com/en.html' url</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">6 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>When  </strong>I choose option by text 'HOTEL' from 'header > low header > menu items'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">4 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>And  </strong>I wait until 'main > h1' is 'present'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Then  </strong>Text of 'main > h1' should 'equal' the 'HOTEL ROOMS & SUITES'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
+</ul></div></div></div><!-- <div class="panel-footer">Panel Footer</div> --></div>
+<div class="panel-body scenario label-success">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title scenario label-success">
+<a data-toggle="collapse" href="#scenarioPassedfeatureAll02">
+<div class="row">
+<div class="col-sm-10"><strong>Scenario: </strong>page should contain header [ENTERTAINMENT] on its body</div>
+<div class="col-sm-2 duration">9 s</div>
+</div></a></h4></div><div id="scenarioPassedfeatureAll02" class="panel-collapse collapse">
+<ul class="list-group"><li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Given  </strong>I am on 'https://www.bellagio.com/en.html' url</div>
 <div class="col-sm-1 screenshot"><!----></div>
 <div class="col-sm-1 duration">5 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>When  </strong>I choose option by text 'ENTERTAINMENT' from 'header > low header > menu items'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">2 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>And  </strong>I wait until 'main > h1' is 'present'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">1 s</div></div></li>
+<li class="list-group-item step label-success">
+<div class="row">
+<div class="col-sm-10"><strong>Then  </strong>Text of 'main > h1' should 'equal' the 'ENTERTAINMENT'</div>
+<div class="col-sm-1 screenshot"><!----></div>
+<div class="col-sm-1 duration">0 s</div></div></li>
 </ul></div></div></div><!-- <div class="panel-footer">Panel Footer</div> --></div>
 <!-- <div class="panel-footer">Panel Footer</div> --></div></div></div></div>
  <div id="failed" class="tab-pane fade"></div>
@@ -144,7 +268,7 @@ $(".nav-tabs a").click(function () {
 });});</script></div></div></div></main><footer><div> &nbsp;<br> &nbsp; </div>
 <div class="navbar-fixed-bottom row-fluid footer-div">
 <div class="navbar-inner">
-<div class="footer date">Fri Oct 19 2018 14:07:00 GMT+0300 (Belarus Standard Time)</div>
+<div class="footer date">Mon Oct 22 2018 11:18:47 GMT+0300 (Belarus Standard Time)</div>
 <div class="footer-container">
 <a target="_blank" href="https://github.com/KarneyenkaDzmitry/cucumber-json-reporter-to-html">
 <div class="text-muted footer-link">

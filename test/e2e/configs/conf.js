@@ -23,8 +23,8 @@ exports.config = {
         logger.info('Browser starts in maximize size for running tests');
         browser.driver.manage().window().maximize();
         browser.driver.manage().timeouts().implicitlyWait(20000);
-        browser.waitForAngularEnabled(false);
         global.ec = protractor.ExpectedConditions;
+        browser.waitForAngularEnabled(false);
     },
     capabilities: getCapabilities(yargs),
     beforeLaunch: () => {
