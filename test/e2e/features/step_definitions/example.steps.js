@@ -13,7 +13,7 @@ When(/^I click '([^']*)'$/, (chain) => {
   .then(element => element.click());
 });
 
-When(/^I choose option by text '([^']*)' from '([^']*)'$/, (name, chain) => {
+When(/^I click '([^']*)' text in '([^']*)'$/, (name, chain) => {
   return getElementByName(chain, name)
   .then((element) => element.click());
 });
@@ -22,7 +22,7 @@ When(/^I wait for '([^']*)' seconds$/, (sec) => {
   return browser.sleep(sec*1000);
 });
 
-When(/^I wait until '([^']*)' is '([^']*)'$/,async (chain, condition) => {
+When(/^I wait until '([^']*)' is (visible|present)$/,async (chain, condition) => {
   switch(condition) {
     case 'present' : return expect(await (await getElement(chain)).isPresent()).to.be.true;
     case 'visible' : return expect(await (await getElement(chain)).isVisible()).to.be.true;
@@ -31,7 +31,7 @@ When(/^I wait until '([^']*)' is '([^']*)'$/,async (chain, condition) => {
   
 });
 
-Then(/^Text of '([^']*)' should '([^']*)' the '([^']*)'$/, async (chain, condition, text) => {
+Then(/^Text of '([^']*)' should (contain|equal) '([^']*)' text$/, async (chain, condition, text) => {
   switch(condition) {
     case 'equal': return expect(await (await getElement(chain)).getText()).to.be.equal(text);
     case 'contain': return expect(await (await getElement(chain)).getText()).to.be.equal(text);

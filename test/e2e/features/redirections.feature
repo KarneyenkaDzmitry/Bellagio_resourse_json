@@ -1,16 +1,16 @@
 Feature: Redirections through references from header
 
 # Background:
-#         Given I am on the home page 'https://www.bellagio.com/en.html'
+#         Given I am on 'https://www.bellagio.com/en.html' url
         
 # @Redirections
-#     Scenario Outline: Every page should contain header [h1] on its body [<Page>] with [<text>] text
-#         Given I am on '<Page>' page
-#         Then I should see '<text>' text in 'body header h1' of a body
-#         And  'body results' should be 'present'
+#     Scenario Outline: page should contain header [<text>] on its body
+#         When I click '<option>' text in 'header > low header > menu items'
+#         And I wait until 'main > h1' is present
+#         Then Text of 'main > h1' should equal '<text>' text
 
 #         Examples:
-#             | Page          | text                 |
+#             | option        | text                 |
 #             | RESTAURANTS   | RESTAURANTS          |
 #             | HOTEL         | HOTEL ROOMS & SUITES |
 #             | ENTERTAINMENT | ENTERTAINMENT        |

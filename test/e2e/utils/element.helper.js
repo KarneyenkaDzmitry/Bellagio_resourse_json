@@ -1,6 +1,7 @@
 'use strict';
 
 const pages = require('../source/pages.json');
+var x = 0;
 
 /**
  * Defines current url and returns page-object as an object by path;
@@ -39,8 +40,8 @@ async function getElementByName(string, name) {
         const elems = elements.map(element => element.getText());
         return Promise.all(elems)
             .then(results => results.findIndex(elem => elem.toLowerCase() === (name.toLowerCase())))
-            .then(index => { 
-                if (index>-1) {
+            .then(index => {
+                if (index > -1) {
                     return elements[index];
                 } else {
                     throw new Error(`The ending menu from [${string}] has not included option with text [${name}]`);
@@ -73,10 +74,17 @@ function getRegex(string) {
  * @returns {Element} return Element or array of Elements from string chain.
  */
 async function getElementFromChain(baseElement, po, chain) {
-    const names = chain.split(/\s?\>\s?/);
-    for (let i = 0; i < names.length; i++) {
-        baseElement = await getElementFromString(baseElement, po, names[i]);
-        po = po.children[names[i].trim()];
+    let names = chain.split(/\s?\>\s?/);
+    if (po.children.hasOwnProperty(names[0].trim())) {
+        for (let i = 0; i < names.length; i++) {
+            baseElement = await getElementFromString(baseElement, po, names[i]);
+            po = po.children[names[i].trim()];
+        }
+    } else {
+        let ch = await getChain(po, names[0]);
+        names[0] = ch;
+        ch = names.join(' > ');
+        baseElement = await getElementFromChain(baseElement, po, ch);
     }
     return baseElement;
 }
@@ -99,13 +107,17 @@ function getElementFromString(baseElement, po, string) {
  * @param  {String} string a string with name of property;
  * @returns {Element} return Element or array of Elements from string.
  */
-function getElementByString(baseElement, po, string) {
-    po = po['children'][string.trim()];
-    if (!po) {
-        throw new Error(`There is no [children] property in object [${po}]`);
+async function getElementByString(baseElement, po, string) {
+    if (po.children.hasOwnProperty(string.trim())) {
+        po = po['children'][string.trim()];
+        if (!po) {
+            throw new Error(`There is no [children] property in object [${po}]`);
+        } else {
+            return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
+        }
     } else {
-        return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
-
+        const chain = await getChain(po, string);
+        return await getElementFromChain(baseElement, po, chain);
     }
 }
 
@@ -119,8 +131,14 @@ function getElementByString(baseElement, po, string) {
  */
 async function getElementByRegex(baseElement, po, string, regex) {
     const index = getIndex(regex.exec(string)[0]);
-    po = po['children'][string.replace(regex, '').trim()];
-    return (await baseElement.all(by.css(po.selector))).splice(index, 1)[0];
+    const name = string.replace(regex, '').trim();
+    if (po.children.hasOwnProperty(name)) {
+        po = po['children'][name];
+        return (await baseElement.all(by.css(po.selector))).splice(index, 1)[0];
+    } else {
+        const chain = await getChain(po, string);
+        return await getElementFromChain(baseElement, po, chain);
+    }
 }
 
 /**
@@ -137,4 +155,26 @@ function getIndex(string) {
         default: return Number.parseInt(index) - 1;
     }
 }
+
+function getChain(po, name) {
+    let array = [];
+    if (po.children) {
+        const keys = Object.keys(po.children);
+        const ind = keys.findIndex(key => { array.push(key); return key === name; });
+        if (ind > -1) {
+            return array[ind];
+        } else {
+            let result = '';
+            let key = keys.find(key => { result = getChain(po.children[key], name); return result });
+            return key + ' > ' + result;
+        }
+    } else {
+        return po.children;
+    }
+}
+
 module.exports = { getElement, getElementByName };
+
+// const regex = '/str/gi';
+// const regexp = new RegExp(regex);
+// console.log(regexp.source===regex);
