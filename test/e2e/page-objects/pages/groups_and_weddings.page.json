@@ -1,0 +1,15 @@
+{
+    "groups and weddings page": {
+        "selector": "html",
+        "path": "en/meetings-groups.html",
+        "children": {
+            "header": {
+                "ref": "../components/header/header.component.json"
+            },
+            "main": {
+                "ref": "../components/main/main.component.json"
+            }
+        }
+    }
+    
+}

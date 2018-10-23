@@ -23,7 +23,7 @@ Feature: Bellagio resource
            And I click 'guest services > #1 menu items'
         # And I click 'find reservation' text in 'guest services > menu items'
         And I wait for '5' seconds
-        # Then Text of 'element' should match /regex/gi 
+        # Then Text of 'main > h1' should match /regex/gi 
 
     # @Reservation
     # Scenario: User should have an apportunity to choose options in field [reservation] on Reservation page
@@ -64,3 +64,4 @@ Feature: Bellagio resource
 # And I wait for 'number' seconds
 # And I remember text of 'element' as '$name'
 # Then Text of 'element should match 'regex'
+# Then Text of 'main > h1' should match /regex/gi 

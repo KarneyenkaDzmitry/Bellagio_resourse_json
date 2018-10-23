@@ -1,7 +1,6 @@
 'use strict';
 
 const pages = require('../source/pages.json');
-var x = 0;
 
 /**
  * Defines current url and returns page-object as an object by path;
@@ -80,13 +79,11 @@ async function getElementFromChain(baseElement, po, chain) {
             baseElement = await getElementFromString(baseElement, po, names[i]);
             po = po.children[names[i].trim()];
         }
+        return baseElement;
     } else {
-        let ch = await getChain(po, names[0]);
-        names[0] = ch;
-        ch = names.join(' > ');
-        baseElement = await getElementFromChain(baseElement, po, ch);
+        names[0] = await getChain(po, names[0]);
+        return await getElementFromChain(baseElement, po, names.join(' > '));
     }
-    return baseElement;
 }
 /**
  * Getter returns Element or Array of Elements according to string and flag that can be or not:
@@ -174,7 +171,3 @@ function getChain(po, name) {
 }
 
 module.exports = { getElement, getElementByName };
-
-// const regex = '/str/gi';
-// const regexp = new RegExp(regex);
-// console.log(regexp.source===regex);

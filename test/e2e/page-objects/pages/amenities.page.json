@@ -1,0 +1,15 @@
+{
+    "amenities page": {
+        "selector": "html",
+        "path": "en/amenities.html",
+        "children": {
+            "header": {
+                "ref": "../components/header/header.component.json"
+            },
+            "main": {
+                "ref": "../components/main/main.component.json"
+            }
+        }
+    }
+    
+}
