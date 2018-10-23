@@ -21,12 +21,12 @@ const logger = createLogger({
         //     colorize: true
         // }),
         new (transports.File)({
-            filename: './logs/combined.log'
+            filename: './test/e2e/logs/combined.log'
             //  maxsize: 1000
         }),
         new (transports.File)({
             name: 'error-log',
-            filename: './logs/error.log',
+            filename: './test/e2e/logs/error.log',
             level: 'error'
             // maxsize: 1000
         })

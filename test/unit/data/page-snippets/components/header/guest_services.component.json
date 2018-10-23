@@ -5,7 +5,7 @@
             "isCollection": true,
             "selector": "#unsignedIn-guest-menu > li"
         },
-        "guest services": {
+        "button": {
             "selector": ".nav-services-btn"
         }
     }

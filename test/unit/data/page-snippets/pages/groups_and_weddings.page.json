@@ -1,17 +1,15 @@
 {
-    "reservation page": {
+    "groups and weddings page": {
         "selector": "html",
-        "path": "en/itineraries/find-reservation.html",
+        "path": "en/meetings-groups.html",
         "children": {
             "header": {
                 "ref": "../components/header/header.component.json"
             },
             "main": {
                 "ref": "../components/main/main.component.json"
-            },
-            "room option": {
-                "selector": "select option[value=\"room\"]"
             }
         }
     }
+    
 }

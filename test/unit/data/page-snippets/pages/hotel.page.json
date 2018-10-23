@@ -4,10 +4,10 @@
         "path": "en/hotel.html",
         "children": {
             "header": {
-                "ref": "../componenets/header/header.component.json"
+                "ref": "../components/header/header.component.json"
             },
-            "body header h1": {
-                "selector": "*[class*=title] h1"
+            "main": {
+                "ref": "../components/main/main.component.json"
             },
             "body results": {
                 "selector": "#results-wrapper"

@@ -1,7 +1,7 @@
 {
     "selector": "ul.nav-main",
     "children": {
-        "book a room component": {
+        "book a room": {
             "ref": "booking.component.json"
         },
         "menu items": {

@@ -1,28 +1,28 @@
 {
-    "en/entertainment.html": {
-        "entertainment page": {
+    "en/amenities.html": {
+        "amenities page": {
             "selector": "html",
             "children": {
                 "header": {
-                    "selector": "html",
+                    "selector": "[role=navigation]",
                     "children": {
-                        "top header compnent": {
-                            "selector": "ul.nav-main",
+                        "top header": {
+                            "selector": "ul.nav-util",
                             "children": {
-                                "sing in component": {
+                                "sing in": {
                                     "selector": "ul.nav-main"
                                 },
                                 "logo": {
                                     "selector": "#nav-logo>a"
                                 },
-                                "guest services component": {
+                                "guest services": {
                                     "selector": ".nav-guest-services",
                                     "children": {
                                         "menu items": {
                                             "isCollection": true,
                                             "selector": "#unsignedIn-guest-menu > li"
                                         },
-                                        "guest services": {
+                                        "button": {
                                             "selector": ".nav-services-btn"
                                         }
                                     }
@@ -52,10 +52,10 @@
                                 }
                             }
                         },
-                        "low header compnent": {
+                        "low header": {
                             "selector": "ul.nav-main",
                             "children": {
-                                "book a room component": {
+                                "book a room": {
                                     "selector": "ul.nav-main"
                                 },
                                 "menu items": {
@@ -66,39 +66,41 @@
                         }
                     }
                 },
-                "body header h1": {
-                    "selector": "h1"
-                },
-                "body results": {
-                    "selector": "#results-wrapper"
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
                 }
             }
         }
     },
-    "en.html": {
-        "home page": {
+    "en/casino.html": {
+        "casino page": {
             "selector": "html",
             "children": {
                 "header": {
-                    "selector": "html",
+                    "selector": "[role=navigation]",
                     "children": {
-                        "top header compnent": {
-                            "selector": "ul.nav-main",
+                        "top header": {
+                            "selector": "ul.nav-util",
                             "children": {
-                                "sing in component": {
+                                "sing in": {
                                     "selector": "ul.nav-main"
                                 },
                                 "logo": {
                                     "selector": "#nav-logo>a"
                                 },
-                                "guest services component": {
+                                "guest services": {
                                     "selector": ".nav-guest-services",
                                     "children": {
                                         "menu items": {
                                             "isCollection": true,
                                             "selector": "#unsignedIn-guest-menu > li"
                                         },
-                                        "guest services": {
+                                        "button": {
                                             "selector": ".nav-services-btn"
                                         }
                                     }
@@ -128,10 +130,247 @@
                                 }
                             }
                         },
-                        "low header compnent": {
+                        "low header": {
                             "selector": "ul.nav-main",
                             "children": {
-                                "book a room component": {
+                                "book a room": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "menu items": {
+                                    "isCollection": true,
+                                    "selector": "ul.nav-main>li:not(#booking)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "en/entertainment.html": {
+        "entertainment page": {
+            "selector": "html",
+            "children": {
+                "header": {
+                    "selector": "[role=navigation]",
+                    "children": {
+                        "top header": {
+                            "selector": "ul.nav-util",
+                            "children": {
+                                "sing in": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "logo": {
+                                    "selector": "#nav-logo>a"
+                                },
+                                "guest services": {
+                                    "selector": ".nav-guest-services",
+                                    "children": {
+                                        "menu items": {
+                                            "isCollection": true,
+                                            "selector": "#unsignedIn-guest-menu > li"
+                                        },
+                                        "button": {
+                                            "selector": ".nav-services-btn"
+                                        }
+                                    }
+                                },
+                                "itinerary": {
+                                    "selector": "li.nav-itinerary>a"
+                                },
+                                "search component": {
+                                    "selector": ".nav-search",
+                                    "children": {
+                                        "search component": {
+                                            "selector": "ul>li.nav-search.search-expanded"
+                                        },
+                                        "search component form": {
+                                            "selector": "form#global-nav-search-form"
+                                        },
+                                        "search component button": {
+                                            "selector": "*[aria-label*=\"Search\"]"
+                                        },
+                                        "search component field": {
+                                            "selector": "globalSearchKeyword"
+                                        },
+                                        "search component cancel": {
+                                            "selector": "span.clear-search.close-search-overlay"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "low header": {
+                            "selector": "ul.nav-main",
+                            "children": {
+                                "book a room": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "menu items": {
+                                    "isCollection": true,
+                                    "selector": "ul.nav-main>li:not(#booking)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
+                },
+                "body results": {
+                    "selector": "#results-wrapper"
+                }
+            }
+        }
+    },
+    "en/meetings-groups.html": {
+        "groups and weddings page": {
+            "selector": "html",
+            "children": {
+                "header": {
+                    "selector": "[role=navigation]",
+                    "children": {
+                        "top header": {
+                            "selector": "ul.nav-util",
+                            "children": {
+                                "sing in": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "logo": {
+                                    "selector": "#nav-logo>a"
+                                },
+                                "guest services": {
+                                    "selector": ".nav-guest-services",
+                                    "children": {
+                                        "menu items": {
+                                            "isCollection": true,
+                                            "selector": "#unsignedIn-guest-menu > li"
+                                        },
+                                        "button": {
+                                            "selector": ".nav-services-btn"
+                                        }
+                                    }
+                                },
+                                "itinerary": {
+                                    "selector": "li.nav-itinerary>a"
+                                },
+                                "search component": {
+                                    "selector": ".nav-search",
+                                    "children": {
+                                        "search component": {
+                                            "selector": "ul>li.nav-search.search-expanded"
+                                        },
+                                        "search component form": {
+                                            "selector": "form#global-nav-search-form"
+                                        },
+                                        "search component button": {
+                                            "selector": "*[aria-label*=\"Search\"]"
+                                        },
+                                        "search component field": {
+                                            "selector": "globalSearchKeyword"
+                                        },
+                                        "search component cancel": {
+                                            "selector": "span.clear-search.close-search-overlay"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "low header": {
+                            "selector": "ul.nav-main",
+                            "children": {
+                                "book a room": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "menu items": {
+                                    "isCollection": true,
+                                    "selector": "ul.nav-main>li:not(#booking)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "en.html": {
+        "home page": {
+            "selector": "html",
+            "children": {
+                "header": {
+                    "selector": "[role=navigation]",
+                    "children": {
+                        "top header": {
+                            "selector": "ul.nav-util",
+                            "children": {
+                                "sing in": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "logo": {
+                                    "selector": "#nav-logo>a"
+                                },
+                                "guest services": {
+                                    "selector": ".nav-guest-services",
+                                    "children": {
+                                        "menu items": {
+                                            "isCollection": true,
+                                            "selector": "#unsignedIn-guest-menu > li"
+                                        },
+                                        "button": {
+                                            "selector": ".nav-services-btn"
+                                        }
+                                    }
+                                },
+                                "itinerary": {
+                                    "selector": "li.nav-itinerary>a"
+                                },
+                                "search component": {
+                                    "selector": ".nav-search",
+                                    "children": {
+                                        "search component": {
+                                            "selector": "ul>li.nav-search.search-expanded"
+                                        },
+                                        "search component form": {
+                                            "selector": "form#global-nav-search-form"
+                                        },
+                                        "search component button": {
+                                            "selector": "*[aria-label*=\"Search\"]"
+                                        },
+                                        "search component field": {
+                                            "selector": "globalSearchKeyword"
+                                        },
+                                        "search component cancel": {
+                                            "selector": "span.clear-search.close-search-overlay"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "low header": {
+                            "selector": "ul.nav-main",
+                            "children": {
+                                "book a room": {
                                     "selector": "ul.nav-main"
                                 },
                                 "menu items": {
@@ -150,25 +389,25 @@
             "selector": "html",
             "children": {
                 "header": {
-                    "selector": "html",
+                    "selector": "[role=navigation]",
                     "children": {
-                        "top header compnent": {
-                            "selector": "ul.nav-main",
+                        "top header": {
+                            "selector": "ul.nav-util",
                             "children": {
-                                "sing in component": {
+                                "sing in": {
                                     "selector": "ul.nav-main"
                                 },
                                 "logo": {
                                     "selector": "#nav-logo>a"
                                 },
-                                "guest services component": {
+                                "guest services": {
                                     "selector": ".nav-guest-services",
                                     "children": {
                                         "menu items": {
                                             "isCollection": true,
                                             "selector": "#unsignedIn-guest-menu > li"
                                         },
-                                        "guest services": {
+                                        "button": {
                                             "selector": ".nav-services-btn"
                                         }
                                     }
@@ -198,10 +437,10 @@
                                 }
                             }
                         },
-                        "low header compnent": {
+                        "low header": {
                             "selector": "ul.nav-main",
                             "children": {
-                                "book a room component": {
+                                "book a room": {
                                     "selector": "ul.nav-main"
                                 },
                                 "menu items": {
@@ -212,11 +451,172 @@
                         }
                     }
                 },
-                "body header h1": {
-                    "selector": "*[class*=title] h1"
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
                 },
                 "body results": {
                     "selector": "#results-wrapper"
+                }
+            }
+        }
+    },
+    "en/nightlife.html": {
+        "night life page": {
+            "selector": "html",
+            "children": {
+                "header": {
+                    "selector": "[role=navigation]",
+                    "children": {
+                        "top header": {
+                            "selector": "ul.nav-util",
+                            "children": {
+                                "sing in": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "logo": {
+                                    "selector": "#nav-logo>a"
+                                },
+                                "guest services": {
+                                    "selector": ".nav-guest-services",
+                                    "children": {
+                                        "menu items": {
+                                            "isCollection": true,
+                                            "selector": "#unsignedIn-guest-menu > li"
+                                        },
+                                        "button": {
+                                            "selector": ".nav-services-btn"
+                                        }
+                                    }
+                                },
+                                "itinerary": {
+                                    "selector": "li.nav-itinerary>a"
+                                },
+                                "search component": {
+                                    "selector": ".nav-search",
+                                    "children": {
+                                        "search component": {
+                                            "selector": "ul>li.nav-search.search-expanded"
+                                        },
+                                        "search component form": {
+                                            "selector": "form#global-nav-search-form"
+                                        },
+                                        "search component button": {
+                                            "selector": "*[aria-label*=\"Search\"]"
+                                        },
+                                        "search component field": {
+                                            "selector": "globalSearchKeyword"
+                                        },
+                                        "search component cancel": {
+                                            "selector": "span.clear-search.close-search-overlay"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "low header": {
+                            "selector": "ul.nav-main",
+                            "children": {
+                                "book a room": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "menu items": {
+                                    "isCollection": true,
+                                    "selector": "ul.nav-main>li:not(#booking)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "en/offers.html": {
+        "offers page": {
+            "selector": "html",
+            "children": {
+                "header": {
+                    "selector": "[role=navigation]",
+                    "children": {
+                        "top header": {
+                            "selector": "ul.nav-util",
+                            "children": {
+                                "sing in": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "logo": {
+                                    "selector": "#nav-logo>a"
+                                },
+                                "guest services": {
+                                    "selector": ".nav-guest-services",
+                                    "children": {
+                                        "menu items": {
+                                            "isCollection": true,
+                                            "selector": "#unsignedIn-guest-menu > li"
+                                        },
+                                        "button": {
+                                            "selector": ".nav-services-btn"
+                                        }
+                                    }
+                                },
+                                "itinerary": {
+                                    "selector": "li.nav-itinerary>a"
+                                },
+                                "search component": {
+                                    "selector": ".nav-search",
+                                    "children": {
+                                        "search component": {
+                                            "selector": "ul>li.nav-search.search-expanded"
+                                        },
+                                        "search component form": {
+                                            "selector": "form#global-nav-search-form"
+                                        },
+                                        "search component button": {
+                                            "selector": "*[aria-label*=\"Search\"]"
+                                        },
+                                        "search component field": {
+                                            "selector": "globalSearchKeyword"
+                                        },
+                                        "search component cancel": {
+                                            "selector": "span.clear-search.close-search-overlay"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "low header": {
+                            "selector": "ul.nav-main",
+                            "children": {
+                                "book a room": {
+                                    "selector": "ul.nav-main"
+                                },
+                                "menu items": {
+                                    "isCollection": true,
+                                    "selector": "ul.nav-main>li:not(#booking)"
+                                }
+                            }
+                        }
+                    }
+                },
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
                 }
             }
         }
@@ -226,25 +626,25 @@
             "selector": "html",
             "children": {
                 "header": {
-                    "selector": "html",
+                    "selector": "[role=navigation]",
                     "children": {
-                        "top header compnent": {
-                            "selector": "ul.nav-main",
+                        "top header": {
+                            "selector": "ul.nav-util",
                             "children": {
-                                "sing in component": {
+                                "sing in": {
                                     "selector": "ul.nav-main"
                                 },
                                 "logo": {
                                     "selector": "#nav-logo>a"
                                 },
-                                "guest services component": {
+                                "guest services": {
                                     "selector": ".nav-guest-services",
                                     "children": {
                                         "menu items": {
                                             "isCollection": true,
                                             "selector": "#unsignedIn-guest-menu > li"
                                         },
-                                        "guest services": {
+                                        "button": {
                                             "selector": ".nav-services-btn"
                                         }
                                     }
@@ -274,10 +674,10 @@
                                 }
                             }
                         },
-                        "low header compnent": {
+                        "low header": {
                             "selector": "ul.nav-main",
                             "children": {
-                                "book a room component": {
+                                "book a room": {
                                     "selector": "ul.nav-main"
                                 },
                                 "menu items": {
@@ -288,8 +688,13 @@
                         }
                     }
                 },
-                "body header h1": {
-                    "selector": "h1.account-page-title"
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
                 },
                 "room option": {
                     "selector": "select option[value=\"room\"]"
@@ -302,25 +707,25 @@
             "selector": "body .wrapper",
             "children": {
                 "header": {
-                    "selector": "html",
+                    "selector": "[role=navigation]",
                     "children": {
-                        "top header compnent": {
-                            "selector": "ul.nav-main",
+                        "top header": {
+                            "selector": "ul.nav-util",
                             "children": {
-                                "sing in component": {
+                                "sing in": {
                                     "selector": "ul.nav-main"
                                 },
                                 "logo": {
                                     "selector": "#nav-logo>a"
                                 },
-                                "guest services component": {
+                                "guest services": {
                                     "selector": ".nav-guest-services",
                                     "children": {
                                         "menu items": {
                                             "isCollection": true,
                                             "selector": "#unsignedIn-guest-menu > li"
                                         },
-                                        "guest services": {
+                                        "button": {
                                             "selector": ".nav-services-btn"
                                         }
                                     }
@@ -350,10 +755,10 @@
                                 }
                             }
                         },
-                        "low header compnent": {
+                        "low header": {
                             "selector": "ul.nav-main",
                             "children": {
-                                "book a room component": {
+                                "book a room": {
                                     "selector": "ul.nav-main"
                                 },
                                 "menu items": {
@@ -364,8 +769,13 @@
                         }
                     }
                 },
-                "body header h1": {
-                    "selector": "h1"
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
                 },
                 "body results": {
                     "selector": "#results-wrapper"
@@ -390,25 +800,25 @@
             "selector": "html",
             "children": {
                 "header": {
-                    "selector": "html",
+                    "selector": "[role=navigation]",
                     "children": {
-                        "top header compnent": {
-                            "selector": "ul.nav-main",
+                        "top header": {
+                            "selector": "ul.nav-util",
                             "children": {
-                                "sing in component": {
+                                "sing in": {
                                     "selector": "ul.nav-main"
                                 },
                                 "logo": {
                                     "selector": "#nav-logo>a"
                                 },
-                                "guest services component": {
+                                "guest services": {
                                     "selector": ".nav-guest-services",
                                     "children": {
                                         "menu items": {
                                             "isCollection": true,
                                             "selector": "#unsignedIn-guest-menu > li"
                                         },
-                                        "guest services": {
+                                        "button": {
                                             "selector": ".nav-services-btn"
                                         }
                                     }
@@ -438,10 +848,10 @@
                                 }
                             }
                         },
-                        "low header compnent": {
+                        "low header": {
                             "selector": "ul.nav-main",
                             "children": {
-                                "book a room component": {
+                                "book a room": {
                                     "selector": "ul.nav-main"
                                 },
                                 "menu items": {
@@ -452,9 +862,13 @@
                         }
                     }
                 },
-                "body header h1": {
-                    "isCollection": false,
-                    "selector": ".site-search-header"
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        }
+                    }
                 },
                 "body results": {
                     "isCollection": false,

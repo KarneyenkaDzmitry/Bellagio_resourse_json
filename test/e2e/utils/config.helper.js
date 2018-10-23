@@ -18,7 +18,7 @@ function getTagsString({ tags }) {
             }
         });
     }
-    logger.debug(`The result string of tags is [${result}]`);
+    logger.debug(`The result string of tags is [${result}]`,result);
     return result;
 }
 
@@ -31,6 +31,7 @@ function getCapabilities({ browserName = 'chrome', maxInstances = 1 }) {
         args: ['disable-infobars', '--test-type']
     } : undefind;
     logger.debug(`getCapabilities method has returned : [${capabilities}]`);
+    logger.debug(capabilities);
     return capabilities;
 }
 

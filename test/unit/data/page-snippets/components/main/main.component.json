@@ -1,0 +1,8 @@
+{
+    "selector": "[role=main]:not([ng-controller])",
+    "children": {
+        "h1": {
+            "selector": "h1"
+        }
+    }
+}

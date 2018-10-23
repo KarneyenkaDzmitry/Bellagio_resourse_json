@@ -41,3 +41,9 @@ Feature: Redirections through references from header
 # And I remember text of 'element' as '$name'
 # Then Text of 'element should match 'regex'
 # Then Text of 'main > h1' should match /regex/gi
+# When I remember text of 'element' as '$name'
+# When I remember number of 'element' as '$name'
+# When I remember page title as '$name'
+# When I remember 'attribute' of 'element' as '$name'
+# When I highlight 'element'
+# I make screenshot of the page

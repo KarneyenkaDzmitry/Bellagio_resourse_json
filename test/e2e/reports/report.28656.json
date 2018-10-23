@@ -1,0 +1,821 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Redirections through references from header",
+    "line": 1,
+    "id": "redirections-through-references-from-header",
+    "tags": [],
+    "uri": "test\\e2e\\features\\redirections.feature",
+    "elements": [
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[restaurants]-on-its-body",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "page should contain header [RESTAURANTS] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14811000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'RESTAURANTS' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6838000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 138000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'RESTAURANTS' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 126000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[hotel-rooms-&-suites]-on-its-body",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "page should contain header [HOTEL ROOMS & SUITES] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5689000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'HOTEL' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8187000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 134000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'HOTEL ROOMS & SUITES' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 142000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[entertainment]-on-its-body",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "page should contain header [ENTERTAINMENT] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5878000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'ENTERTAINMENT' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2726000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1662000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'ENTERTAINMENT' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[nightlife]-on-its-body",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "page should contain header [NIGHTLIFE] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7316000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'NIGHTLIFE' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8924000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 135000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'NIGHTLIFE' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 134000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[amenities]-on-its-body",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "page should contain header [AMENITIES] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5613000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'AMENITIES' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2393000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1602000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'AMENITIES' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[casino]-on-its-body",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "page should contain header [CASINO] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6700000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'CASINO' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2378000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1402000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'CASINO' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 110000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[groups-&-weddings]-on-its-body",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "page should contain header [GROUPS & WEDDINGS] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7763000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'GROUPS & WEDDINGS' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2389000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1354000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'GROUPS & WEDDINGS' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 172000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[offers]-on-its-body",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "page should contain header [OFFERS] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5667000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I click 'OFFERS' text in 'low header > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2336000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1270000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Text of 'main > h1' should equal 'OFFERS' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "redirections-through-references-from-header;page-should-contain-header-[find-your-reservation]-on-its-body",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "page should contain header [Find Your Reservation] on its body",
+        "tags": [
+          {
+            "name": "@Redirections",
+            "line": 23
+          },
+          {
+            "name": "@Reservation",
+            "line": 23
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on 'https://www.bellagio.com/en.html' url",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5626000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "I click 'guest services'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 352000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "I click 'FIND RESERVATION' text in 'guest services > menu items'",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5070000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "I wait until 'main > h1' is present",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 145000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "Text of 'main > h1' should equal 'Find Your Reservation' text",
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\example.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 110000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "test\\e2e\\features\\step_definitions\\hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

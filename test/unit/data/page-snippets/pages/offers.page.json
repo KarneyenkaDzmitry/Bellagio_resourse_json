@@ -1,11 +1,15 @@
 {
-    "home page": {
+    "offers page": {
         "selector": "html",
-        "path": "en.html",
+        "path": "en/offers.html",
         "children": {
             "header": {
                 "ref": "../components/header/header.component.json"
+            },
+            "main": {
+                "ref": "../components/main/main.component.json"
             }
         }
     }
+    
 }
