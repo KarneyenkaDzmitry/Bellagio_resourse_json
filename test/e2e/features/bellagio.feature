@@ -17,13 +17,13 @@ Feature: Bellagio resource
     #         | Page        | Cousine | Price | Meal                 | Result                 |
     #         | RESTAURANTS | Italian | Clear | Breakfast and Brunch | LAGO BY JULIAN SERRANO |
 
-    @Reservation
-    Scenario: Reservation page should contain header [h1] = [Find Your Reservation] on its body
-        When I click 'guest services'
-           And I click 'guest services > #1 menu items'
-        # And I click 'find reservation' text in 'guest services > menu items'
-        And I wait for '5' seconds
-        # Then Text of 'main > h1' should match /regex/gi 
+    # @Reservation
+    # Scenario: Reservation page should contain header [h1] = [Find Your Reservation] on its body
+    #     When I click 'guest services'
+    #        And I click 'guest services > #1 menu items'
+    #     # And I click 'find reservation' text in 'guest services > menu items'
+    #     And I wait for '5' seconds
+    #     # Then Text of 'main > h1' should match /regex/gi 
 
     # @Reservation
     # Scenario: User should have an apportunity to choose options in field [reservation] on Reservation page

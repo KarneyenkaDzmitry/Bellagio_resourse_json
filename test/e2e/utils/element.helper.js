@@ -154,19 +154,21 @@ function getIndex(string) {
 }
 
 function getChain(po, name) {
-    let array = [];
     if (po.children) {
         const keys = Object.keys(po.children);
-        const ind = keys.findIndex(key => { array.push(key); return key === name; });
-        if (ind > -1) {
-            return array[ind];
+        let key = keys.find(key => key === name);
+        if (key) {
+            return key;
         } else {
-            let result = '';
-            let key = keys.find(key => { result = getChain(po.children[key], name); return result });
-            return key + ' > ' + result;
+            let result;
+            key = keys.find(key => {
+                result = getChain(po.children[key], name);
+                return result;
+            });
+            return result ? `${key} > ${result}` : result;
         }
     } else {
-        return po.children;
+        return undefined;
     }
 }
 

@@ -2,11 +2,11 @@
 
 const { Given, When, Then } = require('cucumber');
 const { getElement, getElementByName } = require('../../utils/element.helper');
+const { find, filter, getText, clickOnElement } = require('../../utils/page.actions');
 const { expect } = require('chai');
 
-Given(/^I am on '([^']*)' url$/, (url) => {
-  console.log( browser.getSession());
-  return browser.getSession().then((session)=>console.log(session)).then(()=>browser.get(url));
+Given(/^I am on '([^']*)' url$/, async (url) => {
+  return browser.get(url);
 });
 
 When(/^I click '([^']*)'$/, (chain) => {
@@ -29,7 +29,11 @@ When(/^I wait until '([^']*)' is (visible|present)$/, async (chain, condition) =
     case 'visible': return expect(await (await getElement(chain)).isVisible()).to.be.true;
     default: throw new Error(`There are not a suitable condition. There are [present] or [visible], but was received: [${condition}]`)
   }
+});
 
+When(/^I remember text of '([^']*)' as '([^\$']*)'$/, async (chain, name) => {
+  return /^\$/.test(name)? storage.store(name, await getText(await getElement(chain))) :
+    "";
 });
 
 Then(/^Text of '([^']*)' should (contain|equal) '([^']*)' text$/, async (chain, condition, text) => {

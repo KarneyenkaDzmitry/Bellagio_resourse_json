@@ -60,6 +60,10 @@ There are some scripts in [package.json](https://github.com/KarneyenkaDzmitry/be
 
 ## N.B.
 
+### Why console.log() does not print in console anything if it locates in onPrepare() method?
+- You run test in more than one instances of browser. Note any loggers print everything instead of console.log();<br>
+i.e. Use logger instead of console.log()<br>
+
 ### How to ran posttest script after test script if the test has failed
 - Use special construction `<scriptName>: "<script> || exit 0"` <br>
 e.g. `"test": "./node_modules/.bin/protractor ./configs/conf.js || exit 0"`<br>

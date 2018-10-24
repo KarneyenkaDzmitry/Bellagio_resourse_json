@@ -1,0 +1,9 @@
+{
+    "selector": "form",
+    "children" : {
+        "elements": {
+            "isCollection": true,
+            "selector":"div"
+        }
+    }
+}

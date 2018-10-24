@@ -1,0 +1,11 @@
+{
+    "selector": ".account-left-section",
+    "children": {
+        "form": {
+            "ref": "./form.component.json"
+        },
+        "form info": {
+            "ref": "./form_info.component.json"
+        }
+    }
+}

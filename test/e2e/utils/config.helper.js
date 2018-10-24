@@ -31,7 +31,7 @@ function getCapabilities({ browserName = 'chrome', maxInstances = 1 }) {
         args: ['disable-infobars', '--test-type']
     } : undefind;
     logger.debug(`getCapabilities method has returned : [${capabilities}]`);
-    logger.debug(capabilities);
+    logger.debug(capabilities.toString());
     return capabilities;
 }
 
