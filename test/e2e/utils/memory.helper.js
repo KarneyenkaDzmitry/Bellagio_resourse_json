@@ -36,6 +36,16 @@ class Memory {
 
     clean() {
         this.storage = {};
+        logger.debug(`All properties have been deleted. The storage is empty now.`);
+    }
+
+    getProperties() {
+        const keys = Object.keys(this.storage);
+        return keys.map(key => key + ' : ' + this.storage[key] ).join('\n');
+    }
+
+    isKey(string) {
+
     }
 }
 

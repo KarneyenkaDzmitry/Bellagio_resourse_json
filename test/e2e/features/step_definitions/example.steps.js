@@ -11,12 +11,12 @@ Given(/^I am on '([^']*)' url$/, async (url) => {
 
 When(/^I click '([^']*)'$/, (chain) => {
   return getElement(chain)
-    .then(element => element.click());
+    .then(element => clickOnElement(element));
 });
 
 When(/^I click '([^']*)' text in '([^']*)'$/, (name, chain) => {
   return getElementByName(chain, name)
-    .then((element) => element.click());
+    .then((element) => clickOnElement(element));
 });
 
 When(/^I wait for '([^']*)' seconds$/, (sec) => {
@@ -31,12 +31,7 @@ When(/^I wait until '([^']*)' is (visible|present)$/, async (chain, condition) =
   }
 });
 
-When(/^I remember text of '([^']*)' as '([^\$']*)'$/, async (chain, name) => {
-  return /^\$/.test(name)? storage.store(name, await getText(await getElement(chain))) :
-    "";
-});
-
-Then(/^Text of '([^']*)' should (contain|equal) '([^']*)' text$/, async (chain, condition, text) => {
+Then(/^Text of '([^']*)' should (not)? (contain|equal) '([^']*)' text$/, async (chain, negative, condition, text) => {
   switch (condition) {
     case 'equal': return expect(await (await getElement(chain)).getText()).to.be.equal(text);
     case 'contain': return expect(await (await getElement(chain)).getText()).to.contain(text);

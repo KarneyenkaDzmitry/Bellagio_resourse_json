@@ -4,6 +4,15 @@ Feature: Bellagio resource
     Background: Background
         Given I am on 'https://www.bellagio.com/en.html' url
 
+        Scenario: steps with memory
+        When I click 'guest services'
+        And I click 'guest services > menu items #first'
+        And I wait until 'form' is present
+        And I remember text of 'form > elements #last' as '$name'
+        When I remember number of 'elements' as '$number'
+        When I remember page title as '$pageTitle'
+        When I remember attribute 'class' of 'form' as '$class'
+
     # @Restaurants
     # Scenario Outline: Filter should return results related with options
     #     Given I am on '<Page>' page

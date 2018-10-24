@@ -152,7 +152,12 @@ function getIndex(string) {
         default: return Number.parseInt(index) - 1;
     }
 }
-
+/**
+ * Finds and return whole chain-path to entered unique name:
+ * @param  {Object} po page-object data;
+ * @param  {String} name a name of element-key;
+ * @returns {String} whole chain for entered unique name of element from page object.
+ */
 function getChain(po, name) {
     if (po.children) {
         const keys = Object.keys(po.children);

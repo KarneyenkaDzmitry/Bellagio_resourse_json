@@ -34,8 +34,12 @@ Feature: Redirections through references from header
     Scenario: steps with memory
         When I click 'guest services'
         And I click 'guest services > menu items #first'
-        And I wait until 'main > left section > form' is present
-        And I remember text of 'main > left section > form > elements' as '$name'
+        And I wait until 'form' is present
+        And I remember text of 'form > elements #last' as '$name'
+        When I remember number of 'elements' as '$number'
+        When I remember page title as '$pageTitle'
+        When I remember attribute 'class' of 'form' as '$class'
+        
 
 #    Templates:
 # Then 'element' should be 'present or visible'
