@@ -25,12 +25,10 @@ exports.config = {
         browser.driver.manage().window().maximize();
         browser.driver.manage().timeouts().implicitlyWait(20000);
         global.ec = protractor.ExpectedConditions;
+        global.storage = require('../utils/memory.helper');
         browser.waitForAngularEnabled(false);
     },
     capabilities: getCapabilities(yargs),
-    params:{
-        storage : require('../utils/memory.helper')
-    },
     beforeLaunch: () => {
         logger.info(`Get started`);
     },

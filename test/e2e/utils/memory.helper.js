@@ -5,7 +5,9 @@ const { logger } = require('../configs/logger.conf');
 class Memory {
     constructor() {
         logger.debug('Instance of Memory has been created.')
-        this.storage = {};
+        this.storage = {
+            "test":"first"
+        };
     }
 
     getValue(string) {
@@ -14,19 +16,19 @@ class Memory {
         return result;
     }
 
-    async store(string, value) {
+    store(string, value) {
         if (!/^\$/.test(string)) {
             logger.error(`Wrong syntax in [${string}]! There is not [$]`);
             throw new Error(`Wrong syntax in [${string}]! There is not [$]`);
         }
-        const key = string.substring(1) + (await browser.getSession()).getId();
+        const key = string.substring(1); //+ (await browser.getSession()).getId();
         this.storage[key] === undefined ? logger.debug(`Was been stored new pair: key [${key}] - value [${value}]`) :
             logger.warn(`Owerwriting [${this.storage[key]}] into [${value}] by key [${key}]`);
         this.storage[key] = value;
     }
 
-    async get(key) {
-        const value = this.storage[key + (await browser.getSession()).getId()];
+    get(key) {
+        const value = this.storage[key];
         if (!value) {
             logger.error(`No object was found in memory by key [${key}]`);
             throw new Error(`No object was found in memory by key [${key}]`);
@@ -42,10 +44,6 @@ class Memory {
     getProperties() {
         const keys = Object.keys(this.storage);
         return keys.map(key => key + ' : ' + this.storage[key] ).join('\n');
-    }
-
-    isKey(string) {
-
     }
 }
 

@@ -1,0 +1,20 @@
+{
+    "selector": ".field-wrapper",
+    "children": {
+        "name": {
+            "selector": "label"
+        },
+        "input": {
+            "selector": "input"
+        },
+        "dropdown": {
+            "selector": "select",
+            "children": {
+                "options": {
+                    "isCollection": true,
+                    "selector": "option"
+                }
+            }
+        }
+    }
+}

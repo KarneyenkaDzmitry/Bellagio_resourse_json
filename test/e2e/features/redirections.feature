@@ -33,12 +33,13 @@ Feature: Redirections through references from header
 
     Scenario: steps with memory
         When I click 'guest services'
-        And I click 'guest services > menu items #first'
+        And I click 'guest services > menu items #$test'
         And I wait until 'form' is present
-        And I remember text of 'form > elements #last' as '$name'
-        When I remember number of 'elements' as '$number'
+        And I remember text of 'form > inputs #last' as '$name'
+        When I remember number of 'form > inputs #last' as '$number'
         When I remember page title as '$pageTitle'
-        When I remember attribute 'class' of 'form' as '$class'
+        And I wait for '1' seconds
+        When I remember attribute 'type' of 'form>button' as '$attr'
         
 
 #    Templates:

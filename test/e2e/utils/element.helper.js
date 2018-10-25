@@ -1,6 +1,7 @@
 'use strict';
 
 const pages = require('../source/pages.json');
+const { logger } = require('../configs/logger.conf');
 
 /**
  * Defines current url and returns page-object as an object by path;
@@ -93,7 +94,10 @@ async function getElementFromChain(baseElement, po, chain) {
  * @returns {Element} return Element or array of Elements from string.
  */
 function getElementFromString(baseElement, po, string) {
-    const regex = getRegex(string);
+    let regex = /(\#\$\w+$)|(^\#\$\w+)/g;
+    let arr = [];
+    while ((arr = regex.exec(string)) !== null) string = string.replace(arr[0].substring(1), storage.getValue(arr[0].substring(1)));
+    regex = getRegex(string);
     return regex ? getElementByRegex(baseElement, po, string, regex) : getElementByString(baseElement, po, string);
 }
 
@@ -134,6 +138,12 @@ async function getElementByRegex(baseElement, po, string, regex) {
         return (await baseElement.all(by.css(po.selector))).splice(index, 1)[0];
     } else {
         const chain = await getChain(po, string);
+        logger.debug(`getElementByRegex([${string}]) returns [${chain}]`);
+        if (!chain) {
+            const err = new Error(`There is not suitable property with name [${string}]`);
+            logger.error(err);
+            throw err;
+        }
         return await getElementFromChain(baseElement, po, chain);
     }
 }

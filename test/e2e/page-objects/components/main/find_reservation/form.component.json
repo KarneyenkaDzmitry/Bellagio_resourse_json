@@ -1,9 +1,22 @@
 {
     "selector": "form",
-    "children" : {
-        "elements": {
-            "isCollection": true,
-            "selector":"div"
+    "children": {
+        "inputs": [
+            {
+                "ref": "../../common/field.component.json"
+            },
+            {
+                "ref": "../../common/field.component.json"
+            },
+            {
+                "ref": "../../common/field.component.json"
+            },
+            {
+                "ref": "../../common/field.component.json"
+            }
+        ],
+        "button": {
+            "ref": "../../common/button.component.json"
         }
     }
 }
