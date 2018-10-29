@@ -2,6 +2,18 @@
 
 const { logger } = require('../configs/logger.conf.js');
 
+function getRegExp(string) {
+    if (/^\/(.*)\/(\w*)$/.test(string)) {
+        const array = string.split('/');
+        console.log(array);
+        return new RegExp(array[1], array[2]);
+    } else {
+        const err = new Error('The passed string does not fit to RegExp pattern [^\\/(.*)\\/(\\w*)$]');
+        logger.error(err);
+        throw err;
+    }
+}
+
 function clickOnElement(element) {
     return browser.wait(ec.elementToBeClickable(element))
         .then(() => element.click())
@@ -82,4 +94,4 @@ function find(form, text) {
         });
 }
 
-module.exports = { find, filter, getText, clickOnElement };
+module.exports = { find, filter, getText, clickOnElement, getRegExp };

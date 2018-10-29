@@ -20,7 +20,7 @@ When(/^I click '([^']*)' text in '([^']*)'$/, async  (name, chain) => {
 
 When(/^I wait for '([^']*)' seconds$/,async (sec) => {
  await browser.sleep(sec * 1000); 
- return logger.info(storage.getProperties() + (await browser.getSession()).getId());
+ return logger.info(storage.getProperties());
 });
 
 When(/^I wait until '([^']*)' is (visible|present)$/, async (chain, condition) => {

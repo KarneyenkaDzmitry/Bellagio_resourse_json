@@ -2,7 +2,7 @@
 
 const { When } = require('cucumber');
 const { getElement, getElementByName } = require('../../utils/element.helper');
-const { find, filter, getText, clickOnElement } = require('../../utils/page.actions');
+const { find, filter, getText, clickOnElement,getRegExp } = require('../../utils/page.actions');
 const { expect } = require('chai');
 const { logger } = require('../../configs/logger.conf');
 
@@ -22,6 +22,10 @@ When(/^I remember page title as '(\$\w+)'$/, async (name) => {
     // logger.info(storage.getProperties() + (await browser.getSession()).getId());
 });
 
-When(/^I remember index of '([^']*)' matching '([^']*)' as '(\$\w+)'/, async (chain, regex, name) => {
-
+When(/^I remember index of '([^']*)' (matching|containing) '([^']*)' as '(\$\w+)'$/, async (chain, condition,  regex, name) => {
+    const elements = await getText(await getElement(chain));
+    regex = condition==='matching'? getRegExp(regex): regex;
+    const index = condition==='matching'? elements.findIndex(element=>regexp.test(element)): elements.findIndex(element=>element.toLowerCase().includes(regex));
+    return storage.store(name, index);
 });
+
