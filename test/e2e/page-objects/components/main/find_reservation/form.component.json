@@ -1,20 +1,10 @@
 {
     "selector": "form",
     "children": {
-        "inputs": [
-            {
-                "ref": "../../common/field.component.json"
+        "inputs": {
+                "ref": "../../common/field.component.json",
+                "isCollection": true
             },
-            {
-                "ref": "../../common/field.component.json"
-            },
-            {
-                "ref": "../../common/field.component.json"
-            },
-            {
-                "ref": "../../common/field.component.json"
-            }
-        ],
         "button": {
             "ref": "../../common/button.component.json"
         }

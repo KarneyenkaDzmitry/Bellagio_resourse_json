@@ -109,8 +109,9 @@ function getElementFromString(baseElement, po, string) {
  * @returns {Element} return Element or array of Elements from string.
  */
 async function getElementByString(baseElement, po, string) {
-    if (po.children.hasOwnProperty(string.trim())) {
-        po = po['children'][string.trim()];
+    string = string.trim();
+    if (po.children.hasOwnProperty(string)) {
+        po = po['children'][string];
         if (!po) {
             throw new Error(`There is no [children] property in object [${po}]`);
         } else {
@@ -118,6 +119,7 @@ async function getElementByString(baseElement, po, string) {
         }
     } else {
         const chain = await getChain(po, string);
+        logger.debug(`getChain([${string}]) returns [${chain}]`);
         return await getElementFromChain(baseElement, po, chain);
     }
 }
@@ -138,7 +140,7 @@ async function getElementByRegex(baseElement, po, string, regex) {
         return (await baseElement.all(by.css(po.selector))).splice(index, 1)[0];
     } else {
         const chain = await getChain(po, string);
-        logger.debug(`getElementByRegex([${string}]) returns [${chain}]`);
+        logger.debug(`getChain([${string}]) returns [${chain}]`);
         if (!chain) {
             const err = new Error(`There is not suitable property with name [${string}]`);
             logger.error(err);

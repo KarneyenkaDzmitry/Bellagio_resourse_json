@@ -19,5 +19,9 @@ When(/^I remember attribute '([^']*)' of '([^']*)' as '(\$\w+)'$/, async (attrib
 
 When(/^I remember page title as '(\$\w+)'$/, async (name) => {
     /^\$/.test(name) ? await storage.store(name, await browser.getTitle()) : '';
-    logger.info(storage.getProperties() + (await browser.getSession()).getId());
+    // logger.info(storage.getProperties() + (await browser.getSession()).getId());
+});
+
+When(/^I remember index of '([^']*)' matching '([^']*)' as '(\$\w+)'/, async (chain, regex, name) => {
+
 });

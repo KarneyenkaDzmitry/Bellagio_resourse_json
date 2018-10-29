@@ -1,10 +1,10 @@
 Feature: Bellagio resource
 
 
-    Background: Background
-        Given I am on 'https://www.bellagio.com/en.html' url
+    # Background: Background
+    #     Given I am on 'https://www.bellagio.com/en.html' url
 
-        Scenario: steps with memory
+    #     Scenario: steps with memory
         # When I click 'guest services'
         # And I click 'guest services > menu items #first'
         # And I wait until 'form' is present

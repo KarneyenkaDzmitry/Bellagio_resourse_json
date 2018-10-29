@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const { logger } = require('../configs/logger.conf');
 
 /**
  * The method collects all data for page objects in one Object, then write the data to pages.json file
@@ -56,8 +57,9 @@ function createPage(page, sourceDir) {
             const ref = page.children[key].ref;
             if (ref) {
                 const absPath = path.resolve(sourceDir, ref)
+                const isCollection = page.children[key].isCollection;
                 page.children[key] = createPage(JSON.parse(fs.readFileSync(absPath)), path.dirname(absPath));
-                delete page.children[key].ref;
+                isCollection ? page.children[key].isCollection = true : '';
             }
         });
     }

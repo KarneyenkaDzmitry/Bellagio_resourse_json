@@ -36,10 +36,13 @@ Feature: Redirections through references from header
         And I click 'guest services > menu items #$test'
         And I wait until 'form' is present
         And I remember text of 'form > inputs #last' as '$name'
-        When I remember number of 'form > inputs #last' as '$number'
+        When I remember number of 'form > inputs' as '$number'
         When I remember page title as '$pageTitle'
         And I wait for '1' seconds
         When I remember attribute 'type' of 'form>button' as '$attr'
+        # When I remember index of 'form > inputs' matching 'lastName' as '$index'
+        # When I remember index of "form > inputs" containing "last name" text as "$index"
+        
         
 
 #    Templates:
@@ -56,5 +59,7 @@ Feature: Redirections through references from header
 # When I remember number of 'element' as '$name'
 # When I remember page title as '$name'
 # When I remember 'attribute' of 'element' as '$name'
+# When I remember index of "selector" matching "textToMatch" as "indexName"
+# When I remember index of "selector" containing "textToMatch" text as "indexName"
 # When I highlight 'element'
 # I make screenshot of the page
