@@ -20,4 +20,4 @@ function getChain(po, name) {
         return undefined;
     }
 }
-console.log(getChain(pages['en/itineraries/find-reservation.html']['reservation page'], 'form info'))//['home page']['children']['header']);
+console.log(getChain(pages['en/itineraries/find-reservation.html']['reservation page'], 'main > h1'))//['home page']['children']['header']);

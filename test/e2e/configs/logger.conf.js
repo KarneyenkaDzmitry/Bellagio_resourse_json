@@ -1,18 +1,17 @@
 'use strict';
 
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, label, printf } = format;
+const { combine, timestamp, label, printf, colorize } = format;
 
 const myFormat = printf(info => {
-    return `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`;
+    return `${info.timestamp} [${info.level.toUpperCase()}] : [function: ${info.function}] - ${info.message}`;
 });
 
 const logger = createLogger({
     level: 'debug',
     format: combine(
-        label({ label: 'bellagio.com' }),
         timestamp({
-            format: 'YYYY-MM-DD HH:mm:ss'
+            format: 'HH:mm:ss'
         }),
         myFormat
     ),

@@ -2,6 +2,9 @@
 
 const pages = require('../source/pages.json');
 const { logger } = require('../configs/logger.conf');
+const winston = require('winston');
+const message = {}
+logger.add(new winston.transports.Console({colorize: true}));
 
 /**
  * Defines current url and returns page-object as an object by path;
@@ -23,9 +26,13 @@ async function getPageObject() {
  * @returns {Element} return an needed element or array of elements
  */
 async function getElement(string) {
+    message.function = 'getElement';
     const po = await getPageObject();
+    logger.info(string, message);
     await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
+    logger.warn(string, message);
     const baseElement = await element(by.css(po.selector));
+    logger.debug('string', message);
     return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
 };
 /** 
@@ -82,7 +89,14 @@ async function getElementFromChain(baseElement, po, chain) {
         }
         return baseElement;
     } else {
+        const prop = names[0];
         names[0] = await getChain(po, names[0]);
+        if (!names[0]) {
+            const err = new Error(`There is not the property [${prop}] in object [${po}] `);
+            logger.error(err);
+            throw err;
+        }
+        logger.debug(`getChain([${chain}]) returns [${names.join(' > ')}]`);
         return await getElementFromChain(baseElement, po, names.join(' > '));
     }
 }
