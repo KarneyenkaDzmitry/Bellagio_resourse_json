@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
-const { logger } = require('../configs/logger.conf.js');
+const { logger, getStr } = require('../configs/logger.conf.js');
 
 function getTagsString({ tags }) {
     let result = '';
@@ -13,7 +13,7 @@ function getTagsString({ tags }) {
             if (element.startsWith('@')) {
                 result += (ind < array.length - 1) ? element + ' or ' : String(element);
             } else {
-                logger.error(`Was passed wrong parameter [${element}]. Every tag have to start with [@] and seporates with comma`);
+                logger.error(`Was passed wrong parameter [${getStr(element)}]. Every tag have to start with [@] and seporates with comma`);
                 throw new Error('Was passed wrong data. Every tag have to start with [@]');
             }
         });
@@ -30,7 +30,7 @@ function getCapabilities({ browserName = 'chrome', maxInstances = 1 }) {
     capabilities.chromeOptions = capabilities.browserName === 'chrome' ? {
         args: ['disable-infobars', '--test-type']
     } : undefind;
-    logger.debug(`getCapabilities method has returned : [${capabilities}]`);
+    logger.debug(`getCapabilities method has returned : [${getStr(capabilities)}]`);
     logger.debug(capabilities.toString());
     return capabilities;
 }

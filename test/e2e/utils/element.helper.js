@@ -26,7 +26,7 @@ async function getPageObject() {
  * @returns {Element} return an needed element or array of elements
  */
 async function getElement(string) {
-    message.function = 'getElement';
+    message.function = '.getElement';
     const po = await getPageObject();
     logger.info(string, message);
     const marker = await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
