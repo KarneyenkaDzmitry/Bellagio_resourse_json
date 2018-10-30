@@ -4,12 +4,21 @@ const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, printf, colorize } = format;
 
 const myFormat = printf(info => {
-    return `${info.timestamp} [${info.level.toUpperCase()}] : [function: ${info.function}] - ${info.message}`;
+    function fillSpaces(string, length) {
+        if (string)
+        while (string.length < length) string += ' ';
+        return string;
+    }
+    return `${info.timestamp} [${fillSpaces(info.level.toUpperCase(), 5)}] : [${info.function? info.function: info.label}] - ${info.message}`;
 });
+
+
+
 
 const logger = createLogger({
     level: 'debug',
     format: combine(
+        label({label:'Bellagio.com'}),
         timestamp({
             format: 'HH:mm:ss'
         }),

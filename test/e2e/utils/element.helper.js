@@ -2,9 +2,9 @@
 
 const pages = require('../source/pages.json');
 const { logger } = require('../configs/logger.conf');
-const winston = require('winston');
+// const winston = require('winston');
 const message = {}
-logger.add(new winston.transports.Console({colorize: true}));
+// logger.add(new winston.transports.Console({colorize: true}));
 
 /**
  * Defines current url and returns page-object as an object by path;
@@ -29,7 +29,8 @@ async function getElement(string) {
     message.function = 'getElement';
     const po = await getPageObject();
     logger.info(string, message);
-    await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
+    const marker = await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
+    logger.warn(`Marker: [${marker}]`)
     logger.warn(string, message);
     const baseElement = await element(by.css(po.selector));
     logger.debug('string', message);
