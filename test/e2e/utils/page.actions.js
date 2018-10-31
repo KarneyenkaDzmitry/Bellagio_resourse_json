@@ -17,8 +17,7 @@ function clickOnElement(element) {
     return browser.wait(ec.elementToBeClickable(element))
         .then(() => element.click())
         .catch((error) => {
-            logger.error(`Has been thrown the error withing performing the action click().\n Error: `+ error, {func:'clickOnElement'}
-            );
+            logger.error(`Has been thrown the error withing performing the action click().\n Error: `+ error, {func:'clickOnElement'});
             throw error;
         });
 }
@@ -28,13 +27,11 @@ function getText(elements) {
         const results = elements.map(element => element.getText());
         return Promise.all(results)
             .then((textArray) => {
-                logger.debug(`Was return array with strings :[${getStr(textArray)}]`, {func:'clickOnElement'}
-                );
+                logger.debug(`Was return array with strings :[${getStr(textArray)}]`, {func:'clickOnElement'});
                 return textArray;
             })
             .catch((error) => {
-                logger.error(`Has been thrown the error withing performing the action getText() all elements.\nError: ` + error, {func:'clickOnElement'}
-                );
+                logger.error(`Has been thrown the error withing performing the action getText() all elements.\nError: ` + error, {func:'clickOnElement'});
                 throw error;
             });
     } else {
@@ -45,16 +42,13 @@ function getText(elements) {
                 return text;
             })
             .catch((error) => {
-                logger.error(`Has been thrown the error withing performing the action getText().\nError: ` + error, {func:'clickOnElement'}
-                );
+                logger.error(`Has been thrown the error withing performing the action getText().\nError: ` + error, {func:'clickOnElement'});
                 throw error;
             });
     }
 }
 
 function filter(elements, ...options) {
-    {func:'getRegExp'}
-    .function = 'filter';
     if (elements.length === options.length) {
         return browser.wait(ec.presenceOf(...elements), 10000)
             .then(() => options.forEach((option, ind) => {
@@ -73,24 +67,20 @@ function filter(elements, ...options) {
                         .then(elems => elems[ind].element(by.xpath(opt)))
                         .then(element => clickOnElement(element))
                         .catch((error) => {
-                            logger.error(`Has been thrown the error withing performing the action filter(elements, ${options}])`+ error, {func:'getRegExp'}
-                            );
+                            logger.error(`Has been thrown the error withing performing the action filter(elements, ${options}])`+ error, {func:'getRegExp'});
                             throw error;
                         });
                 }
             }));
 
     } else {
-        const error = new Error('There are no equals an amount of elements ');
-        logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`+ error, {func:'getRegExp'}
-        );
+        const error = new Error('There are no equals an amount of elements');
+        logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`+ error, {func:'getRegExp'});
         throw error;
     }
 }
 
 function find(form, text) {
-    {func:'getRegExp'}
-    .function = 'filter';
     return browser.wait(ec.presenceOf(form), 5000)
         .then(() => form.element(by.css('input')))
         .then((field) => field.sendKeys(text))
@@ -99,7 +89,7 @@ function find(form, text) {
             clickOnElement(button);
         })
         .catch((error) => {
-            logger.error(`Has been thrown the error withing performing the action find([${form}, ${text}])`, error);
+            logger.error(`Has been thrown the error withing performing the action find([${form}, ${text}])`+ error,{func:'find'});
             throw error;
         });
 }

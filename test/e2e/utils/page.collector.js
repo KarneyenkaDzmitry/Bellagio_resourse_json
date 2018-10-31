@@ -3,7 +3,6 @@
 const path = require('path');
 const fs = require('fs');
 const { logger, getStr, transport } = require('../configs/logger.conf');
-const message = {};
 const winston = require('winston')
 logger.add(new winston.transports.File({
     name: 'page.collector-log',
@@ -18,12 +17,11 @@ logger.add(new winston.transports.File({
  * @returns {Object} an object with all pages data; 
  */
 function collector(sourceDir, destDir) {
-    message.function = 'collector';
-    logger.info(`Have been passed data: sourceDir-[${sourceDir}], destDir-[${destDir}]`, message );
+    logger.info(`Have been passed data: sourceDir-[${sourceDir}], destDir-[${destDir}]`, {func:'collector'} );
     const files = getFiles(sourceDir);
     if (files.length === 0) {
         const err = new Error(`Passed directory [${sourceDir}] is empty.`);
-        logger.error(err, message);
+        logger.error(err, {func:'collector'});
         throw err;
     }
     fs.existsSync(destDir) || fs.mkdirSync(destDir);
@@ -31,7 +29,7 @@ function collector(sourceDir, destDir) {
     try {
         fs.writeFileSync(`${destDir}/pages.json`, JSON.stringify(pages), 'utf8');
     } catch (err) {
-        logger.error(err, message);
+        logger.error(err, {func:'collector'});
         throw err;
     }
     return pages;
@@ -44,8 +42,7 @@ function collector(sourceDir, destDir) {
  * @returns {Object} final Object with all data for pages.
  */
 function getPages(sourceDir, files) {
-    message.function = 'getPages';
-    logger.debug(`Have been passed data: sourceDir-[${sourceDir}], files-[${getStr(files)}]`, message );
+    logger.debug(`Have been passed data: sourceDir-[${sourceDir}], files-[${getStr(files)}]`, {func:'getPages'} );
     let pages = {};
     files.forEach(file => {
         try {
@@ -53,7 +50,7 @@ function getPages(sourceDir, files) {
             if (fs.statSync(absPath).isFile()) {
                 let object = JSON.parse(fs.readFileSync(absPath));
                 const pageName = Object.keys(object).find(key => /page/i.test(key));
-                logger.debug(` Was found page - [${pageName}] with path - [${object[pageName].path}]`, message);
+                logger.debug(` Was found page - [${pageName}] with path - [${object[pageName].path}]`, {func:'getPages'});
                 const page = object[pageName];
                 if (page.path) {
                     object = pages[page.path] = {};
@@ -64,7 +61,7 @@ function getPages(sourceDir, files) {
                 };
             }
         } catch (err) {
-            logger.error(err, message);
+            logger.error(err, {func:'getPages'});
             throw err;
         }
     });
@@ -78,8 +75,7 @@ function getPages(sourceDir, files) {
  * @returns {Object} an Object with all data for one page.
  */
 function createPage(page, sourceDir) {
-    message.function = 'createPage';
-    logger.debug(`Have been passed data: page-[${getStr(page)}], sourceDir-[${sourceDir}]`, message);
+    logger.debug(`Have been passed data: page-[${getStr(page)}], sourceDir-[${sourceDir}]`, {func:'createPage'});
     if (page.children) {
         Object.keys(page.children).forEach(key => {
             const ref = page.children[key].ref;
@@ -90,15 +86,15 @@ function createPage(page, sourceDir) {
                     page.children[key] = createPage(JSON.parse(fs.readFileSync(absPath)), path.dirname(absPath));
                     isCollection ? page.children[key].isCollection = true : '';
                 } catch (err) {
-                    logger.error(err, message);
+                    logger.error(err, {func:'createPage'});
                     throw err;
                 }
             }
         });
     } else {
-        logger.warn(`There is not property [children] in object [${getStr(page)}]`, message)
+        logger.warn(`There is not property [children] in object [${getStr(page)}]`, {func:'createPage'})
     }
-    logger.debug(`Was returned page - [${getStr(page)}]`, message);
+    logger.debug(`Was returned page - [${getStr(page)}]`, {func:'createPage'});
     return page;
 }
 
@@ -108,20 +104,19 @@ function createPage(page, sourceDir) {
  * @returns {Array} an array with names of all json files from passed directory.
  */
 function getFiles(dir) {
-    message.function = 'getFiles';
-    logger.debug(`Have been passed data: dir-[${dir}]`, message);
+    logger.debug(`Have been passed data: dir-[${dir}]`, {func:'getFiles'});
     try {
         const stats = fs.statSync(dir);
         if (stats.isDirectory()) {
             let files = fs.readdirSync(dir);
             files = files.filter(file => file.endsWith('.json'));
-            logger.debug(`Was returned list of files - ${getStr(files)}`, message);
+            logger.debug(`Was returned list of files - ${getStr(files)}`, {func:'getFiles'});
             return files;
         } else {
             throw new Error(`The passed source path [${dir}] is not a directory.`);
         }
     } catch (err) {
-        logger.error(err, message);
+        logger.error(err, {func:'getFiles'});
         throw err;
     }
 }
