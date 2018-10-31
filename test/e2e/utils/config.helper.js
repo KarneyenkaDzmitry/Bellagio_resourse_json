@@ -5,10 +5,8 @@ const path = require('path');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
 const { logger, getStr } = require('../configs/logger.conf.js');
-const message = {};
 
 function getTagsString({ tags }) {
-    message.function = 'getTagsString';
     let result = '';
     if ((tags !== undefined) && (tags !== null)) {
         tags.split(',').forEach((element, ind, array) => {
@@ -19,7 +17,7 @@ function getTagsString({ tags }) {
                     throw new Error(`Was passed wrong parameter [${getStr(element)}]. Every tag have to start with [@] and seporates with comma`);
                 }
             } catch (error) {
-                logger.error(error, message);
+                logger.error(error, {func:'getTagsString'});
                 throw error;
             }
         });
@@ -29,7 +27,6 @@ function getTagsString({ tags }) {
 }
 
 function getCapabilities({ browserName = 'chrome', maxInstances = 1 }) {
-    message.function = 'getCapabilities';
     const capabilities = {};
     capabilities.browserName = browserName;
     capabilities.shardTestFiles = maxInstances > 1;
@@ -37,12 +34,11 @@ function getCapabilities({ browserName = 'chrome', maxInstances = 1 }) {
     capabilities.chromeOptions = capabilities.browserName === 'chrome' ? {
         args: ['disable-infobars', '--test-type']
     } : undefind;
-    logger.debug(`getCapabilities method has returned : [${getStr(capabilities)}]`, message);
+    logger.debug(`getCapabilities method has returned : [${getStr(capabilities)}]`, {func:'getCapabilities'});
     return capabilities;
 }
 
 async function combineJsonReports(directory) {
-    message.function = 'combineJsonReports';
     try {
         const files = await readdir(directory);
         let data = [];
@@ -56,7 +52,7 @@ async function combineJsonReports(directory) {
         const resultFile = path.resolve(`${directory}/report.json`);
         return fs.writeFileSync(resultFile, JSON.stringify(data), 'utf8');
     } catch (error) {
-        logger.error(error, message);
+        logger.error(error, {func:'combineJsonReports'});
         throw error;
     }
 }

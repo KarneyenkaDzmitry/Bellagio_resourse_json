@@ -15,11 +15,11 @@ const myFormat = printf(info => {
     if (Array.isArray(strings)) {
         strings = strings.filter(elem => elem !== '');
         let ending = `\n\t\t\t\t\t${strings[strings.length - 1]}`;
-        ending = `${ending.length > 129 ? ending + '\n' + fillSpaces('', 129, ' ') : fillSpaces(ending, 129, ' ')} Func : [${info.function ? info.function : info.label}]`;
+        ending = `${ending.length > 129 ? ending + '\n' + fillSpaces('', 129, ' ') : fillSpaces(ending, 129, ' ')} Func : [${info.func ? info.func : info.label}]`;
         strings.splice(strings.length - 1, 1);
         message = `${base} : ${strings.join('\n\t\t\t\t\t')} ${ending} `;
     } else {
-        message = `${base} : ${info.message.length > 129 ? info.message + '\n' + fillSpaces('', 129, ' ') : fillSpaces(info.message, 124, ' ')} Func : [${info.function ? info.function : info.label}]`;
+        message = `${base} : ${info.message.length > 129 ? info.message + '\n' + fillSpaces('', 129, ' ') : fillSpaces(info.message, 124, ' ')} Func : [${info.func ? info.func : info.label}]`;
     }
     return message;
 });

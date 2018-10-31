@@ -2,24 +2,22 @@
 
 const pages = require('../source/pages.json');
 const { logger, getStr } = require('../configs/logger.conf');
-const message = {}
 
 /**
  * Defines current url and returns page-object as an object by path;
  * @returns {Object} an object with properties for current url by path
  */
 async function getPageObject() {
-    message.function = 'getPageObject';
     const currentUrl = await browser.getCurrentUrl();
     const [, appenderUrl] = /^(?:\w+\:\/\/\w+\.?\w+\.?\w+\/)(.*html)(#.*)?$/.exec(currentUrl);
-    logger.debug(`Have been found current url: [${currentUrl}]. Path for searching needed page: [${appenderUrl}]`, message)
+    logger.debug(`Have been found current url: [${currentUrl}]. Path for searching needed page: [${appenderUrl}]`, {func:'getPageObject'})
     if (!pages[appenderUrl]) {
         const error = new Error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
         logger.error(error);
         throw errror;
     } else {
         const resultPage = pages[appenderUrl][Object.keys(pages[appenderUrl]).find(key => /page/i.test(key))];
-        logger.debug(`Was returned page: [${getStr(resultPage)}]`, message);
+        logger.debug(`Was returned page: [${getStr(resultPage)}]`, {func:'getPageObject'});
         return resultPage;
     }
 }
@@ -30,9 +28,8 @@ async function getPageObject() {
  * @returns {Element} return an needed element or array of elements
  */
 async function getElement(string) {
-    message.function = 'getElement';
     const po = await getPageObject();
-    logger.info(`Was called function [getElement] with passed data: [${string}]`, message);
+    logger.info(`Was called function [getElement] with passed data: [${string}]`, {func:'getElement'});
     await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
     const baseElement = await element(by.css(po.selector));
     return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
@@ -45,8 +42,7 @@ async function getElement(string) {
  * @returns {Element} return an needed element or array of elements
  */
 async function getElementByName(string, name) {
-    message.function = 'getElementByName';
-    logger.info(`Was called function [getElementByName] with passed data: [${string}], [${name}]`, message);
+    logger.info(`Was called function [getElementByName] with passed data: [${string}], [${name}]`, {func:'getElementByName'});
     const elements = await getElement(string);
     try {
         if (Array.isArray(elements)) {
@@ -64,7 +60,7 @@ async function getElementByName(string, name) {
             throw new Error(`The ending element from [${string}] is not a [menu items]`);
         }
     } catch (error) {
-        logger.error(error, message);
+        logger.error(error, {func:'getElementByName'});
         throw error;
     }
 }
@@ -75,16 +71,15 @@ async function getElementByName(string, name) {
  * @returns {RegExp} a regex that fit to the array regexes. 
  */
 function getRegex(string) {
-    message.function = 'getRegex';
-    logger.debug(`Was called function [getRegex] with passed data: [${string}].`, message);
+    logger.debug(`Was called function [getRegex] with passed data: [${string}].`, {func:'getRegex'});
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
     regexes = regexes.filter(regex => regex.test(string.trim()));
     if (regexes.length > 1) {
         const error = new Error(`There is more than one option in [${string}].`);
-        logger.error(error, message);
+        logger.error(error, {func:'getRegex'});
         throw error;
     } else {
-         logger.debug(regexes.length > 0 ? `Were/was found [${regexes}] and returns [${regexes[0]}]`: 'No one regex was found!', message);
+         logger.debug(regexes.length > 0 ? `Were/was found [${regexes}] and returns [${regexes[0]}]`: 'No one regex was found!', {func:'getRegex'});
         return regexes[0];
     }
 }
@@ -97,7 +92,6 @@ function getRegex(string) {
  * @returns {Element} return Element or array of Elements from string chain.
  */
 async function getElementFromChain(baseElement, po, chain) {
-    message.function = 'getElementFromChain';
     let names = chain.split(/\s?\>\s?/);
     if (po.children.hasOwnProperty(names[0].trim())) {
         for (let i = 0; i < names.length; i++) {
@@ -113,7 +107,7 @@ async function getElementFromChain(baseElement, po, chain) {
             logger.error(err, message);
             throw err;
         }
-        logger.debug(`getChain([${chain}]) returns [${names.join(' > ')}]`, message);
+        logger.debug(`getChain([${chain}]) returns [${names.join(' > ')}]`, {func:'getElementFromChain'});
         return await getElementFromChain(baseElement, po, names.join(' > '));
     }
 }
@@ -126,7 +120,6 @@ async function getElementFromChain(baseElement, po, chain) {
  * @returns {Element} return Element or array of Elements from string.
  */
 function getElementFromString(baseElement, po, string) {
-    message.function = 'getElementFromString';
     let regex = /(\#\$\w+$)|(^\#\$\w+)/g;
     let arr = [];
     while ((arr = regex.exec(string)) !== null) string = string.replace(arr[0].substring(1), storage.getValue(arr[0].substring(1)));
@@ -142,21 +135,20 @@ function getElementFromString(baseElement, po, string) {
  * @returns {Element} return Element or array of Elements from string.
  */
 async function getElementByString(baseElement, po, string) {
-    message.function = 'getElementByString';
     string = string.trim();
     if (po.children.hasOwnProperty(string)) {
         po = po['children'][string];
         if (!po) {
             const err = new Error(`There is no [children] property in object [${po}]`);
-            logger.error(err, message);
+            logger.error(err, {func:'getElementByString'});
             throw err;
         } else {
-            logger.debug(po.isCollection ? `Returned collection of elements by selector:`: `Returned element by selector:` + po.selector, message);
+            logger.debug(`Function [getElementByString] returned `+(po.isCollection ? `collection of elements [${string}] by selector: `: `element [${string}] by selector: `) `[${po.selector}]`, {func:'getElementByString'});
             return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
         }
     } else {
         const chain = await getChain(po, string);
-        logger.debug(`getChain([${string}]) returns [${chain}]`, message);
+        logger.debug(`getChain([${string}]) returns [${chain}]`, {func:'getElementByString'});
         return await getElementFromChain(baseElement, po, chain);
     }
 }
@@ -170,18 +162,17 @@ async function getElementByString(baseElement, po, string) {
  * @returns {Element} return Element from string by regex.
  */
 async function getElementByRegex(baseElement, po, string, regex) {
-    message.function = 'getElementByRegex';
-    logger.debug(`Was called function [getElementByRegex] for [${string}] and [${regex}]`, message);
+    logger.debug(`Was called function [getElementByRegex] for [${string}] and [${regex}]`, {func:'getElementByRegex'});
     const index = getIndex(regex.exec(string)[0]);
     const name = string.replace(regex, '').trim();
-    logger.debug(`Was found index and name: [${index}], [${name}]`, message);
+    logger.debug(`Was found index and name: [${index}], [${name}]`, {func:'getElementByRegex'});
     if (po.children.hasOwnProperty(name)) {
         po = po['children'][name];
         return (await baseElement.all(by.css(po.selector))).splice(index, 1)[0];
     } else {
-        logger.warn(`There is no own property [${name}] in passed object: [${getStr(po)}]`, message);
+        logger.warn(`There is no own property [${name}] in passed object: [${getStr(po)}]`, {func:'getElementByRegex'});
         const chain = await getChain(po, string);
-        logger.debug(`getChain([${string}]) returns [${chain}]`, message);
+        logger.debug(`getChain([${string}]) returns [${chain}]`, {func:'getElementByRegex'});
         if (!chain) {
             const err = new Error(`There is not suitable property with name [${string}]`);
             logger.error(err);
@@ -197,9 +188,8 @@ async function getElementByRegex(baseElement, po, string, regex) {
  * @returns {Number} a number as an index for array.
  */
 function getIndex(string) {
-    message.function = 'getIndex';
     let index = string.replace('#', '');
-    logger.debug(`Was called function [getIndex] with passed data: [${string}].`, message);
+    logger.debug(`Was called function [getIndex] with passed data: [${string}].`, {func:'getIndex'});
     switch (index) {
         case 'first': return 0;
         case 'second': return 1;

@@ -3,7 +3,6 @@
 const { logger } = require('./logger.conf.js');
 const { getTagsString, getCapabilities } = require('../utils/config.helper.js');
 const yargs = require('yargs').argv;
-const message = {function: 'protractor config'}
 
 exports.config = {
     getPageTimeout: 60000,
@@ -22,8 +21,8 @@ exports.config = {
     // seleniumAddress: 'http://localhost:4444/wd/hub', if seleniumAddress nas no value, null or undefined - server will be run automaticaly
     allScriptsTimeout: 500000,
     onPrepare: async () => {
-        logger.info('Browser session is ' + (await browser.driver.getSession()).getId(), message);
-        logger.info('Browser starts in maximize size for running tests', message);
+        logger.info('Browser session is ' + (await browser.driver.getSession()).getId(), {func: 'onPrepare'});
+        logger.info('Browser starts in maximize size for running tests', {func: 'onPrepare'});
         browser.driver.manage().window().maximize();
         browser.driver.manage().timeouts().implicitlyWait(20000);
         global.ec = protractor.ExpectedConditions;
@@ -32,9 +31,9 @@ exports.config = {
     },
     capabilities: getCapabilities(yargs),
     beforeLaunch: () => {
-        logger.info(`\nGET STARTED `, message);
+        logger.info(`GET STARTED `, {func: 'beforeLaunch'});
     },
     afterLaunch: () => {
-        logger.info(`\nHAVE BEEN COMPLETED! `, message);
+        logger.info(`HAVE BEEN COMPLETED! `, {func: 'afterLaunch'});
     }
 };
