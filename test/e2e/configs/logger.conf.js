@@ -32,12 +32,29 @@ const transport = {
     }),
     combined: new transports.File({
         name: 'combined-log',
-        filename: './test/e2e/logs/combined.log'
+        filename: './test/e2e/logs/combined.log',
+        level: 'debug'
     })
+};
+
+const myCustomLevels = {
+    levels: {
+        error: 0,
+        warn: 1,
+        info: 2,
+        debug: 3,
+    },
+    colors: {
+        error: 'red',
+        warn: 'red',
+        info: 'red',
+        debug: 'red'
+    }
 };
 
 const logger = createLogger({
     level: 'debug',
+    levels: myCustomLevels.levels,
     format: combine(
         label({ label: 'Bellagio.com' }),
         timestamp({
