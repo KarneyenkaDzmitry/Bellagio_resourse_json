@@ -6,6 +6,9 @@
             "header": {
                 "ref": "../components/header/header.component.json"
             },
+            "main": {
+                "ref": "../components/main/find_reservation/main.component.json"
+            },
             "body results": {
                 "selector": "#results-wrapper"
             }

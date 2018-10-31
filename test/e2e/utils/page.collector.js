@@ -4,8 +4,12 @@ const path = require('path');
 const fs = require('fs');
 const { logger, getStr, transport } = require('../configs/logger.conf');
 const message = {};
-// logger.add(transport.collector)
-logger.remove(transport.combined);
+const winston = require('winston')
+logger.add(new winston.transports.File({
+    name: 'page.collector-log',
+    filename: './test/e2e/logs/page.collector.log',
+    level: 'debug'
+})).remove(transport.combined);
 
 /**
  * The method collects all data for page objects in one Object, then write the data to pages.json file
@@ -111,7 +115,7 @@ function getFiles(dir) {
         if (stats.isDirectory()) {
             let files = fs.readdirSync(dir);
             files = files.filter(file => file.endsWith('.json'));
-            logger.debug(`Was returned list of files - [${files}]`, message);
+            logger.debug(`Was returned list of files - ${getStr(files)}`, message);
             return files;
         } else {
             throw new Error(`The passed source path [${dir}] is not a directory.`);

@@ -24,7 +24,6 @@ When(/^I wait for '([^']*)' seconds$/,async (sec) => {
 });
 
 When(/^I wait until '([^']*)' is (visible|present)$/, async (chain, condition) => {
-  // console.log(condition);
   switch (condition) {
     case 'present': return expect(await (await getElement(chain)).isPresent()).to.be.true;
     case 'visible': return expect(await (await getElement(chain)).isVisible()).to.be.true;

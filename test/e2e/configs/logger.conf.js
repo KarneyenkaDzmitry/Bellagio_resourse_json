@@ -2,7 +2,6 @@
 
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, printf, colorize } = format;
-const archive = [];
 
 const myFormat = printf(info => {
     function fillSpaces(string, length, replacer) {
@@ -11,19 +10,20 @@ const myFormat = printf(info => {
         return string;
     }
     const base = `${info.timestamp} [${fillSpaces(info.level.toUpperCase(), 5, ' ')}]`;
-    let strings = info.message.split(/(?:(.{2,129})),/);
-    strings = strings.filter(elem=> elem!=='');
+    let strings = info.message.length > 123 ? info.message.split(/(?:(.{0,123}))\s/) : info.message;
     let message;
-    if (strings.length > 1) {
+    if (Array.isArray(strings)) {
+        strings = strings.filter(elem => elem !== '');
         let ending = `\n\t\t\t\t\t${strings[strings.length - 1]}`;
         ending = `${ending.length > 129 ? ending + '\n' + fillSpaces('', 129, ' ') : fillSpaces(ending, 129, ' ')} Func : [${info.function ? info.function : info.label}]`;
         strings.splice(strings.length - 1, 1);
-        message = `${base} : ${strings.join(',\n\t\t\t\t\t')} ${ending} `;
-     } else {
+        message = `${base} : ${strings.join('\n\t\t\t\t\t')} ${ending} `;
+    } else {
         message = `${base} : ${info.message.length > 129 ? info.message + '\n' + fillSpaces('', 129, ' ') : fillSpaces(info.message, 124, ' ')} Func : [${info.function ? info.function : info.label}]`;
-    } 
+    }
     return message;
 });
+
 const transport = {
     error: new transports.File({
         name: 'error-log',
@@ -33,16 +33,17 @@ const transport = {
     combined: new transports.File({
         name: 'combined-log',
         filename: './test/e2e/logs/combined.log'
-    }),
-    console: new transports.Console({
-        colorize: true
     })
-    ,
-    collector: new transports.File({
-        name: 'page.collector-log',
-        filename: './test/e2e/logs/page.collector.log',
-        level: 'debug'
-    })
+    // ,
+    // console: new transports.Console({
+    //     colorize: true
+    // })
+    // ,
+    // collector: new transports.File({
+    //     name: 'page.collector-log',
+    //     filename: './test/e2e/logs/page.collector.log',
+    //     level: 'debug'
+    // })
 };
 
 const logger = createLogger({
