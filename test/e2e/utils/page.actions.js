@@ -77,7 +77,7 @@ function filter(elements, ...options) {
                         .then(elems => elems[ind].element(by.xpath(opt)))
                         .then(element => clickOnElement(element))
                         .catch((error) => {
-                            logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`+ error, message);
+                            logger.error(`Has been thrown the error withing performing the action filter(elements, ${options}])`+ error, message);
                             throw error;
                         });
                 }
@@ -85,12 +85,13 @@ function filter(elements, ...options) {
 
     } else {
         const error = new Error('There are no equals an amount of elements ');
-        logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`, error);
+        logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`+ error, message);
         throw error;
     }
 }
 
 function find(form, text) {
+    message.function = 'filter';
     return browser.wait(ec.presenceOf(form), 5000)
         .then(() => form.element(by.css('input')))
         .then((field) => field.sendKeys(text))

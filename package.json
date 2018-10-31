@@ -13,7 +13,7 @@
     "prereport": "node ./test/e2e/configs/report.config.js",
     "report": ".\\test\\e2e\\reports\\Bellagio.html",
     "lint": "eslint ./ --fix",
-    "preinstall": "mkdir logs .\\test\\e2e\\reports\\screenshots source",
+    "preinstall": "mkdir .\\test\\e2e\\logs .\\test\\e2e\\reports\\screenshots .\\test\\e2e\\source",
     "postinstall": "webdriver-manager update",
     "remove_dirs": "rmdir /s /q test\\e2e\\reports logs && mkdir test\\e2e\\reports\\screenshots test\\e2e\\logs"
   },
