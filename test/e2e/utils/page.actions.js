@@ -47,7 +47,7 @@ function getText(elements) {
     } else {
         return elements.getText()
             .then((text) => {
-                logger.debug(`Was return text :[${text}]`);
+                logger.debug(`Was return text :[${text}]`, message);
                 return text;
             })
             .catch((error) => {
@@ -58,7 +58,7 @@ function getText(elements) {
 }
 
 function filter(elements, ...options) {
-    message.function = 'clickOnElement';
+    message.function = 'filter';
     if (elements.length === options.length) {
         return browser.wait(ec.presenceOf(...elements), 10000)
             .then(() => options.forEach((option, ind) => {

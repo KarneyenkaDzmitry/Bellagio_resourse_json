@@ -34,16 +34,6 @@ const transport = {
         name: 'combined-log',
         filename: './test/e2e/logs/combined.log'
     })
-    // ,
-    // console: new transports.Console({
-    //     colorize: true
-    // })
-    // ,
-    // collector: new transports.File({
-    //     name: 'page.collector-log',
-    //     filename: './test/e2e/logs/page.collector.log',
-    //     level: 'debug'
-    // })
 };
 
 const logger = createLogger({
