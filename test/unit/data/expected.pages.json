@@ -71,6 +71,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 }
@@ -149,6 +189,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 }
@@ -227,6 +307,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 },
@@ -308,6 +428,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 }
@@ -378,6 +538,54 @@
                                     "selector": "ul.nav-main>li:not(#booking)"
                                 }
                             }
+                        }
+                    }
+                },
+                "main": {
+                    "selector": "[role=main]:not([ng-controller])",
+                    "children": {
+                        "h1": {
+                            "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 }
@@ -456,6 +664,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 },
@@ -537,6 +785,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 }
@@ -615,6 +903,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 }
@@ -693,11 +1021,48 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
-                },
-                "room option": {
-                    "selector": "select option[value=\"room\"]"
                 }
             }
         }
@@ -774,6 +1139,46 @@
                     "children": {
                         "h1": {
                             "selector": "h1"
+                        },
+                        "left section": {
+                            "selector": ".account-left-section",
+                            "children": {
+                                "form": {
+                                    "selector": "form",
+                                    "children": {
+                                        "inputs": {
+                                            "selector": ".field-wrapper",
+                                            "children": {
+                                                "name": {
+                                                    "selector": "label"
+                                                },
+                                                "input": {
+                                                    "selector": "input"
+                                                },
+                                                "dropdown": {
+                                                    "selector": "select",
+                                                    "children": {
+                                                        "options": {
+                                                            "isCollection": true,
+                                                            "selector": "option"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "isCollection": true
+                                        },
+                                        "button": {
+                                            "selector": ".btn-container button"
+                                        }
+                                    }
+                                },
+                                "form info": {
+                                    "selector": "[class*=text]"
+                                }
+                            }
+                        },
+                        "right section": {
+                            "selector": ".account-right-section"
                         }
                     }
                 },

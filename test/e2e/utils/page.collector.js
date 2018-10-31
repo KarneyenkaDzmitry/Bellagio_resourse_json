@@ -21,7 +21,7 @@ function collector(sourceDir, destDir) {
     const files = getFiles(sourceDir);
     if (files.length === 0) {
         const err = new Error(`Passed directory [${sourceDir}] is empty.`);
-        logger.error(err, {func:'collector'});
+        logger.error(`${err}`, {func:'collector'});
         throw err;
     }
     fs.existsSync(destDir) || fs.mkdirSync(destDir);
@@ -29,7 +29,7 @@ function collector(sourceDir, destDir) {
     try {
         fs.writeFileSync(`${destDir}/pages.json`, JSON.stringify(pages), 'utf8');
     } catch (err) {
-        logger.error(err, {func:'collector'});
+        logger.error(`${err}`, {func:'collector'});
         throw err;
     }
     return pages;
@@ -61,7 +61,7 @@ function getPages(sourceDir, files) {
                 };
             }
         } catch (err) {
-            logger.error(err, {func:'getPages'});
+            logger.error(`${err}`, {func:'getPages'});
             throw err;
         }
     });
@@ -86,7 +86,7 @@ function createPage(page, sourceDir) {
                     page.children[key] = createPage(JSON.parse(fs.readFileSync(absPath)), path.dirname(absPath));
                     isCollection ? page.children[key].isCollection = true : '';
                 } catch (err) {
-                    logger.error(err, {func:'createPage'});
+                    logger.error(`${err}`, {func:'createPage'});
                     throw err;
                 }
             }
@@ -109,6 +109,7 @@ function getFiles(dir) {
         const stats = fs.statSync(dir);
         if (stats.isDirectory()) {
             let files = fs.readdirSync(dir);
+            if (files.length<1) throw  new Error(`Passed directory [${dir}] is empty.`);
             files = files.filter(file => file.endsWith('.json'));
             logger.debug(`Was returned list of files - ${getStr(files)}`, {func:'getFiles'});
             return files;
@@ -116,9 +117,9 @@ function getFiles(dir) {
             throw new Error(`The passed source path [${dir}] is not a directory.`);
         }
     } catch (err) {
-        logger.error(err, {func:'getFiles'});
+        logger.error(`${err}`, {func:'getFiles'});
         throw err;
     }
 }
-collector('./test/e2e/page-objects/pages', './test/e2e/source');
+// collector('./test/e2e/page-objects/pages', './test/e2e/source');
 module.exports = { collector }

@@ -13,7 +13,7 @@ async function getPageObject() {
     logger.debug(`Have been found current url: [${currentUrl}]. Path for searching needed page: [${appenderUrl}]`, {func:'getPageObject'})
     if (!pages[appenderUrl]) {
         const error = new Error(`The framework has not included suitable page-object for this url [${appenderUrl}]`);
-        logger.error(error);
+        logger.error(`${error}`, {func:'getPageObject'});
         throw errror;
     } else {
         const resultPage = pages[appenderUrl][Object.keys(pages[appenderUrl]).find(key => /page/i.test(key))];
@@ -60,7 +60,7 @@ async function getElementByName(string, name) {
             throw new Error(`The ending element from [${string}] is not a [menu items]`);
         }
     } catch (error) {
-        logger.error(error, {func:'getElementByName'});
+        logger.error(`${error}`, {func:'getElementByName'});
         throw error;
     }
 }
@@ -76,7 +76,7 @@ function getRegex(string) {
     regexes = regexes.filter(regex => regex.test(string.trim()));
     if (regexes.length > 1) {
         const error = new Error(`There is more than one option in [${string}].`);
-        logger.error(error, {func:'getRegex'});
+        logger.error(`${error}`, {func:'getRegex'});
         throw error;
     } else {
          logger.debug(regexes.length > 0 ? `Were/was found [${regexes}] and returns [${regexes[0]}]`: 'No one regex was found!', {func:'getRegex'});
@@ -103,9 +103,9 @@ async function getElementFromChain(baseElement, po, chain) {
         const prop = names[0];
         names[0] = await getChain(po, names[0]);
         if (!names[0]) {
-            const err = new Error(`There is not the property [${prop}] in object [${po}] `);
-            logger.error(err, message);
-            throw err;
+            const error = new Error(`There is not the property [${prop}] in object [${po}] `);
+            logger.error(`${error}`, {func:'getElementFromChain'});
+            throw error;
         }
         logger.debug(`getChain([${chain}]) returns [${names.join(' > ')}]`, {func:'getElementFromChain'});
         return await getElementFromChain(baseElement, po, names.join(' > '));
@@ -139,9 +139,9 @@ async function getElementByString(baseElement, po, string) {
     if (po.children.hasOwnProperty(string)) {
         po = po['children'][string];
         if (!po) {
-            const err = new Error(`There is no [children] property in object [${po}]`);
-            logger.error(err, {func:'getElementByString'});
-            throw err;
+            const error = new Error(`There is no [children] property in object [${po}]`);
+            logger.error(`${error}`, {func:'getElementByString'});
+            throw error;
         } else {
             logger.debug(`Function [getElementByString] returned ${(po.isCollection ? `collection of elements [${string}] by selector: `: `element [${string}] by selector: `)} [${po.selector}]`, {func:'getElementByString'});
             return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
@@ -174,9 +174,9 @@ async function getElementByRegex(baseElement, po, string, regex) {
         const chain = await getChain(po, string);
         logger.debug(`getChain([${string}]) returns [${chain}]`, {func:'getElementByRegex'});
         if (!chain) {
-            const err = new Error(`There is not suitable property with name [${string}]`);
-            logger.error(err);
-            throw err;
+            const error = new Error(`There is not suitable property with name [${string}]`);
+            logger.error(`${error}`, {func:'getElementByRegex'});
+            throw error;
         }
         return await getElementFromChain(baseElement, po, chain);
     }

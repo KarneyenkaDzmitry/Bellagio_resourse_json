@@ -1,0 +1,14 @@
+{
+    "selector": "[role=main]:not([ng-controller])",
+    "children": {
+        "h1": {
+            "selector": "h1"
+        },
+        "left section": {
+            "ref": "./left_section.component.json"
+        },
+        "right section": {
+            "ref": "./right_section.component.json"
+        }
+    }
+}

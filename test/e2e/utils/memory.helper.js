@@ -19,7 +19,7 @@ class Memory {
     store(string, value) {
         if (!/^\$/.test(string)) {
             const error = new Error(`Wrong syntax in [${string}]! There is not [$]`);
-            logger.error(error, {func: 'Memory.store'});
+            logger.error(`${error}`, {func: 'Memory.store'});
             throw error;
         }
         const key = string.substring(1);
@@ -32,7 +32,7 @@ class Memory {
         const value = this.storage[key];
         if (!value) {
             const error = new Error(`No object was found in memory by key [${key}]`);
-            logger.error(error, {func: 'Memory.get'});
+            logger.error(`${error}`, {func: 'Memory.get'});
             throw error;
         }
         return value;

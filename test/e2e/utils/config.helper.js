@@ -17,7 +17,7 @@ function getTagsString({ tags }) {
                     throw new Error(`Was passed wrong parameter [${getStr(element)}]. Every tag have to start with [@] and seporates with comma`);
                 }
             } catch (error) {
-                logger.error(error, {func:'getTagsString'});
+                logger.error(`${error}`, {func:'getTagsString'});
                 throw error;
             }
         });
@@ -52,7 +52,7 @@ async function combineJsonReports(directory) {
         const resultFile = path.resolve(`${directory}/report.json`);
         return fs.writeFileSync(resultFile, JSON.stringify(data), 'utf8');
     } catch (error) {
-        logger.error(error, {func:'combineJsonReports'});
+        logger.error(`${error}`, {func:'combineJsonReports'});
         throw error;
     }
 }
