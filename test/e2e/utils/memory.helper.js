@@ -4,7 +4,7 @@ const { logger } = require('../configs/logger.conf');
 
 class Memory {
     constructor() {
-        logger.debug('Instance of Memory has been created.')
+        logger.info('Instance of Memory has been created.')
         this.storage = {
             "test":"first"
         };

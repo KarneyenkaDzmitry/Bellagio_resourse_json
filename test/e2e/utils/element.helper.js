@@ -1,14 +1,8 @@
 'use strict';
 
 const pages = require('../source/pages.json');
-const { logger, getStr, transport } = require('../configs/logger.conf');
-const winston = require('winston');
+const { logger, getStr } = require('../configs/logger.conf');
 const message = {}
-logger.add(new winston.transports.File({
-    name: 'element.helper-log',
-    filename: './test/e2e/logs/element.helper.log',
-    level: 'debug'
-}));
 
 /**
  * Defines current url and returns page-object as an object by path;
@@ -84,14 +78,13 @@ function getRegex(string) {
     message.function = 'getRegex';
     logger.debug(`Was called function [getRegex] with passed data: [${string}].`, message);
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
-    logger.debug(`Avaliable regexes: [${getStr(regexes)}]`, message);
     regexes = regexes.filter(regex => regex.test(string.trim()));
     if (regexes.length > 1) {
         const error = new Error(`There is more than one option in [${string}].`);
         logger.error(error, message);
         throw error;
     } else {
-        regexes.length > 0 ? logger.debug(`Were/was found [${regexes}] and returns [${regexes[0]}]`, message) : '';
+         logger.debug(regexes.length > 0 ? `Were/was found [${regexes}] and returns [${regexes[0]}]`: 'No one regex was found!', message);
         return regexes[0];
     }
 }
@@ -158,6 +151,7 @@ async function getElementByString(baseElement, po, string) {
             logger.error(err, message);
             throw err;
         } else {
+            logger.debug(po.isCollection ? `Returned collection of elements by selector:`: `Returned element by selector:` + po.selector, message);
             return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
         }
     } else {

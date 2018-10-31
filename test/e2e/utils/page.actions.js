@@ -3,11 +3,6 @@
 const { logger, getStr, transport } = require('../configs/logger.conf');
 const winston = require('winston');
 const message = {}
-logger.add(new winston.transports.File({
-    name: 'page.actions-log',
-    filename: './test/e2e/logs/page.actions.log',
-    level: 'debug'
-}));
 
 function getRegExp(string) {
     message.function = 'getRegExp';

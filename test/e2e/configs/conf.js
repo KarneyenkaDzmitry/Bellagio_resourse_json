@@ -32,9 +32,9 @@ exports.config = {
     },
     capabilities: getCapabilities(yargs),
     beforeLaunch: () => {
-        logger.info(`Get started`, message);
+        logger.info(`\nGET STARTED `, message);
     },
     afterLaunch: () => {
-        logger.info(`Have been completed!`, message);
+        logger.info(`\nHAVE BEEN COMPLETED! `, message);
     }
 };
