@@ -22,7 +22,7 @@ function getTagsString({ tags }) {
             }
         });
     }
-    logger.debug(`The result string of tags is [${getStr(result)}]`, message);
+    logger.debug(`The result string of tags is [${getStr(result)}]`, {func:'getTagsString'});
     return result;
 }
 

@@ -143,7 +143,7 @@ async function getElementByString(baseElement, po, string) {
             logger.error(err, {func:'getElementByString'});
             throw err;
         } else {
-            logger.debug(`Function [getElementByString] returned `+(po.isCollection ? `collection of elements [${string}] by selector: `: `element [${string}] by selector: `) `[${po.selector}]`, {func:'getElementByString'});
+            logger.debug(`Function [getElementByString] returned ${(po.isCollection ? `collection of elements [${string}] by selector: `: `element [${string}] by selector: `)} [${po.selector}]`, {func:'getElementByString'});
             return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
         }
     } else {
