@@ -91,7 +91,7 @@ function getRegex(string) {
         logger.error(error, message);
         throw error;
     } else {
-        logger.debug(`Were/was found [${regexes}] and returns [${regexes[0]}]`, message)
+        regexes.length < 1 ? logger.debug(`Were/was found [${regexes}] and returns [${regexes[0]}]`, message) : '';
         return regexes[0];
     }
 }

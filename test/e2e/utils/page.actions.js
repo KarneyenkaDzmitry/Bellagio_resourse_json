@@ -1,37 +1,47 @@
 'use strict';
 
-const { logger } = require('../configs/logger.conf.js');
+const { logger, getStr, transport } = require('../configs/logger.conf');
+const winston = require('winston');
+const message = {}
+logger.add(new winston.transports.File({
+    name: 'page.actions-log',
+    filename: './test/e2e/logs/page.actions.log',
+    level: 'debug'
+}));
 
 function getRegExp(string) {
+    message.function = 'getRegExp';
     if (/^\/(.*)\/(\w*)$/.test(string)) {
         const array = string.split('/');
         return new RegExp(array[1], array[2]);
     } else {
         const err = new Error('The passed string does not fit to RegExp pattern [^\\/(.*)\\/(\\w*)$]');
-        logger.error(err);
+        logger.error(err, message);
         throw err;
     }
 }
 
 function clickOnElement(element) {
+    message.function = 'clickOnElement';
     return browser.wait(ec.elementToBeClickable(element))
         .then(() => element.click())
         .catch((error) => {
-            logger.error(`Has been thrown the error withing performing the action [${element}] click()`, error);
+            logger.error(`Has been thrown the error withing performing the action click().\n Error: `+ error, message);
             throw error;
         });
 }
 
 function getText(elements) {
+    message.function = 'clickOnElement';
     if (Array.isArray(elements)) {
         const results = elements.map(element => element.getText());
         return Promise.all(results)
             .then((textArray) => {
-                logger.debug(`Was return array with strings :[${textArray}]`);
+                logger.debug(`Was return array with strings :[${getStr(textArray)}]`, message);
                 return textArray;
             })
             .catch((error) => {
-                logger.error(`Has been thrown the error withing performing the action getText([${elements}]) all elements` + error);
+                logger.error(`Has been thrown the error withing performing the action getText() all elements.\nError: ` + error, message);
                 throw error;
             });
     } else {
@@ -41,13 +51,14 @@ function getText(elements) {
                 return text;
             })
             .catch((error) => {
-                logger.error(`Has been thrown the error withing performing the action getText([${elements}])` + error);
+                logger.error(`Has been thrown the error withing performing the action getText().\nError: ` + error, message);
                 throw error;
             });
     }
 }
 
 function filter(elements, ...options) {
+    message.function = 'clickOnElement';
     if (elements.length === options.length) {
         return browser.wait(ec.presenceOf(...elements), 10000)
             .then(() => options.forEach((option, ind) => {
@@ -66,7 +77,7 @@ function filter(elements, ...options) {
                         .then(elems => elems[ind].element(by.xpath(opt)))
                         .then(element => clickOnElement(element))
                         .catch((error) => {
-                            logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`, error);
+                            logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}])`+ error, message);
                             throw error;
                         });
                 }
