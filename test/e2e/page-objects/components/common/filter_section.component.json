@@ -1,0 +1,11 @@
+{
+    "selector": "div.section-wrapper",
+    "children": {
+        "filter wrapper": {
+            "ref": "filter-wrapper.component.json" 
+        },
+        "view": {
+            "ref": "view.component.json"
+        }
+    }
+}

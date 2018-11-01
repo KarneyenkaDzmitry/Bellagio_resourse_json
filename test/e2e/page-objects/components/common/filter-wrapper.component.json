@@ -1,0 +1,24 @@
+{
+    "selector": "div.filter-wrapper",
+    "children": {
+        "label": {
+            "selector": ".filter-label"
+        },
+        "filters": {
+            "selector": "*[id^=tagsFilter]",
+            "isCollection": true,
+            "children": {
+                "options": {
+                    "selector": "li[role=radio]",
+                    "isCollection": true
+                },
+                "button": {
+                    "selector": "button"
+                }
+            }
+        },
+        "view all": {
+            "selector": ".view-all"
+        }
+    }
+}

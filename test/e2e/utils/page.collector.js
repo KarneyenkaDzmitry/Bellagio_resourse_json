@@ -121,5 +121,5 @@ function getFiles(dir) {
         throw err;
     }
 }
-// collector('./test/e2e/page-objects/pages', './test/e2e/source');
+collector('./test/e2e/page-objects/pages', './test/e2e/source');
 module.exports = { collector }

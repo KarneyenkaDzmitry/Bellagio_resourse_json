@@ -1,0 +1,11 @@
+{
+    "selector": "div.view-wrapper",
+    "children": {
+        "title": {
+            "selector": ".view-title" 
+        },
+        "button": {
+            "selector": "button"
+        }
+    }
+}

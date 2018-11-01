@@ -7,7 +7,7 @@
                 "ref": "../components/header/header.component.json"
             },
             "main": {
-                "ref": "../components/main/find_reservation/main.component.json"
+                "ref": "../components/main/main.component.json"
             },
             
             "body results": {

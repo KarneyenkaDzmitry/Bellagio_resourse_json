@@ -2,7 +2,10 @@
     "selector": "[role=main]:not([ng-controller])",
     "children": {
         "h1": {
-            "selector": "h1"
+            "selector": "h1" 
+        },
+        "filter section": {
+            "ref": "../common/filter_section.component.json"
         }
     }
 }
