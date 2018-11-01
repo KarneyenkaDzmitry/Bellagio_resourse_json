@@ -9,6 +9,8 @@ Feature: Bellagio resource
     Scenario Outline: Filter should return results related with options
         # When I click "Cousine Dropdown"
         When I click 'filters #first > button'
+        # And I wait until 'filter #first > options' is visible
+        And I click 'Italian' text in 'filter'
         And I wait for '10' seconds
         # Then I should see '<Result>' in 'body results headers'
         # And 'body results array' should have '1' elmement

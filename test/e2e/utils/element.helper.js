@@ -74,6 +74,7 @@ function getRegex(string) {
     logger.debug(`Was called function [getRegex] with passed data: [${string}].`, { func: 'getRegex' });
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
     regexes = regexes.filter(regex => regex.test(string.trim()));
+    logger.debug(`${regexes}`);
     if (regexes.length > 1) {
         const error = new Error(`There is more than one option in [${string}].`);
         logger.error(`${error}`, { func: 'getRegex' });
@@ -93,7 +94,7 @@ function getRegex(string) {
  */
 async function getElementFromChain(baseElement, po, chain) {
     let names = chain.split(/\s?\>\s?/);
-    let {name, regex} = cleanName(names[0]);
+    let { name, regex } = cleanName(names[0]);
     if (po.children.hasOwnProperty(name.trim())) {
         for (let i = 0; i < names.length; i++) {
             baseElement = await getElementFromString(baseElement, po, names[i]);
@@ -151,6 +152,7 @@ async function getElementByString(baseElement, po, string) {
             }
         } else {
             const chain = await getChain(po, string);
+            if (!chain) {throw new Error(`There is not any the property [${string}] belongs to object [${getStr(po)}] `)}
             logger.debug(`getChain([${string}]) returns [${chain}]`, { func: 'getElementByString' });
             return await getElementFromChain(baseElement, po, chain);
         }
@@ -236,7 +238,8 @@ function cleanName(name) {
     let regex = getRegex(name);
     regex = regex === '' ? regex : regex.exec(name)[0];
     name = regex === '' ? name.trim() : name.replace(regex, '').trim();
-    return {name, regex}
+    logger.debug(`The method [cleanName] returned [{${name}, ${regex}}`);
+    return { name, regex }
 }
 
 module.exports = { getElement, getElementByName };
