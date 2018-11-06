@@ -1,0 +1,15 @@
+{
+    "selector": "div.tiles-wrapper",
+    "children": {
+        "more": {
+            "selector": "div[id*=load-more]",
+            "children": {
+                "button": "button"
+            }
+        },
+        "tiles": {
+            "isCollection": true,
+            "ref": "tile.component.json"
+        }
+    }
+}

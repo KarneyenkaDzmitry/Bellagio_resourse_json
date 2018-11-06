@@ -14,7 +14,7 @@ function getRegExp(string) {
 }
 
 function clickOnElement(element) {
-    return browser.wait(ec.elementToBeClickable(element))
+    return waitUntil(element, 'clickable')
         .then(() => element.click())
         .catch((error) => {
             logger.error(`Has been thrown the error withing performing the action click().\n Error: ${error}`, { func: 'clickOnElement' });
@@ -24,13 +24,11 @@ function clickOnElement(element) {
 
 function waitUntil(element, condition) {
     const func = getWaiterFunction(condition);
-    return Array.isArray(element)? element.forEach(element=> browser.wait(func(element), 5000)): browser.wait(func(element), 5000);
-    // element = Array.isArray(element) ? element[0]: element;
-    // return browser.wait(func(element), 5000);
+    return Array.isArray(element) ? element.forEach(element => browser.wait(func(element), 5000)) : browser.wait(func(element), 5000);
 }
 
 function getWaiterFunction(condition) {
-    logger.info(`The function [getWaiterFunction] has been called with condition; [${condition}]`,  {func: 'getWaiterFunction'});
+    logger.info(`The function [getWaiterFunction] has been called with condition: [${condition}]`, { func: 'getWaiterFunction' });
     const conditions = {
         present: ec.presenceOf,
         clickable: ec.elementToBeClickable,
@@ -41,7 +39,7 @@ function getWaiterFunction(condition) {
     }
     if (!conditions[condition]) {
         const error = new Error(`Wrong passed parameter: [${condition}]. Variants of conditions are: [${getStr(conditions)}]`);
-        logger.error(error, {func: 'getWaiterFunction'});
+        logger.error(error, { func: 'getWaiterFunction' });
         throw error;
     }
     return conditions[condition].bind(ec);
@@ -52,22 +50,22 @@ function getText(elements) {
         const results = elements.map(element => element.getText());
         return Promise.all(results)
             .then((textArray) => {
-                logger.debug(`Was return array with strings :[${getStr(textArray)}]`, { func: 'clickOnElement' });
+                logger.debug(`Was return array with strings :[${getStr(textArray)}]`, { func: 'getText' });
                 return textArray;
             })
             .catch((error) => {
-                logger.error(`Has been thrown the error withing performing the action getText() all elements.\nError: ${error}`, { func: 'clickOnElement' });
+                logger.error(`Has been thrown the error withing performing the action getText() all elements.\nError: ${error}`, { func: 'getText' });
                 throw error;
             });
     } else {
         return elements.getText()
             .then((text) => {
-                logger.debug(`Was return text :[${text}]`, { func: 'clickOnElement' }
+                logger.debug(`Was return text :[${text}]`, { func: 'getText' }
                 );
                 return text;
             })
             .catch((error) => {
-                logger.error(`Has been thrown the error withing performing the action getText().\nError: ${error}`, { func: 'clickOnElement' });
+                logger.error(`Has been thrown the error withing performing the action getText().\nError: ${error}`, { func: 'getText' });
                 throw error;
             });
     }

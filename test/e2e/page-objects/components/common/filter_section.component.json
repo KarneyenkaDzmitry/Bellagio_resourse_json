@@ -1,5 +1,5 @@
 {
-    "selector": "div.section-wrapper",
+    "selector": "div.section-nav-wrapper",
     "children": {
         "filter wrapper": {
             "ref": "filter-wrapper.component.json"
@@ -8,33 +8,7 @@
             "ref": "view.component.json"
         },
         "results wrapper": {
-            "selector": "div.tiles-wrapper",
-            "children": {
-                "more": {
-                    "selector": "div[id*=load-more]",
-                    "children": {
-                        "button": "button"
-                    }
-                },
-                "tiles": {
-                    "isCollection": true,
-                    "selector": "div[id].grid-item div.result",
-                    "children": {
-                        "short desc": {
-                            "selector": "p.long-description"
-                        },
-                        "long desc": {
-                            "selector": "p.long-description"
-                        },
-                        "title ref": {
-                            "selector": "a"
-                        },
-                        "button": {
-                            "selector": "div[id].btns"
-                        }
-                    }
-                }
-            }
+            "ref": "results-wrapper.component.json"
         }
     }
 }

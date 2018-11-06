@@ -2,6 +2,7 @@
 
 const pages = require('../source/pages.json');
 const { logger, getStr } = require('../configs/logger.conf');
+const {waitUntil} = require('./page.actions');
 
 
 /**
@@ -31,7 +32,7 @@ async function getPageObject() {
 async function getElement(string) {
     const po = await getPageObject();
     logger.info(`Was called function [getElement] with passed data: [${string}]`, { func: 'getElement' });
-    await browser.wait(ec.presenceOf(element(by.css(po.selector))), 5000);
+    await waitUntil(await element(by.css(po.selector)),'present');
     const baseElement = await element(by.css(po.selector));
     return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
 };
@@ -75,7 +76,6 @@ function getRegex(string) {
     logger.debug(`Was called function [getRegex] with passed data: [${string}].`, { func: 'getRegex' });
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
     regexes = regexes.filter(regex => regex.test(string.trim()));
-    logger.debug(`${regexes}`);
     if (regexes.length > 1) {
         const error = new Error(`There is more than one option in [${string}].`);
         logger.error(`${error}`, { func: 'getRegex' });
@@ -148,13 +148,20 @@ async function getElementByString(baseElement, po, string) {
             if (!po) {
                 throw new Error(`There is no [children] property in object [${getStr(po)}]`);
             } else {
-                logger.debug(`Function [getElementByString] returned ${(po.isCollection ? `collection of elements [${string}] by selector: ` : `element [${string}] by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
-                return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
+                if (Array.isArray(baseElement)) {
+                    logger.debug(`Function [getElementByString] returned array with ${(po.isCollection ? `collection of elements [${string}] for each element in origin array by selector: ` :
+                     `element [${string}] for each element in origin array by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
+                    return baseElement.map(base => po.isCollection ? base.all(by.css(po.selector)) : base.element(by.css(po.selector)));
+                } else {
+                    logger.debug(`Function [getElementByString] returned ${(po.isCollection ? `collection of elements [${string}] by selector: ` :
+                     `element [${string}] by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
+                    return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
+                }
             }
         } else {
             const chain = await getChain(po, string);
-            if (!chain) {throw new Error(`There is not any the property [${string}] belongs to object [${getStr(po)}] `)}
             logger.debug(`getChain([${string}]) returns [${chain}]`, { func: 'getElementByString' });
+            if (!chain) { throw new Error(`There is not any the property [${string}] belongs to object [${getStr(po)}] `) }
             return await getElementFromChain(baseElement, po, chain);
         }
     } catch (error) {
@@ -175,7 +182,7 @@ async function getElementByString(baseElement, po, string) {
 async function getElementByRegex(baseElement, po, string, regex) {
     logger.debug(`Was called function [getElementByRegex] for [${string}] and [${regex}], po; [${getStr(po)}]`, { func: 'getElementByRegex' });
     const index = getIndex(regex.exec(string)[0]);
-    const name = string.replace(regex, '').trim();
+    const {name} =cleanName(string);
     logger.debug(`Was found index and name: [${index}], [${name}]`, { func: 'getElementByRegex' });
     if (po.children.hasOwnProperty(name)) {
         po = po['children'][name];
@@ -239,7 +246,7 @@ function cleanName(name) {
     let regex = getRegex(name);
     regex = regex === '' ? regex : regex.exec(name)[0];
     name = regex === '' ? name.trim() : name.replace(regex, '').trim();
-    logger.debug(`The method [cleanName] returned [{${name}, ${regex}}`);
+    logger.debug(`The method [cleanName] returned [{${name}, ${regex}}`, {func: 'cleanName'});
     return { name, regex }
 }
 

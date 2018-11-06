@@ -2,17 +2,22 @@
 
 const { Then, setDefaultTimeout } = require('cucumber');
 const { getElement, getElementByName } = require('../../utils/element.helper');
-const { find, filter, getText, clickOnElement } = require('../../utils/page.actions');
+const { getText } = require('../../utils/page.actions');
 const { expect } = require('chai');
 
 // setDefaultTimeout(60 * 1000);
 
-Then(/^Text of '([^']*)' should (contain|equal) '([^']*)' text$/, async (chain, condition, text) => {
+Then(/^(Text|Number) of '([^']*)' should (contain|equal) '([^']*)'$/, async (t, chain, condition, text) => {
+    // const  actualText = await getText(await getElement(chain));
     switch (condition) {
         case 'equal': return expect(await getText(await getElement(chain))).to.be.equal(text);
         case 'contain': return expect(await getText(await getElement(chain))).to.contain(text);
         default: throw new Error(`There are not a suitable condition. There are [contain] or [equal], but was received: [${condition}]`)
     }
+});
+
+Then(/^'([^']*)' should be (visible|present)$/, async (chain, condition) => {
+    return 
 });
 
 // Then(/^I wait until '([^']*)' is (visible|present)$/, async (chain, condition) => {
