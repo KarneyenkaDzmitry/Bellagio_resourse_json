@@ -3,6 +3,7 @@
 const pages = require('../source/pages.json');
 const { logger, getStr } = require('../configs/logger.conf');
 
+
 /**
  * Defines current url and returns page-object as an object by path;
  * @returns {Object} an object with properties for current url by path
@@ -157,7 +158,7 @@ async function getElementByString(baseElement, po, string) {
             return await getElementFromChain(baseElement, po, chain);
         }
     } catch (error) {
-        logger.error(`${error}. Object: [${po}]`, { func: 'getElementByString' });
+        logger.error(`${error}. Object: [${getStr(po)}]`, { func: 'getElementByString' });
         throw error;
     }
 

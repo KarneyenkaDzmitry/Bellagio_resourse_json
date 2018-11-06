@@ -1,11 +1,11 @@
 {
-    "selector": "div.filter-wrapper",
+    "selector": "div.filter-wrapper.large",
     "children": {
         "label": {
             "selector": ".filter-label"
         },
         "filters": {
-            "selector": "*[id^=tagsFilter]",
+            "selector": "div[id^=tagsFilter]",
             "isCollection": true,
             "children": {
                 "options": {

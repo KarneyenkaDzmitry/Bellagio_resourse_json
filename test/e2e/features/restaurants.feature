@@ -1,20 +1,24 @@
 Feature: Bellagio resource
 
 
-    Background: Background
-        Given I am on 'https://www.bellagio.com/en/restaurants.html' url
+    # Background: Background
+    #     Given I am on 'https://www.bellagio.com/en/restaurants.html' url
 
 
     @Restaurants
     Scenario Outline: Filter should return results related with options
-        # When I click "Cousine Dropdown"
+        Given I am on '<url>' url
         When I click 'filters #first > button'
-        # And I wait until 'filter #first > options' is visible
-        And I click 'Italian' text in 'filter'
-        And I wait for '10' seconds
-        # Then I should see '<Result>' in 'body results headers'
-        # And 'body results array' should have '1' elmement
-
+        And I wait until 'filters #first > options' is visible
+        And I click '<Cuisine>' text in 'filters #1 > options'
+        And I scroll up until 'filters #second > button' is present
+        And I click 'filters #second > button'
+        And I wait until 'filters #second > options #2' is visible
+        And I click '<Price>' text in 'filters #2 > options'
+        And I click 'filters #3 > button'
+        And I wait until 'filters #3 > options #3' is visible
+        And I click '<Meal>' text in 'filters #3 > options'
+        Then Text of 'title ref' should contain '<Result>' text
         Examples:
-            | Page        | Cousine | Price | Meal                 | Result                 |
-            | RESTAURANTS | Italian | Clear | Breakfast and Brunch | LAGO BY JULIAN SERRANO |
+            | url                                          | Cuisine | Price | Meal                 | Result                 |
+            | https://www.bellagio.com/en/restaurants.html | Italian | Clear | Breakfast and Brunch | LAGO BY JULIAN SERRANO |

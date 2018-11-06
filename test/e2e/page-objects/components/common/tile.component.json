@@ -1,0 +1,17 @@
+{
+    "selector": "div[id].grid-item div.result",
+    "children": {
+        "short desc": {
+            "selector": "p.long-description"
+        },
+        "long desc": {
+            "selector": "p.long-description"
+        },
+        "title ref":{
+            "selector": "a"
+        },
+        "button": {
+            "selector": "div[id].btns"
+        }
+    }
+}
