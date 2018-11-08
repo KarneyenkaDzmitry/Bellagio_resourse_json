@@ -30,7 +30,7 @@ class Memory {
 
     get(key) {
         const value = this.storage[key];
-        if (!value) {
+        if (value===undefined) {
             const error = new Error(`No object was found in memory by key [${key}]`);
             logger.error(`${error}`, {func: 'Memory.get'});
             throw error;

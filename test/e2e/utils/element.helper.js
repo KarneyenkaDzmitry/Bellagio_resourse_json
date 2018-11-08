@@ -2,7 +2,7 @@
 
 const pages = require('../source/pages.json');
 const { logger, getStr } = require('../configs/logger.conf');
-const {waitUntil} = require('./page.actions');
+const { waitUntil } = require('./page.actions');
 
 
 /**
@@ -30,11 +30,15 @@ async function getPageObject() {
  * @returns {Element} return an needed element or array of elements
  */
 async function getElement(string) {
-    const po = await getPageObject();
-    logger.info(`Was called function [getElement] with passed data: [${string}]`, { func: 'getElement' });
-    await waitUntil(await element(by.css(po.selector)),'present');
-    const baseElement = await element(by.css(po.selector));
-    return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
+    if (/^\$.+/.test(string)) {
+        return storage.getValue(string);
+    } else {
+        const po = await getPageObject();
+        logger.info(`Was called function [getElement] with passed data: [${string}]`, { func: 'getElement' });
+        await waitUntil(await element(by.css(po.selector)), 'present');
+        const baseElement = await element(by.css(po.selector));
+        return /\s?\>\s?/.test(string) ? getElementFromChain(baseElement, po, string) : getElementFromString(baseElement, po, string);
+    }
 };
 
 /** 
@@ -150,11 +154,11 @@ async function getElementByString(baseElement, po, string) {
             } else {
                 if (Array.isArray(baseElement)) {
                     logger.debug(`Function [getElementByString] returned array with ${(po.isCollection ? `collection of elements [${string}] for each element in origin array by selector: ` :
-                     `element [${string}] for each element in origin array by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
+                        `element [${string}] for each element in origin array by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
                     return baseElement.map(base => po.isCollection ? base.all(by.css(po.selector)) : base.element(by.css(po.selector)));
                 } else {
                     logger.debug(`Function [getElementByString] returned ${(po.isCollection ? `collection of elements [${string}] by selector: ` :
-                     `element [${string}] by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
+                        `element [${string}] by selector: `)} [${po.selector}]`, { func: 'getElementByString' });
                     return po.isCollection ? baseElement.all(by.css(po.selector)) : baseElement.element(by.css(po.selector));
                 }
             }
@@ -182,7 +186,7 @@ async function getElementByString(baseElement, po, string) {
 async function getElementByRegex(baseElement, po, string, regex) {
     logger.debug(`Was called function [getElementByRegex] for [${string}] and [${regex}], po; [${getStr(po)}]`, { func: 'getElementByRegex' });
     const index = getIndex(regex.exec(string)[0]);
-    const {name} =cleanName(string);
+    const { name } = cleanName(string);
     logger.debug(`Was found index and name: [${index}], [${name}]`, { func: 'getElementByRegex' });
     if (po.children.hasOwnProperty(name)) {
         po = po['children'][name];
@@ -246,7 +250,7 @@ function cleanName(name) {
     let regex = getRegex(name);
     regex = regex === '' ? regex : regex.exec(name)[0];
     name = regex === '' ? name.trim() : name.replace(regex, '').trim();
-    logger.debug(`The method [cleanName] returned [{${name}, ${regex}}`, {func: 'cleanName'});
+    logger.debug(`The method [cleanName] returned [{${name}, ${regex}}`, { func: 'cleanName' });
     return { name, regex }
 }
 

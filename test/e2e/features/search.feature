@@ -1,7 +1,7 @@
 Feature: Bellagio resource
 
-    Background: Background
-        Given I am on 'https://www.bellagio.com/en.html' url
+    # Background: Background
+    #     Given I am on 'https://www.bellagio.com/en.html' url
 
 # @Search
 #     Scenario: Search component elements should be presented

@@ -45,6 +45,21 @@ function getWaiterFunction(condition) {
     return conditions[condition].bind(ec);
 }
 
+function checkElement(element, condition) {
+    const conditions = {
+        present: element.isPresent,
+        enabled: element.isEnabled,
+        selected: element.isSelected,
+        displayed: element.isDisplayed 
+    }
+    if (!conditions[condition]) {
+        const error = new Error(`Wrong passed parameter: [${condition}]. Variants of conditions are: [${getStr(conditions)}]`);
+        logger.error(error, { func: 'checkElement' });
+        throw error;
+    }
+    return conditions[condition]();
+}
+
 function getText(elements) {
     if (Array.isArray(elements)) {
         const results = elements.map(element => element.getText());
@@ -71,50 +86,4 @@ function getText(elements) {
     }
 }
 
-// function filter(elements, ...options) {
-//     if (elements.length === options.length) {
-//         return browser.wait(ec.presenceOf(...elements), 10000)
-//             .then(() => options.forEach((option, ind) => {
-//                 if (option !== 'Clear') {
-//                     const opt = `//li[@role="radio"]/a[text()="${option}"][@class]`;
-//                     $$('button[id*=tagsFilter]')
-//                         .then((elems) => {
-//                             browser.sleep(2000); return elems;
-//                         })
-//                         .then(elems => {
-//                             browser.wait(ec.visibilityOf(elems[ind]), 5000); return elems;
-//                         })
-//                         .then(elems => {
-//                             clickOnElement(elems[ind]); return elems;
-//                         })
-//                         .then(elems => elems[ind].element(by.xpath(opt)))
-//                         .then(element => clickOnElement(element))
-//                         .catch((error) => {
-//                             logger.error(`Has been thrown the error withing performing the action filter(elements, ${options}]) \nError: ${error}`, { func: 'getRegExp' });
-//                             throw error;
-//                         });
-//                 }
-//             }));
-
-//     } else {
-//         const error = new Error('There are no equals an amount of elements');
-//         logger.error(`Has been thrown the error withing performing the action filter([${elements}, ${options}]) \nError: ${error}`, { func: 'getRegExp' });
-//         throw error;
-//     }
-// }
-
-// function find(form, text) {
-//     return browser.wait(ec.presenceOf(form), 5000)
-//         .then(() => form.element(by.css('input')))
-//         .then((field) => field.sendKeys(text))
-//         .then(() => form.element(by.css('button')))
-//         .then((button) => {
-//             clickOnElement(button);
-//         })
-//         .catch((error) => {
-//             logger.error(`Has been thrown the error withing performing the action find([${form}, ${text}]) \nError: ${error}`, { func: 'find' });
-//             throw error;
-//         });
-// }
-
-module.exports = { getText, clickOnElement, getRegExp, waitUntil };
+module.exports = { getText, clickOnElement, getRegExp, waitUntil, checkElement };
