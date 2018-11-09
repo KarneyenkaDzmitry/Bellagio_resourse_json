@@ -41,3 +41,25 @@
 # When I highlight 'element'
 # I make screenshot of the page
 # Then Text of 'main > h1' should match /regex/gi 
+
+# let scrollElementToMiddle = function (element) {
+#     return Promise.all([
+#         element.getLocation(),
+#         browser.executeScript('return window.document.body.offsetHeight'),
+#         browser.executeScript('return window.outerHeight')])
+#         .then(([location, scrollLength, outerHeight]) => {
+#             var elementYpos = location.y;
+#             logger.info("scrollLength:", scrollLength);
+#             logger.info("elementYpos:", elementYpos);
+#             logger.info("outerHeight:", outerHeight);
+#             if (scrollLength - elementYpos < outerHeight  0.5) {
+#                 return elementYpos;
+#             } else {
+#                 return elementYpos - outerHeight  0.5;
+#             }
+#         })
+#         .then(function (scrollTo) {
+#             logger.info("scrollTo:", scrollTo);
+#             return browser.executeScript('window.scrollTo(0, arguments[0])', scrollTo);
+#         });
+# };

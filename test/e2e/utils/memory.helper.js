@@ -5,9 +5,7 @@ const { logger } = require('../configs/logger.conf');
 class Memory {
     constructor() {
         logger.info('Instance of Memory has been created.', {func: 'Memory'})
-        this.storage = {
-            "test":"first"
-        };
+        this.storage = {};
     }
 
     getValue(string) {

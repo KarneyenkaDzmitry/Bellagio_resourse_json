@@ -32,16 +32,16 @@ Then(/^'([^']*)' should be (displayed|enabled|present|selected)$/, async (chain,
 
 Then(/^I should see the following lines in '([^']*)'$/, async (chain, table) => {
     let error = false;
-    let elements = await getElement(chain);
-    elements = await getText(elements);
+    const elements = await getText(await getElement(chain));
+    table = table.raw().reduce((a,b)=>a.concat(b));
     try {
         if (Array.isArray(elements)) {
-            table.raw().forEach((text, index) => {
-                if (text[0] != elements[index]) {
-                    logger.error(`[${elements[index]}] Text is not equal: [${text[0]}]`, {func: 'checks.steps'});
+            table.forEach((text, index) => {
+                if (text != elements[index]) {
+                    logger.error(`[${elements[index]}] Text is not equal: [${text}]`, {func: 'checks.steps'});
                     error = true;
                 }
-                expect(text[0]).to.be.equal(elements[index]);
+                expect(text).to.be.equal(elements[index]);
             });
             if (error) {
                 throw new Error("Error. Some elements do not match! See error-log");
@@ -53,5 +53,5 @@ Then(/^I should see the following lines in '([^']*)'$/, async (chain, table) => 
         logger.error(error, {func:'checks.steps'})
         throw error;
     }
-    
+    return expect(elements).to.deep.equal(table);
 });
