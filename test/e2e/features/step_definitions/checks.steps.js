@@ -9,7 +9,7 @@ const { logger, getStr } = require('../../configs/logger.conf');
 // setDefaultTimeout(60 * 1000);
 
 Then(/^(Text|Number) of '([^']*)' should (contain|equal) '([^']*)'$/, async (isNumber, chain, condition, text) => {
-    if (isNumber==='Number') {
+    if (isNumber === 'Number') {
         switch (condition) {
             case 'equal': return expect((await getText(await getElement(chain))).length).to.be.equal(Number.parseInt(text));
             default: throw new Error(`There are not a suitable condition. There is [equal] with [number], but was received: [${condition}]`)
@@ -21,24 +21,24 @@ Then(/^(Text|Number) of '([^']*)' should (contain|equal) '([^']*)'$/, async (isN
             default: throw new Error(`There are not a suitable condition. There are [contain] or [equal] with [text], but was received: [${condition}]`)
         }
     }
-    
+
 });
 
-Then(/^'([^']*)' should be (displayed|enabled|present|selected)$/, async (chain, condition) => {
+Then(/^'([^']*)' should( not)? be (displayed|enabled|present|selected)$/, async (chain, notArg, condition) => {
     const result = await checkElement(await getElement(chain), condition);
-    logger.info(`Element should be ${condition} is :[${result}]`, {func:'checks.steps'});
-    return expect(result).to.be.true;
+    logger.info(`Element should be ${condition} is :[${result}]`, { func: 'checks.steps' });
+    return notArg ? expect(result).to.be.false : expect(result).to.be.true;
 });
 
 Then(/^I should see the following lines in '([^']*)'$/, async (chain, table) => {
     let error = false;
     const elements = await getText(await getElement(chain));
-    table = table.raw().reduce((a,b)=>a.concat(b));
+    table = table.raw().reduce((a, b) => a.concat(b));
     try {
         if (Array.isArray(elements)) {
             table.forEach((text, index) => {
                 if (text != elements[index]) {
-                    logger.error(`[${elements[index]}] Text is not equal: [${text}]`, {func: 'checks.steps'});
+                    logger.error(`[${elements[index]}] Text is not equal: [${text}]`, { func: 'checks.steps' });
                     error = true;
                 }
                 expect(text).to.be.equal(elements[index]);
@@ -50,7 +50,7 @@ Then(/^I should see the following lines in '([^']*)'$/, async (chain, table) => 
             throw new Error(`[${elements}] is not an array!`);
         }
     } catch (error) {
-        logger.error(error, {func:'checks.steps'})
+        logger.error(error, { func: 'checks.steps' })
         throw error;
     }
     return expect(elements).to.deep.equal(table);

@@ -1,8 +1,8 @@
 {
-    "selector": ".nav-search",
+    "selector": "li[role=search]",
     "children": {
-        "search component": {
-            "selector": "ul>li.nav-search.search-expanded"
+        "trigger button": {
+            "selector": "button.nav-search-trigger"
         },
         "search component form": {
             "selector": "form#global-nav-search-form"
@@ -10,8 +10,8 @@
         "search component button": {
             "selector": "*[aria-label*=\"Search\"]"
         },
-        "search component field": {
-            "selector": "globalSearchKeyword"
+        "search component input": {
+            "selector": "input"
         },
         "search component cancel": {
             "selector": "span.clear-search.close-search-overlay"

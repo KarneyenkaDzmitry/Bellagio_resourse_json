@@ -105,6 +105,7 @@ async function getElementFromChain(baseElement, po, chain) {
             baseElement = await getElementFromString(baseElement, po, names[i]);
             names[i] = cleanName(names[i]).name;
             po = po.children[names[i].trim()];
+            //logger.debug(`Was found element by selector: || ${await (Array.isArray(baseElement) ?  Promise.all(baseElement.map(elem => elem.locator())) : baseElement.locator())}`, {func:'getElementFromChain'});
         }
         return baseElement;
     } else {

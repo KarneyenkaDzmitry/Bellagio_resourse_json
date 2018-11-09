@@ -24,7 +24,11 @@ function clickOnElement(element) {
 
 function waitUntil(element, condition) {
     const func = getWaiterFunction(condition);
-    return Array.isArray(element) ? element.forEach(element => browser.wait(func(element), 5000)) : browser.wait(func(element), 5000);
+    if (Array.isArray(element)){
+        return Promise.all(element.map(element => browser.wait(func(element), 5000)));
+    } else {
+        return browser.wait(func(element), 5000)
+    } 
 }
 
 function getWaiterFunction(condition) {
@@ -57,13 +61,13 @@ function checkElement(element, condition) {
         logger.error(error, { func: 'checkElement' });
         throw error;
     }
-    return conditions[condition]();
+    return conditions[condition].bind(element)();
 }
 
 function getText(elements) {
     if (Array.isArray(elements)) {
-        const results = elements.map(element => element.getText());
-        return Promise.all(results)
+        if (elements.find(elem=>typeof elem !== 'object')) return elements;
+        return Promise.all(elements.map(element => element.getText()))
             .then((textArray) => {
                 logger.debug(`Was return array with strings :[${getStr(textArray)}]`, { func: 'getText' });
                 return textArray;
@@ -73,6 +77,7 @@ function getText(elements) {
                 throw error;
             });
     } else {
+        if (typeof elements !== 'object') return elements;
         return elements.getText()
             .then((text) => {
                 logger.debug(`Was return text :[${text}]`, { func: 'getText' }

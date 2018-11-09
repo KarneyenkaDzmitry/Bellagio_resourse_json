@@ -16,15 +16,7 @@ When(/^I click '([^']*)'$/, async (chain) => {
 });
 
 When(/^I scroll to '([^']*)'$/, async (chain) => {
-  
-  // const element = await browser.element(by.css('#footer-offer-signup-email'));
-  // const element2 =  await browser.element(by.css('#tagsFilter-0-entertainment-btn'));//;
-  // await scrollElementToMiddle(element);
-  // await browser.sleep(15000);
   return scrollElementToMiddle(await getElement(chain));
-  // // return browser.executeScript('window.scrollBy(0,-250)');
-  // browser.refresh();
-  // return browser.executeScript('window.scrollTo(0, document.body.scrollTop)')
 });
 
 When(/^I click '([^']*)' text in '([^']*)'$/, async (name, chain) => {
@@ -37,4 +29,8 @@ When(/^I wait for '([^']*)' seconds$/, async (sec) => {
 
 When(/^I wait until '([^']*)' is (visible|present|clickable|invisible|selected|gone)$/, async (chain, condition) => {
   return waitUntil(await getElement(chain), condition);
+});
+
+When(/^I type '([^']*)' in '([^']*)'$/, async (text, chain) => {
+  return (await getElement(chain)).sendKeys(text);
 });
