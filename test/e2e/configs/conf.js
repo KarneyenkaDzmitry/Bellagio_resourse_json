@@ -34,6 +34,9 @@ exports.config = {
         browser.waitForAngularEnabled(false);
     },
     capabilities: getCapabilities(yargs),
+    params: {
+        CONSTFILE: require('./constants/constants.json')
+    },
     beforeLaunch: () => {
         logger.info(`GET STARTED `, { func: 'beforeLaunch' });
     },

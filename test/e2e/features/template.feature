@@ -1,27 +1,3 @@
-    #  Scenario: steps with memory
-#         When I click 'guest services'
-#         And I click 'guest services > menu items #$test'
-#         And I wait until 'form' is present
-#         And I remember text of 'form > inputs #last' as '$name'
-#         When I remember number of 'form > inputs' as '$number'
-#         When I remember page title as '$pageTitle'
-#          When I remember index of 'form > inputs' containing 'last name' as '$index'
-#         And I wait for '1' seconds
-#         When I remember attribute 'type' of 'form > button' as '$attr'
-        # When I remember index of 'form > inputs' matching 'lastName' as '$index'
-
-        
-#    Scenario: steps with memory
-        # When I click 'guest services'
-        # And I click 'guest services > menu items #first'
-        # And I wait until 'form' is present
-        # And I remember text of 'form > elements #last' as '$name'
-        # When I remember number of 'elements' as '$number'
-        # When I remember page title as '$pageTitle'
-        # And I wait for '5' seconds
-        # When I remember attribute 'class' of 'form' as '$class'     
-        
-
 #    Templates:
 # Then 'element' should be 'present or visible'
 # Then Text of 'element should 'contain or equals' 'text'
@@ -40,4 +16,12 @@
 # When I remember index of 'selector' containing 'textToMatch' as 'indexName'
 # When I highlight 'element'
 # I make screenshot of the page
-# Then Text of 'main > h1' should match /regex/gi 
+# Then Text of 'main > h1' should match /regex/gi
+# When I remember attribute 'class' of 'form' as '$class'
+# When I click 'guest services'
+# And I click 'guest services > menu items #first'
+# And I wait until 'form' is present
+# And I remember text of 'form > elements #last' as '$name'
+# When I remember number of 'elements' as '$number'
+# When I remember page title as '$pageTitle'
+# And I wait for '5' seconds

@@ -9,15 +9,18 @@ const { logger, getStr } = require('../../configs/logger.conf');
 // setDefaultTimeout(60 * 1000);
 
 Then(/^(Text|Number) of '([^']*)' should (contain|equal) '([^']*)'$/, async (isNumber, chain, condition, text) => {
+    const element = await getElement(chain);
+    const actualText = await getText(element);
     if (isNumber === 'Number') {
+        const number = Number.parseInt(text); 
         switch (condition) {
-            case 'equal': return expect((await getText(await getElement(chain))).length).to.be.equal(Number.parseInt(text));
+            case 'equal': return Array.isArray(actualText) ? expect(actualText.length).to.be.equal(number) : expect(actualText).to.be.equal(number);
             default: throw new Error(`There are not a suitable condition. There is [equal] with [number], but was received: [${condition}]`)
         }
     } else {
         switch (condition) {
-            case 'equal': return expect(await getText(await getElement(chain))).to.be.equal(text);
-            case 'contain': return expect(await getText(await getElement(chain))).to.contain(text);
+            case 'equal': return expect(actualText).to.be.equal(text);
+            case 'contain': return expect(actualText).to.contain(text);
             default: throw new Error(`There are not a suitable condition. There are [contain] or [equal] with [text], but was received: [${condition}]`)
         }
     }

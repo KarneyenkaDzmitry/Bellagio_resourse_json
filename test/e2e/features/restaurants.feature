@@ -14,7 +14,7 @@ Feature: Bellagio resource
         And I click 'filters #3 > button'
         And I wait until 'filters #3 > options #3' is visible
         And I click '<Meal>' text in 'filters #3 > options'
-        # And I wait until 'title ref' is present
+        And I wait for '3' seconds
         Then Text of 'title ref' should contain '<Result>'
         Examples:
             | Cuisine | Price | Meal                 | Result                 |

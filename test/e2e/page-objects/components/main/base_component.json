@@ -1,0 +1,12 @@
+{
+    "selector": "div.theme-default.component-base:not([id])",
+    "children": {
+        "title": {
+            "selector": "div.cta-wrapper span" 
+        },
+        "resorts gallery": {
+            "isCollection": true,
+            "selector": "div.resorts-gallery li"
+        }
+    }
+}

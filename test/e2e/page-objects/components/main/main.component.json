@@ -6,6 +6,9 @@
         },
         "filter section": {
             "ref": "../common/filter_section.component.json"
+        },
+        "base component": {
+            "ref": "./base_component.json"
         }
     }
 }

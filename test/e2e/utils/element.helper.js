@@ -30,7 +30,7 @@ async function getPageObject() {
  * @returns {Element} return an needed element or array of elements
  */
 async function getElement(string) {
-    if (/^\$.+/.test(string)) {
+    if (/^\$/.test(string)) {
         return storage.getValue(string);
     } else {
         const po = await getPageObject();
@@ -81,7 +81,7 @@ function getRegex(string) {
     let regexes = [/^#\d+/, /#\d+$/, /^#first/, /#first$/, /^#second/, /#second$/, /^#last/, /#last$/];
     regexes = regexes.filter(regex => regex.test(string.trim()));
     if (regexes.length > 1) {
-        const error = new Error(`There is more than one option in [${string}].`);
+        const error = new Error(`There is more than one option in [${string}]. Regexes: [${getStr(regexes)}]`);
         logger.error(`${error}`, { func: 'getRegex' });
         throw error;
     } else {

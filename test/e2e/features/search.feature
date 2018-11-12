@@ -3,7 +3,7 @@ Feature: Search component
     Background: Background
         Given I am on 'https://www.bellagio.com/en.html' url
 
-@Search
+    @Search
     Scenario: elements of the search component should be presented with data from requirements
         When I click 'search component'
         And I wait until 'search component form' is visible
@@ -13,7 +13,7 @@ Feature: Search component
         And 'search component button' should be present
         And Text of 'search component button' should equal 'SEARCH'
         And 'search component cancel' should be present
-    
+
     @Search
     Scenario Outline: If user Search for something User should see result: <result>
         When I click 'search component'
@@ -38,4 +38,3 @@ Feature: Search component
             | text    | result                                                                                                              |
             | dusolei | Sorry, your search for dusolei did not return any results. Please try different search terms or browse our sitemap. |
 
-    
